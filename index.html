@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MitsuCap | Global Lease & Finance Solutions</title>
+  <meta name="description" content="Equipment leasing and finance solutions designed around your business, your industry, and the equipment you need.">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Hide reveal targets until GSAP has set their start states. Fallback: show everything after 4s.
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("anim");
+      setTimeout(function () { if (!window.__animReady) document.documentElement.classList.remove("anim"); }, 4000);
+    }
+  </script>
+</head>
+<body>
+  <div class="page">
+
+    <!-- ============ HERO SCROLL SCENE ============
+         Modelled on theclimatepledge.com: the hero pins while you scroll; the small
+         city photo in the headline grows into a full-screen window that reveals the
+         dark hero (Figma "Hero" 2238:41887) on top of the light one (2238:41067). -->
+    <header class="hero-scene">
+    <div class="hero-stage">
+    <div class="hero">
+      <div class="hero__grid grid-bg grid-bg--light blink-grid" aria-hidden="true" data-cell="157.3" data-anchor="center" data-offset-x="-846.07" data-offset-y="-7" data-small-anchor-x="-126.07">
+        <span style="--dx:-846.07px; --y:-7px"></span>
+        <span style="--dx:573.59px;  --y:-7px"></span>
+        <span style="--dx:-216.87px; --y:150.3px"></span>
+        <span style="--dx:-688.77px; --y:307.6px"></span>
+        <span style="--dx:573.59px;  --y:307.6px"></span>
+        <span style="--dx:414.97px;  --y:936.8px"></span>
+      </div>
+      <div class="hero__glow" aria-hidden="true">
+        <span class="hero__glow-white"></span>
+        <span class="hero__glow-pink"></span>
+        <span class="hero__glow-red"></span>
+      </div>
+
+      <nav class="navbar">
+        <a href="#" class="navbar__logo" aria-label="MitsuCap home">
+          <img src="assets/icons/logo.svg" alt="MitsuCap – Global lease & finance solutions" width="222.222" height="64">
+        </a>
+        <ul class="navbar__menu">
+          <li><a href="#" class="navbar__link">About Us <img src="assets/icons/chevron-down.svg" alt="" width="20" height="20"></a></li>
+          <li><a href="#" class="navbar__link">Solutions <img src="assets/icons/chevron-down.svg" alt="" width="20" height="20"></a></li>
+          <li><a href="#" class="navbar__link">Industries <img src="assets/icons/chevron-down.svg" alt="" width="20" height="20"></a></li>
+          <li><a href="#" class="navbar__link">Resources <img src="assets/icons/chevron-down.svg" alt="" width="20" height="20"></a></li>
+          <li><a href="#" class="navbar__link">Contact Us <img src="assets/icons/chevron-down.svg" alt="" width="20" height="20"></a></li>
+        </ul>
+        <div class="navbar__actions">
+          <a href="#" class="btn btn--red navbar__cta">Get a Quote</a>
+          <!-- Tablet & mobile: menu button (Figma Icon/menu) -->
+          <button type="button" class="navbar__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+
+      <div class="hero__body" data-reveal-group="load">
+        <div class="hero__content">
+          <h1 class="hero__title">
+            <span class="hero__line"><span data-reveal="chars">We Finance The</span><img class="hero__title-img" src="assets/images/hero-city.webp" decoding="async" alt="" width="153" height="75" data-reveal="from-right" data-reveal-at="0.6" data-reveal-distance="30"></span>
+            <span class="hero__line-rest" data-reveal="chars" data-reveal-at="0.45">Equipment That Makes Your Business Run</span>
+          </h1>
+          <a href="#" class="btn btn--red btn--shadow-red" data-reveal="from-below" data-reveal-at="0.8">Schedule a Free Consultation</a>
+        </div>
+
+        <div class="associations" data-reveal="from-below" data-reveal-at="0.9">
+          <h2 class="associations__title">Our Industry Associations</h2>
+          <div class="associations__marquee">
+            <div class="associations__set">
+              <img src="assets/logos/logo-asa.webp" alt="American Society of Appraisers" class="logo-cover" style="width:108.696px;opacity:.5">
+              <span class="logo-stack" role="img" aria-label="National Institute for Automotive Service Excellence" style="width:143.65px">
+                <img src="assets/logos/ase-mark.svg" alt="" style="left:0;top:0;width:38.825px;height:40px">
+                <img src="assets/logos/ase-v0.svg" alt="" style="left:4.39px;top:13.38px;width:28.255px;height:12.557px">
+                <img src="assets/logos/ase-v1.svg" alt="" style="left:46.3px;top:10.93px;width:97.35px;height:26.48px">
+                <img src="assets/logos/ase-v2.svg" alt="" style="left:47.04px;top:1.07px;width:83.049px;height:6.437px">
+                <img src="assets/logos/ase-v3.svg" alt="" style="left:35.76px;top:28.19px;width:0.806px;height:0.831px">
+              </span>
+              <img src="assets/logos/logo-uspap.webp" alt="Uniform Standards of Professional Appraisal Practice" style="width:69.254px;opacity:.8">
+              <img src="assets/logos/logo-2021.webp" alt="Association seal" style="width:53.05px">
+              <img src="assets/logos/logo-sae.webp" alt="SAE International" class="logo-cover" style="width:72.877px;height:39.932px;opacity:.8">
+              <span class="logo-stack" role="img" aria-label="National Business Aviation Association" style="width:180.328px">
+                <img src="assets/logos/nbaa-top.svg" alt="" style="left:0;top:1.967px;width:180.33px;height:33.007px">
+                <img src="assets/logos/nbaa-sub.svg" alt="" style="left:61.19px;top:34.974px;width:119.135px;height:5.026px">
+              </span>
+              <img src="assets/logos/logo-iana.webp" alt="IANA" style="width:127.869px;opacity:.9">
+              <img src="assets/logos/logo-aacfb.webp" alt="AACFB Commercial Finance Association" style="width:52.414px;opacity:.8">
+              <span class="logo-stack" role="img" aria-label="National Equipment Finance Association" style="width:148.37px">
+                <img src="assets/logos/nefa-sub.svg" alt="" style="left:38.29px;top:33.73px;width:103.049px;height:6.275px">
+                <img src="assets/logos/nefa-word.svg" alt="" style="left:32.41px;top:0;width:115.958px;height:27.437px">
+                <img src="assets/logos/nefa-rings.svg" alt="" style="left:0;top:0;width:27.547px;height:27.427px">
+              </span>
+              <img src="assets/logos/logo-2013.webp" alt="Association logo" style="width:40.245px;opacity:.8">
+              <img src="assets/logos/logo-2022.webp" alt="Association logo" style="width:40.784px;opacity:.8">
+            </div>
+          </div>
+          <span class="associations__fade associations__fade--left" aria-hidden="true"></span>
+          <span class="associations__fade associations__fade--right" aria-hidden="true"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dark hero: revealed through a window that grows out of the headline photo.
+         Same photo as the thumbnail, so the thumbnail itself appears to expand. -->
+    <div class="hero-dark" aria-hidden="true">
+      <img class="hero-dark__photo" src="assets/images/hero-city.webp" decoding="async" alt="" width="1672" height="941">
+      <span class="hero-dark__shade"></span>
+      <div class="hero-dark__content">
+        <nav class="navbar navbar--dark">
+          <a href="#" class="navbar__logo" tabindex="-1">
+            <img src="assets/icons/logo-white.svg" alt="" width="222.222" height="64">
+          </a>
+          <ul class="navbar__menu">
+            <li><a href="#" class="navbar__link" tabindex="-1">About Us <img src="assets/icons/chevron-down-white.svg" alt="" width="20" height="20"></a></li>
+            <li><a href="#" class="navbar__link" tabindex="-1">Solutions <img src="assets/icons/chevron-down-white.svg" alt="" width="20" height="20"></a></li>
+            <li><a href="#" class="navbar__link" tabindex="-1">Industries <img src="assets/icons/chevron-down-white.svg" alt="" width="20" height="20"></a></li>
+            <li><a href="#" class="navbar__link" tabindex="-1">Resources <img src="assets/icons/chevron-down-white.svg" alt="" width="20" height="20"></a></li>
+            <li><a href="#" class="navbar__link" tabindex="-1">Contact Us <img src="assets/icons/chevron-down-white.svg" alt="" width="20" height="20"></a></li>
+          </ul>
+          <a href="#" class="btn btn--red navbar__cta" tabindex="-1">Get a Quote</a>
+        </nav>
+
+        <div class="hero-dark__body">
+          <div class="hero-dark__text">
+            <p class="hero-dark__title">We Finance The Equipment That Makes Your Business Run</p>
+            <p class="hero-dark__intro">Equipment leasing and finance solutions designed around your business, your industry, and the equipment you need.</p>
+          </div>
+          <a href="#" class="btn btn--red btn--shadow-red" tabindex="-1">Schedule a Free Consultation</a>
+        </div>
+
+        <div class="associations associations--dark">
+          <p class="associations__title">Our Industry Associations</p>
+          <!-- Same order as the light strip so the two marquees line up during the reveal -->
+          <div class="associations__marquee">
+            <div class="associations__set">
+              <img src="assets/logos/logo-asa-white.webp" alt="" class="logo-cover" style="width:108.696px">
+              <span class="logo-stack" style="width:143.65px">
+                <img src="assets/logos/ase-mark-white.svg" alt="" style="left:0;top:0;width:38.825px;height:40px">
+                <img src="assets/logos/ase-v0-white.svg" alt="" style="left:4.39px;top:13.38px;width:28.255px;height:12.557px">
+                <img src="assets/logos/ase-v1-white.svg" alt="" style="left:46.3px;top:10.93px;width:97.35px;height:26.48px">
+                <img src="assets/logos/ase-v2-white.svg" alt="" style="left:47.04px;top:1.07px;width:83.049px;height:6.437px">
+                <img src="assets/logos/ase-v3-white.svg" alt="" style="left:35.76px;top:28.19px;width:0.806px;height:0.831px">
+              </span>
+              <img src="assets/logos/logo-uspap.webp" alt="" style="width:69.254px">
+              <img src="assets/logos/logo-2021.webp" alt="" style="width:53.05px">
+              <img src="assets/logos/logo-sae-white.webp" alt="" class="logo-cover" style="width:72.877px;height:39.932px">
+              <span class="logo-stack" style="width:180.328px">
+                <img src="assets/logos/nbaa-top-white.svg" alt="" style="left:0;top:1.967px;width:180.33px;height:33.007px">
+                <img src="assets/logos/nbaa-sub-white.svg" alt="" style="left:61.19px;top:34.974px;width:119.135px;height:5.026px">
+              </span>
+              <img src="assets/logos/logo-iana-white.webp" alt="" style="width:127.869px">
+              <img src="assets/logos/logo-aacfb-white.webp" alt="" style="width:52.414px">
+              <span class="logo-stack" style="width:148.37px">
+                <img src="assets/logos/nefa-sub-white.svg" alt="" style="left:38.29px;top:33.73px;width:103.049px;height:6.275px">
+                <img src="assets/logos/nefa-word-white.svg" alt="" style="left:32.41px;top:0;width:115.958px;height:27.437px">
+                <img src="assets/logos/nefa-rings-white.svg" alt="" style="left:0;top:0;width:27.547px;height:27.427px">
+              </span>
+              <img src="assets/logos/logo-2013-white.webp" alt="" style="width:40.245px">
+              <img src="assets/logos/logo-2022-white.webp" alt="" style="width:40.784px">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    </header>
+
+    <!-- Tablet & mobile menu (opened by the ☰ button; not in the Figma file, built in the site's style) -->
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <div class="mobile-menu__bar">
+        <a href="#" class="navbar__logo" aria-label="MitsuCap home"><img src="assets/icons/logo.svg" alt="MitsuCap – Global lease & finance solutions" width="222.222" height="64"></a>
+        <button type="button" class="mobile-menu__close" aria-label="Close menu"><span></span><span></span></button>
+      </div>
+      <nav class="mobile-menu__nav" aria-label="Main">
+        <a href="#">About Us</a>
+        <a href="#">Solutions</a>
+        <a href="#">Industries</a>
+        <a href="#">Resources</a>
+        <a href="#">Contact Us</a>
+      </nav>
+      <a href="#" class="btn btn--red btn--shadow-red mobile-menu__cta">Get a Quote</a>
+    </div>
+
+    <main>
+      <!-- ============ ABOUT + STATS (Figma 2243:42100) ============ -->
+      <section class="about">
+        <!-- Image (601px, as tall as the text column) + heading, text and button (Figma 2248:46572) -->
+        <div class="about__intro">
+          <div class="about__row" data-reveal-group>
+            <div class="about__media" data-reveal="from-left" data-reveal-at="0.2">
+              <img src="assets/images/about-plant.webp" decoding="async" alt="Industrial processing plant with large steel equipment" width="1536" height="1024">
+            </div>
+            <div class="about__body">
+              <h2 class="about__title section-title" data-reveal="chars" data-reveal-at="0.3">Understanding Equipment. Financing Growth.</h2>
+              <div class="about__text" data-reveal="from-right" data-reveal-at="0.5">
+                <p>We recognize the uniqueness of every equipment acquisition and take a consultative approach when helping you get the equipment you need, by the time you need it.</p>
+                <p>Our experience goes beyond financing. We understand equipment, industries, asset lifecycle, and the financial considerations behind every acquisition.</p>
+              </div>
+              <a href="#" class="btn btn--dark" data-reveal="from-below" data-reveal-at="0.7" data-reveal-distance="40">Learn More About Us</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stacked stat cards: number + label alternate sides; each card rises in and its number counts up -->
+        <ul class="stats">
+          <li class="stat-card stat-card--b">
+            <p class="stat-card__value"><span class="stat-card__num"><span data-count="20">20</span>+</span><span class="stat-card__label">Year of Experience</span></p>
+            <p class="stat-card__text">For more than two decades, our experience has helped shape a practical, informed approach to equipment finance and asset-related decisions.</p>
+          </li>
+          <li class="stat-card stat-card--a stat-card--flip">
+            <p class="stat-card__text">MitsuCap looks beyond the transaction. We take time to understand the equipment, the business behind it, and the financial goals driving each acquisition.</p>
+            <p class="stat-card__value"><span class="stat-card__num"><span data-count="11">11</span>+</span><span class="stat-card__label">Industries Served</span></p>
+          </li>
+          <li class="stat-card stat-card--b">
+            <p class="stat-card__value"><span class="stat-card__num"><span data-count="11">11</span>+</span><span class="stat-card__label">Project Delivered</span></p>
+            <p class="stat-card__text">Every requirement is different. Our consultative approach helps us structure solutions around the equipment, industry, and unique needs of each business.</p>
+          </li>
+          <li class="stat-card stat-card--a stat-card--flip">
+            <p class="stat-card__text">Our experience across different markets gives us a broader perspective on equipment, risk, lifecycle considerations, and financing opportunities.</p>
+            <p class="stat-card__value"><span class="stat-card__num"><span data-count="8">8</span>+</span><span class="stat-card__label">Global Markets</span></p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============ PROGRAMS (Figma 2238:41433) ============ -->
+      <section class="programs">
+        <h2 class="programs__title section-title" data-reveal-group data-reveal="chars">Programs Built Around The Equipment You Need</h2>
+        <div class="programs__row" data-reveal="stagger">
+          <a href="#" class="program-card">
+            <div class="program-card__top">
+              <h3 class="program-card__title">Equipment Lease &amp; Finance Solutions</h3>
+              <p class="program-card__text">Custom equipment lease and finance programs designed to address the specific need of your industry.</p>
+            </div>
+            <div class="program-card__bottom">
+              <span class="explore">Explore<span class="explore__icon" aria-hidden="true"><span class="explore__arrow"><img src="assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="assets/icons/arrow-line.svg" alt="" class="explore__line"></span><span class="explore__arrow"><img src="assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="assets/icons/arrow-line.svg" alt="" class="explore__line"></span></span></span>
+              <span class="program-card__media"><img src="assets/images/program-1.webp" decoding="async" alt="Two engineers in safety gear inspecting industrial equipment"></span>
+            </div>
+          </a>
+          <a href="#" class="program-card">
+            <div class="program-card__top">
+              <h3 class="program-card__title">Equipment Manufacturer &amp; Vendor Programs</h3>
+              <p class="program-card__text">Vendor Programs that are designed to support your sales efforts.</p>
+            </div>
+            <div class="program-card__bottom">
+              <span class="explore">Explore<span class="explore__icon" aria-hidden="true"><span class="explore__arrow"><img src="assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="assets/icons/arrow-line.svg" alt="" class="explore__line"></span><span class="explore__arrow"><img src="assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="assets/icons/arrow-line.svg" alt="" class="explore__line"></span></span></span>
+              <span class="program-card__media"><img src="assets/images/program-2.webp" decoding="async" alt="Business partners shaking hands across a meeting table"></span>
+            </div>
+          </a>
+          <a href="#" class="program-card">
+            <div class="program-card__top">
+              <h3 class="program-card__title">Bank &amp; Credit Union Programs</h3>
+              <p class="program-card__text">Programs created to support equipment leasing programs for Bank &amp; Credit Union relationships.</p>
+            </div>
+            <div class="program-card__bottom">
+              <span class="explore">Explore<span class="explore__icon" aria-hidden="true"><span class="explore__arrow"><img src="assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="assets/icons/arrow-line.svg" alt="" class="explore__line"></span><span class="explore__arrow"><img src="assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="assets/icons/arrow-line.svg" alt="" class="explore__line"></span></span></span>
+              <span class="program-card__media"><img src="assets/images/program-3.webp" decoding="async" alt="Bankers reviewing equipment leasing documents together"></span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ============ CORE VALUES (Figma V3.0 2311:1327 · tablet 2311:2356 · mobile 2311:3303) ============
+           Pinned horizontal scroll: the section pins for one screen while scrolling
+           down slides the card row sideways 1:1. The bars underneath follow.
+           Cards rise in one after another; inside each, the name and description
+           slide up and the icon pops (same reveal as What Affects Rate). -->
+      <section class="values">
+        <div class="values__pin">
+          <h2 class="values__title section-title" data-reveal-group data-reveal="chars">Our Core Values</h2>
+          <div class="values__viewport">
+            <ul class="values__track">
+              <!-- Hover (riact.ai "Accelerate value generation"): red rim flips in, red tint,
+                   icon turns red and the description brightens. Copy as in the V3.0 design. -->
+              <li class="glass-card value-card"><div class="glass-card__inner">
+                <span class="value-card__icon card-icon" aria-hidden="true"><img src="assets/icons/value-shield.svg" alt=""><img class="card-icon__hover" src="assets/icons/red/value-shield.svg" alt=""></span>
+                <div class="value-card__body">
+                  <h3 class="value-card__name">Integrity</h3>
+                  <p class="value-card__desc">Sound moral and ethical principals that are centered on the needs of our customers.</p>
+                </div>
+              </div></li>
+              <li class="glass-card value-card"><div class="glass-card__inner">
+                <span class="value-card__icon card-icon" aria-hidden="true"><img src="assets/icons/value-eye.svg" alt=""><img class="card-icon__hover" src="assets/icons/red/value-eye.svg" alt=""></span>
+                <div class="value-card__body">
+                  <h3 class="value-card__name">Visionaries</h3>
+                  <p class="value-card__desc">With our industry experience, we forecast market changes early to better protect our clients' interests.</p>
+                </div>
+              </div></li>
+              <li class="glass-card value-card"><div class="glass-card__inner">
+                <span class="value-card__icon card-icon" aria-hidden="true"><img src="assets/icons/value-users.svg" alt=""><img class="card-icon__hover" src="assets/icons/red/value-users.svg" alt=""></span>
+                <div class="value-card__body">
+                  <h3 class="value-card__name">Depth of Staff</h3>
+                  <p class="value-card__desc">A single person or skill doesn't make a team. We have top industry leaders.</p>
+                </div>
+              </div></li>
+              <li class="glass-card value-card"><div class="glass-card__inner">
+                <span class="value-card__icon card-icon" aria-hidden="true"><img src="assets/icons/value-award.svg" alt=""><img class="card-icon__hover" src="assets/icons/red/value-award.svg" alt=""></span>
+                <div class="value-card__body">
+                  <h3 class="value-card__name">Quality Services</h3>
+                  <p class="value-card__desc">We prioritize speed, accuracy, and consistency to improve customer experience daily.</p>
+                </div>
+              </div></li>
+              <li class="glass-card value-card"><div class="glass-card__inner">
+                <span class="value-card__icon card-icon" aria-hidden="true"><img src="assets/icons/value-lock.svg" alt=""><img class="card-icon__hover" src="assets/icons/red/value-lock.svg" alt=""></span>
+                <div class="value-card__body">
+                  <h3 class="value-card__name">Confidentiality</h3>
+                  <p class="value-card__desc">Your sensitive corporate information is kept confidential and handled with care.</p>
+                </div>
+              </div></li>
+              <li class="glass-card value-card"><div class="glass-card__inner">
+                <span class="value-card__icon card-icon" aria-hidden="true"><img src="assets/icons/value-bulb.svg" alt=""><img class="card-icon__hover" src="assets/icons/red/value-bulb.svg" alt=""></span>
+                <div class="value-card__body">
+                  <h3 class="value-card__name">Innovation Solutions</h3>
+                  <p class="value-card__desc">Thinking outside the box helps us meet your unique, changing needs with flexibility to ensure success.</p>
+                </div>
+              </div></li>
+              <li class="glass-card value-card"><div class="glass-card__inner">
+                <span class="value-card__icon card-icon" aria-hidden="true"><img src="assets/icons/value-refresh.svg" alt=""><img class="card-icon__hover" src="assets/icons/red/value-refresh.svg" alt=""></span>
+                <div class="value-card__body">
+                  <h3 class="value-card__name">Continuous Improvements</h3>
+                  <p class="value-card__desc">MitsuCap commits to continuous improvement listen, adjust, improve to deliver top service.</p>
+                </div>
+              </div></li>
+              <li class="glass-card value-card"><div class="glass-card__inner">
+                <span class="value-card__icon card-icon" aria-hidden="true"><img src="assets/icons/value-target.svg" alt=""><img class="card-icon__hover" src="assets/icons/red/value-target.svg" alt=""></span>
+                <div class="value-card__body">
+                  <h3 class="value-card__name">Operational Excellence</h3>
+                  <p class="value-card__desc">We strive to offer exceptional service to all customers, maintaining our industry leader position.</p>
+                </div>
+              </div></li>
+            </ul>
+          </div>
+          <!-- Slide bars: the active one stretches and turns silver -->
+          <div class="values__bars">
+            <button type="button" class="is-active" aria-label="Go to slide 1"></button>
+            <button type="button" aria-label="Go to slide 2"></button>
+            <button type="button" aria-label="Go to slide 3"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ INDUSTRIES (Figma 2238:41580) ============
+           Modelled on concourse.ai "Agents built to own the work.": each industry is
+           active for 6s while the line above it fills (linear), then the next takes
+           over and its photo fades in. Clicking an industry jumps to it. -->
+      <section class="industries">
+        <h2 class="industries__title section-title" data-reveal-group data-reveal="chars">Financing Expertise Across Specialized Industries</h2>
+        <div class="industries__row" data-reveal-group>
+          <div class="industries__image" data-reveal="from-left" data-reveal-at="0.3">
+            <img id="industry-image-0" class="industries__img is-active" src="assets/images/industries/one.webp" decoding="async" width="1222" height="1287" alt="Utility bucket truck and two workers at an electrical substation">
+            <img id="industry-image-1" class="industries__img" src="assets/images/industries/two.webp" decoding="async" width="1222" height="1287" alt="Passenger jet with an aircraft tug on the airport apron">
+            <img id="industry-image-2" class="industries__img" src="assets/images/industries/three.webp" decoding="async" width="1222" height="1287" alt="Reach stacker lifting a shipping container beside a freight train">
+            <img id="industry-image-3" class="industries__img" src="assets/images/industries/four.webp" decoding="async" width="1222" height="1287" alt="Electric forklift in a warehouse with stocked pallet racks">
+            <img id="industry-image-4" class="industries__img" src="assets/images/industries/five.webp" decoding="async" width="1222" height="1287" alt="CNC machining centre and robotic arm on a factory floor">
+            <!-- Cut-corner squares (concourse.ai): one matches the section, two are frosted -->
+            <span class="industries__notch" aria-hidden="true"><span></span><span></span><span></span></span>
+          </div>
+          <div class="industries__side" data-reveal="from-right" data-reveal-at="0.4">
+            <ul class="industries__list">
+              <li class="industries__item is-active">
+                <span class="industries__progress" aria-hidden="true"></span>
+                <button type="button" class="industries__btn" aria-controls="industry-image-0">
+                  <span class="industries__name">Power &amp; Utility</span>
+                  <span class="industries__desc">Equipment financing designed around the specialized needs of power and utility operations.</span>
+                </button>
+              </li>
+              <li class="industries__item">
+                <span class="industries__progress" aria-hidden="true"></span>
+                <button type="button" class="industries__btn" aria-controls="industry-image-1">
+                  <span class="industries__name">Aviation &amp; Airport</span>
+                  <!-- Placeholder copy (not in the design) -->
+                  <span class="industries__desc">Equipment financing designed around the specialized needs of aviation and airport operations.</span>
+                </button>
+              </li>
+              <li class="industries__item">
+                <span class="industries__progress" aria-hidden="true"></span>
+                <button type="button" class="industries__btn" aria-controls="industry-image-2">
+                  <span class="industries__name">Rail &amp; Intermodal</span>
+                  <span class="industries__desc">Equipment financing designed around the specialized needs of rail and intermodal operations.</span>
+                </button>
+              </li>
+              <li class="industries__item">
+                <span class="industries__progress" aria-hidden="true"></span>
+                <button type="button" class="industries__btn" aria-controls="industry-image-3">
+                  <span class="industries__name">Material Handling &amp; Warehousing</span>
+                  <span class="industries__desc">Equipment financing designed around the specialized needs of material handling and warehousing operations.</span>
+                </button>
+              </li>
+              <li class="industries__item">
+                <span class="industries__progress" aria-hidden="true"></span>
+                <button type="button" class="industries__btn" aria-controls="industry-image-4">
+                  <span class="industries__name">Industrial &amp; Manufacturing</span>
+                  <span class="industries__desc">Equipment financing designed around the specialized needs of industrial and manufacturing operations.</span>
+                </button>
+              </li>
+            </ul>
+            <a href="#" class="btn btn--dark btn--plain">View All Industries</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ WHAT AFFECTS RATE (Figma 2238:41609) ============ -->
+      <section class="rate">
+        <div class="rate__lead" data-reveal-group>
+          <div class="rate__text">
+            <h2 class="rate__title section-title" data-reveal="chars">What Affects Rate</h2>
+            <p class="rate__intro" data-reveal="from-below" data-reveal-at="0.5" data-reveal-distance="30">Your rate is shaped by the equipment, credit, market conditions, and industry risk.</p>
+          </div>
+          <div class="rate__graph" data-reveal="from-below" data-reveal-at="0.6">
+            <img src="assets/images/rate-graph.webp" decoding="async" alt="US interest rate swaps table and 30-year interest rate swap chart" width="1448" height="1086">
+          </div>
+        </div>
+        <div class="rate__grid">
+          <article class="glass-card rate-card"><div class="glass-card__inner">
+            <div class="rate-card__body">
+              <h3 class="rate-card__title">Equipment</h3>
+              <p class="rate-card__desc">The type, manufacture, configuration, uniqueness, and special features.</p>
+            </div>
+            <span class="rate-card__icon card-icon" aria-hidden="true"><img src="assets/icons/wrench.svg" alt=""><img class="card-icon__hover" src="assets/icons/red/wrench.svg" alt=""></span>
+          </div></article>
+          <article class="glass-card rate-card"><div class="glass-card__inner">
+            <div class="rate-card__body">
+              <h3 class="rate-card__title">Credit</h3>
+              <p class="rate-card__desc">The lessee’s credit history, cashflows, debt, and cash on hand.</p>
+            </div>
+            <span class="rate-card__icon card-icon" aria-hidden="true"><img src="assets/icons/credit-card.svg" alt=""><img class="card-icon__hover" src="assets/icons/red/credit-card.svg" alt=""></span>
+          </div></article>
+          <article class="glass-card rate-card"><div class="glass-card__inner">
+            <div class="rate-card__body">
+              <h3 class="rate-card__title">Swaps</h3>
+              <p class="rate-card__desc">A means to benchmark the current cost of capital.</p>
+            </div>
+            <span class="rate-card__icon card-icon" aria-hidden="true"><img src="assets/icons/swap.svg" alt=""><img class="card-icon__hover" src="assets/icons/red/swap.svg" alt=""></span>
+          </div></article>
+          <article class="glass-card rate-card"><div class="glass-card__inner">
+            <div class="rate-card__body">
+              <h3 class="rate-card__title">Industry</h3>
+              <p class="rate-card__desc">An industry’s current perceived stability or instability will determine risk.</p>
+            </div>
+            <span class="rate-card__icon card-icon" aria-hidden="true"><img src="assets/icons/factory.svg" alt=""><img class="card-icon__hover" src="assets/icons/red/factory.svg" alt=""></span>
+          </div></article>
+        </div>
+      </section>
+
+      <!-- ============ CTA (Figma 2238:41657) ============ -->
+      <section class="cta">
+        <div class="cta__content" data-reveal-group>
+          <div class="cta__text">
+            <h2 class="cta__title" data-reveal="chars">We Look Forward to Doing Great Things for You</h2>
+            <p class="cta__intro" data-reveal="from-below" data-reveal-at="0.5" data-reveal-distance="40">Tell us what you need, and we’ll help you find the right path forward.</p>
+          </div>
+          <a href="#" class="btn btn--red btn--shadow-red" data-reveal="from-below" data-reveal-at="0.7" data-reveal-distance="40">Get a Quote</a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============ FOOTER (Figma 2238:41664) ============ -->
+    <footer class="footer">
+      <div class="footer__grid grid-bg grid-bg--dark blink-grid" aria-hidden="true" data-cell="120" data-anchor="left" data-offset-x="0" data-offset-y="0" data-line="1">
+        <span style="left:480px;top:0"></span>
+        <span style="left:1560px;top:0"></span>
+        <span style="left:960px;top:120px"></span>
+        <span style="left:120px;top:360px"></span>
+        <span style="left:1800px;top:480px"></span>
+        <span style="left:600px;top:720px"></span>
+        <span style="left:1440px;top:720px"></span>
+      </div>
+
+      <div class="footer__inner">
+        <div class="footer__top">
+          <div class="footer__brand">
+            <img src="assets/icons/logo-footer.svg" alt="MitsuCap" width="211.806" height="61">
+            <ul class="footer__contact">
+              <li class="footer__address">MitsuCap Lease &amp; Finance, Inc. PO Box 262368 Houston, TX 77207</li>
+              <li><a href="tel:2817517548">281 751 7548</a></li>
+              <li><a href="mailto:info@mitsucap.com">info@mitsucap.com</a></li>
+              <li><a href="#">Map &amp; Directions</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__right">
+            <p class="footer__about">We recognize the uniqueness of every equipment acquisition and take a consultative approach when helping you get the equipment you need by the time you need it.</p>
+            <div class="footer__cols">
+              <div class="footer__col">
+                <h4 class="footer__heading">Solutions</h4>
+                <ul class="footer__links">
+                  <li style="width:152px"><a href="#">FMV Lease (Operating Lease)</a></li>
+                  <li><a href="#">Sale/Leaseback</a></li>
+                  <li><a href="#">PUT Lease</a></li>
+                  <li class="tall"><a href="#">Capital Lease</a></li>
+                  <li><a href="#">Tax-Exempt Municipal Lease</a></li>
+                  <li><a href="#">TRAC Lease</a></li>
+                  <li><a href="#">Vendor Programs</a></li>
+                  <li><a href="#">Bank &amp; Credit Union Programs</a></li>
+                </ul>
+              </div>
+              <div class="footer__col">
+                <h4 class="footer__heading">Company</h4>
+                <ul class="footer__links footer__links--nowrap">
+                  <li><a href="#">About Us</a></li>
+                  <li><a href="#">MitsuCap’s Philosophy</a></li>
+                  <li><a href="#">Our Team</a></li>
+                  <li><a href="#">Industries Served</a></li>
+                  <li class="tall"><a href="#">Benefits of Leasing</a></li>
+                  <li class="tall"><a href="#">Forms</a></li>
+                  <li class="tall"><a href="#">Career</a></li>
+                  <li class="tall"><a href="#">Associations</a></li>
+                </ul>
+              </div>
+              <div class="footer__col">
+                <h4 class="footer__heading">Follow</h4>
+                <ul class="footer__social">
+                  <li><a href="#"><img src="assets/icons/x.svg" alt="" width="14" height="14"><span>X (Twitter)</span></a></li>
+                  <li><a href="#"><img src="assets/icons/linkedin.svg" alt="" width="14" height="14" class="dim"><span>LinkedIn</span></a></li>
+                  <li class="short"><a href="#"><img src="assets/icons/instagram.svg" alt="" width="14" height="14"><span>Instagram</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__rule"></div>
+
+        <div class="footer__bottom">
+          <p class="footer__copy">© MitsuCap Global Lease &amp; Finance Solutions  2026</p>
+          <p class="footer__credit">Made by Blinto LLC</p>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script src="assets/js/vendor/lenis.min.js"></script>
+  <script src="assets/js/vendor/gsap.min.js"></script>
+  <script src="assets/js/vendor/ScrollTrigger.min.js"></script>
+  <script src="assets/js/vendor/SplitText.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

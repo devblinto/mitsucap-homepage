@@ -1,0 +1,1583 @@
+/* =========================================================
+   MitsuCap — Homepage v3 (desktop, fluid full width)
+   Figma: Mistsucap › Draft › Homepage (2238:41065)
+   Designed at 1440px; everything stretches with the browser,
+   keeping the 111px side margins (--gutter).
+   ========================================================= */
+
+/* ---------- Fonts ---------- */
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+/* ---------- Design tokens (from Figma styles) ---------- */
+:root {
+  --red-200: #f7979a;
+  --red-500: #ed1c24;
+  --red-600: #d11920;
+  --primary-black: #111111;
+  --charcoal-900: #141519;
+  --charcoal-700: #22232b;
+  --charcoal-500: #30313c;
+  --charcoal-400: #595a63;
+  --charcoal-50: #eaeaec;
+  --silver: #d1d3d4;
+  --warm-white-200: #f4f4f4;
+  --warm-white-500: #e6e6e6;
+  --warm-white-800: #7f7f7f;
+  --background: #fdfdfd;
+  --white: #ffffff;
+
+  --shadow-red: 0 6px 12px rgba(255, 138, 141, 0.2);
+  --shadow-dark: 0 6px 12px rgba(61, 60, 60, 0.15);
+
+  --gutter: 111px; /* global horizontal page margin (same as v2) */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------- Smooth scrolling (Lenis) ---------- */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; }
+
+body {
+  min-width: 1200px; /* desktop build; tablet & mobile come later */
+  font-family: "Gilroy", "Helvetica Neue", Arial, sans-serif;
+  background: var(--warm-white-200);
+  color: var(--charcoal-500);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, p, ul { margin: 0; padding: 0; }
+ul { list-style: none; }
+img { display: block; max-width: none; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+
+.page {
+  width: 100%;
+  overflow-x: clip;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 20px;
+  border-radius: 8px;
+  font-size: 18px;
+  line-height: 1.2;
+  white-space: nowrap;
+  /* no transform transition: GSAP animates button transforms on reveal, and a CSS
+     transition on the same property left buttons stuck 40px low */
+  transition: background-color .2s ease, color .2s ease;
+}
+.btn--red {
+  background: var(--red-500);
+  color: var(--background);
+  font-weight: 600;
+}
+.btn--red:hover { background: var(--red-600); }
+.btn--shadow-red { box-shadow: var(--shadow-red); }
+
+.btn--dark {
+  background: var(--charcoal-900);
+  border: 1px solid var(--charcoal-500);
+  color: var(--white);
+  font-weight: 500;
+  box-shadow: var(--shadow-dark);
+}
+.btn--dark:hover { background: var(--charcoal-500); }
+.btn--plain { border: 0; color: var(--charcoal-50); } /* "View All Industries": no border */
+
+/* Section headings share size and weight */
+.section-title {
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+/* ---------- Hero scroll scene ----------
+   script.js sets the scene height (= stage + scroll travel). The stage pins
+   to the top while the dark hero is revealed through a window that grows from
+   the headline photo to the full screen. Without JS the light hero is shown. */
+.hero-scene { position: relative; }
+.hero-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  min-height: 860px;
+  overflow: hidden;
+  contain: layout paint; /* keeps the per-frame hero repaint inside the stage */
+  background: var(--warm-white-200);
+}
+
+.hero {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  will-change: transform; /* drifts up during the reveal */
+  padding-top: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 116px;
+  background: var(--warm-white-200);
+}
+
+/* ---------- Grid backgrounds (hero, footer) ----------
+   Lines are drawn with gradients. script.js adds the blinking squares
+   (modelled on concourse.ai). The <span>s are the squares shaded in the
+   design; they start lit and then join the blinking. */
+.grid-bg {
+  position: absolute;
+  overflow: hidden;
+  pointer-events: none;
+}
+.grid-bg--light {
+  --blink-color: rgba(0, 0, 0, 0.05);
+  background-image:
+    linear-gradient(to right, transparent calc(157.3px - 1.32px), rgba(0, 0, 0, 0.08) 0),
+    linear-gradient(to bottom, transparent calc(157.3px - 1.32px), rgba(0, 0, 0, 0.08) 0);
+  background-size: 157.3px 157.3px;
+  background-position: calc(50% - 767.42px) -7px; /* lines match the Figma hero grid */
+}
+.grid-bg--light > span {
+  position: absolute;
+  left: calc(50% + var(--dx));
+  top: var(--y);
+  width: 157.3px;
+  height: 157.3px;
+  background: var(--blink-color);
+}
+.grid-bg--dark {
+  --blink-color: rgba(255, 255, 255, 0.05);
+  background-image:
+    linear-gradient(to right, transparent 119px, rgba(255, 255, 255, 0.04) 119px),
+    linear-gradient(to bottom, transparent 119px, rgba(255, 255, 255, 0.04) 119px);
+  background-size: 120px 120px;
+}
+.blink-cell {
+  position: absolute;
+  background: var(--blink-color);
+  opacity: 0;
+  transition: opacity 1800ms ease-in-out;
+}
+.blink-cell.is-lit { opacity: 1; }
+
+.hero__grid {
+  inset: 0;
+}
+
+/* Soft blurred glow behind the headline */
+.hero__glow {
+  position: absolute;
+  top: 33px;
+  left: calc(50% - 485px);
+  width: 1006px;
+  height: 799px;
+  opacity: 0.6;
+  pointer-events: none;
+}
+.hero__glow span { position: absolute; filter: blur(69.276px); }
+.hero__glow-white {
+  left: 177.35px;
+  top: 81.75px;
+  width: 537.58px;
+  height: 383.1px;
+  background: var(--white);
+}
+.hero__glow-pink {
+  left: calc(130.42px + (799.08px - 770.35px) / 2);
+  top: calc(-11.11px + (669.95px - 287.5px) / 2);
+  width: 770.35px;
+  height: 287.5px;
+  background: var(--red-200);
+  opacity: 0.2;
+  transform: rotate(34.1deg);
+}
+.hero__glow-red {
+  left: 51.26px;
+  top: 324.9px;
+  width: 537.58px;
+  height: 383.1px;
+  border-radius: 1385.5px;
+  background: rgba(237, 28, 36, 0.1);
+}
+
+/* Navigation */
+.navbar {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px var(--gutter);
+}
+.navbar__logo img { width: 222.222px; height: 64px; }
+.navbar__menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+.navbar__link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--primary-black);
+  white-space: nowrap;
+  transition: color .2s ease;
+}
+.navbar__link img { transition: transform .3s var(--ease-out); }
+.navbar__link:hover { color: var(--red-500); }
+.navbar__link:hover img { transform: translateY(2px); }
+.navbar__cta { width: 138px; }
+
+/* Hero content */
+.hero__body {
+  position: relative;
+  width: min(1136px, 100% - 2 * var(--gutter));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 116px;
+}
+.hero__content {
+  width: 779px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+.hero__title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--charcoal-700);
+  text-align: center;
+}
+/* First line: "We Finance The" + small city photo */
+.hero__line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero__title-img {
+  width: 153px;
+  height: 75px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* Associations logo strip */
+.associations {
+  position: relative;
+  width: 100vw;
+  min-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  overflow: hidden;
+}
+.associations__title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-700);
+  text-align: center;
+}
+
+/* Logo marquee: script.js clones the set; each set slides -100% in a loop.
+   Without JS (or with reduced motion) the single set sits centred. */
+.associations__marquee {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.associations__marquee.is-running { justify-content: flex-start; }
+.associations__set {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  flex-shrink: 0;
+}
+.associations__marquee.is-running .associations__set {
+  padding-right: 60px; /* keeps the gap where the loop joins */
+  animation: marquee 22s linear infinite;
+}
+.associations__marquee.is-paused .associations__set { animation-play-state: paused; }
+@keyframes marquee {
+  to { transform: translateX(-100%); }
+}
+.associations__set > img,
+.logo-stack {
+  display: block;
+  height: 40px;
+  flex-shrink: 0;
+}
+.associations__set > img.logo-cover { object-fit: cover; }
+.logo-stack { position: relative; }
+.logo-stack img { position: absolute; }
+.associations__fade {
+  position: absolute;
+  width: 131px;
+  background: linear-gradient(to right, #e6e7e8, rgba(230, 231, 232, 0));
+  pointer-events: none;
+}
+.associations__fade--left { left: 0; top: 60px; height: 43px; }
+.associations__fade--right { right: 0; top: 60px; height: 41px; width: 130px; transform: scaleX(-1); }
+
+/* ---------- Dark hero (Figma "Hero" 2238:41887) ---------- */
+.hero-dark {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  visibility: hidden; /* script.js shows it once the reveal starts */
+  color: var(--white);
+}
+/* Natural-size photo; script.js scales/moves it so it always covers the window */
+.hero-dark__photo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1672px;
+  height: 941px;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+.hero-dark__shade {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  will-change: opacity;
+}
+.hero-dark__content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 107px;
+  will-change: transform, opacity;
+}
+.navbar--dark { background: rgba(26, 27, 33, 0.41); }
+.navbar--dark .navbar__link { color: var(--white); }
+.navbar--dark .navbar__link:hover { color: var(--red-200); }
+.hero-dark__body {
+  width: 1012px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+.hero-dark__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+.hero-dark__title {
+  width: 864px;
+  font-size: 72px;
+  font-weight: 600;
+  line-height: 1.11;
+}
+.hero-dark__intro {
+  width: 764px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+.associations--dark {
+  height: 179px;
+  padding-top: 17px;
+  gap: 43px;
+  /* Figma's 3px backdrop blur is left out: it is re-rendered on every frame of the
+     hero reveal and made scrolling stutter, for an almost invisible effect */
+}
+.associations--dark .associations__title { color: var(--white); }
+
+/* =========================================================
+   ABOUT + STATS
+   ========================================================= */
+.about {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  padding: 100px var(--gutter);
+  background: var(--warm-white-200);
+}
+.about__intro { width: 100%; }
+.about__row {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+/* Photo and text share the width in Figma's 601 : 659 ratio (60px gap).
+   The photo keeps Figma's 601 × 495 proportions; the text is centred beside it. */
+.about__media {
+  position: relative;
+  flex: 601 1 0;
+  min-width: 0;
+  aspect-ratio: 601 / 495;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.about__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.about__title {
+  max-width: 550px;
+  color: var(--charcoal-500);
+}
+.about__body {
+  flex: 659 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 23px; /* heading → text */
+}
+.about__body > .btn { margin-top: 9px; } /* text → button: 32px */
+.about__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+
+/* Stat cards: a stack of 1200px cards, each with a soft photo-texture fill */
+.stats {
+  width: min(1200px, 100%);
+  display: flex;
+  flex-direction: column;
+}
+.stat-card {
+  position: relative;
+  height: 209px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 60px;
+  /* 1px inside stroke (Figma strokes take no layout space) + soft drop shadow */
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5), 0 30px 80px rgba(0, 0, 0, 0.12);
+  background: url("assets/images/stat-bg-b.webp") center / cover no-repeat;
+}
+.stat-card + .stat-card { margin-top: -1px; } /* rows overlap by 1px in the design */
+.stat-card--a {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+  background-image: url("assets/images/stat-bg-a.webp");
+}
+/* Grain layer (10%) */
+.stat-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/images/stat-noise.webp") top left / 2048px 2048px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+.stat-card > * { position: relative; }
+.stat-card__value {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--charcoal-700);
+  white-space: nowrap;
+}
+.stat-card--flip .stat-card__value { min-width: 380px; } /* lines up with the text column above */
+/* Trim to cap height on top and baseline at the bottom, as in Figma */
+.stat-card__num { font-size: 80px; text-box: trim-start cap alphabetic; }
+.stat-card__label { font-size: 52px; margin-top: -10px; text-box: trim-end cap alphabetic; } /* baseline sits 40px above the card edge */
+.stat-card__text {
+  width: 380px;
+  flex-shrink: 0;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+  text-box: trim-both cap alphabetic;
+}
+
+/* =========================================================
+   PROGRAMS
+   ========================================================= */
+.programs {
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  padding: 100px var(--gutter);
+}
+.programs__title {
+  width: 665px;
+  color: var(--charcoal-500);
+  text-align: center;
+}
+.programs__row {
+  width: 100%;
+  display: flex;
+  gap: 32px;
+}
+/* Program cards — hover modelled on theclimatepledge.com "Explore projects" cards:
+   the card turns dark, the text turns white, the description folds away and the
+   photo grows 1.5× from its bottom-right corner. All in 0.5s on the reference's easing. */
+.program-card {
+  --card-ease: cubic-bezier(0.2, 0.8, 0.3, 1);
+  position: relative;
+  flex: 1 1 0;
+  min-width: 0;
+  height: 512px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  border-radius: 16px;
+  background: var(--warm-white-200);
+  transition: background-color .5s var(--card-ease);
+}
+.program-card__top {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  line-height: 1.2;
+}
+.program-card__title {
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--charcoal-500);
+  transition: color .5s var(--card-ease);
+}
+.program-card__text {
+  max-height: 160px;
+  overflow: hidden;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--charcoal-400);
+  transition: color .5s var(--card-ease), opacity .5s var(--card-ease), max-height .5s var(--card-ease), margin-top .5s var(--card-ease);
+}
+.program-card__bottom {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+.program-card__media {
+  width: 160px;
+  height: 160px;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  transform-origin: right bottom;
+  transition: transform .5s var(--card-ease);
+  will-change: transform;
+}
+.program-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hover / keyboard focus */
+.program-card:hover,
+.program-card:focus-visible { z-index: 2; background: var(--charcoal-900); }
+.program-card:hover .program-card__title,
+.program-card:focus-visible .program-card__title { color: var(--white); }
+.program-card:hover .program-card__text,
+.program-card:focus-visible .program-card__text {
+  color: var(--white);
+  opacity: 0;
+  max-height: 0;
+  margin-top: -24px; /* closes the title → text gap */
+}
+.program-card:hover .program-card__media,
+.program-card:focus-visible .program-card__media { transform: translateY(-40px) scale(1.5); } /* 1.5× like the reference, lifted 40px so it clears the "Explore" link */
+.program-card:focus-visible { outline: 2px solid var(--red-500); outline-offset: 4px; }
+
+/* "Explore" link: 2px underline + arrow, turning white with the card */
+.explore {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 11px;
+  height: 36px;
+  padding: 1px 28px 1px 6px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--charcoal-500);
+  transition: color .5s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.explore::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 26.75px;
+  width: 56.05px;
+  height: 2px;
+  background: var(--charcoal-500);
+  transition: background-color .5s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.explore__icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+/* Hover: the arrow slides out to the right as a second one slides in from the left */
+.explore__arrow {
+  position: absolute;
+  inset: 0;
+  transition: transform .5s cubic-bezier(0.2, 0.8, 0.3, 1), filter .5s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.explore__arrow:first-child { transform: translateX(-30px); }
+.program-card:hover .explore__arrow:first-child,
+.program-card:focus-visible .explore__arrow:first-child { transform: translateX(0); }
+.program-card:hover .explore__arrow:last-child,
+.program-card:focus-visible .explore__arrow:last-child { transform: translateX(30px); }
+/* Hover: the underline wipes away to the right, then redraws from the left */
+@keyframes explore-line {
+  0%   { transform: scaleX(1); transform-origin: right center; }
+  45%  { transform: scaleX(0); transform-origin: right center; }
+  46%  { transform: scaleX(0); transform-origin: left center; }
+  100% { transform: scaleX(1); transform-origin: left center; }
+}
+.program-card:hover .explore::after,
+.program-card:focus-visible .explore::after { animation: explore-line .8s cubic-bezier(0.65, 0, 0.35, 1); }
+.explore__head { position: absolute; left: 55.39%; top: 17.89%; width: 7.878px; height: 15.414px; }
+.explore__line { position: absolute; left: 12.5%; top: 45.83%; width: 13px; height: 2px; }
+.program-card:hover .explore,
+.program-card:focus-visible .explore { color: var(--white); }
+.program-card:hover .explore::after,
+.program-card:focus-visible .explore::after { background-color: var(--white); }
+.program-card:hover .explore__arrow,
+.program-card:focus-visible .explore__arrow { filter: brightness(0) invert(1); } /* charcoal arrow → white */
+
+/* =========================================================
+   GLASS CARDS (Core Values + What Affects Rate)
+   A 1.5–2px gradient rim around a dark gradient panel.
+   Hover modelled on riact.ai "Accelerate value generation" (brand green → MitsuCap red):
+   a red rim flips in (rotateY 117° → 0), a red tint fades into the panel, the
+   icon turns red and the description brightens.
+   ========================================================= */
+.glass-card {
+  --glass-time: .6s;
+  --glass-ease: var(--ease-out);
+  position: relative;
+  flex-shrink: 0;
+  width: 339px;
+  overflow: hidden;
+  border-radius: 8.632px;
+  background: linear-gradient(138.79deg, #0c0c0d 5.3%, #636369 24.07%, #272729 38.38%, #636369 58.94%, #37373a 81.29%, #0c0c0d 94.71%);
+}
+/* Red rim: sits under the panel, so only its 1.5–2px edge shows */
+.glass-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(143deg, var(--red-500), #0c0c0d 21%, #272729 41%, var(--red-500) 60%, #3d0b0d 78%, #0c0c0d);
+  opacity: 0;
+  transform: rotateY(117deg);
+  transition: opacity var(--glass-time) var(--glass-ease), transform var(--glass-time) var(--glass-ease);
+}
+.glass-card__inner {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  overflow: hidden;
+  border-radius: 8.632px;
+  background: linear-gradient(138.75deg, #141519 25.86%, #222224 94.71%);
+}
+/* Red tint inside the panel */
+.glass-card__inner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(42deg, #000, rgba(237, 28, 36, 0.1));
+  opacity: 0;
+  transition: opacity var(--glass-time) var(--glass-ease);
+  pointer-events: none;
+}
+.glass-card__inner > * { position: relative; }
+.glass-card:hover::before { opacity: 1; transform: rotateY(0deg); }
+.glass-card:hover .glass-card__inner::before { opacity: 1; }
+
+/* Card icons: the white SVG with a red copy (assets/icons/red/) stacked on top that
+   fades in on hover. Plain images, so they also show when the page is opened from
+   disk (CSS masks are blocked on file:// pages). */
+.card-icon {
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+}
+.card-icon img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.card-icon__hover {
+  opacity: 0;
+  transition: opacity var(--glass-time) var(--glass-ease);
+}
+.glass-card:hover .card-icon__hover { opacity: 1; }
+
+/* =========================================================
+   CORE VALUES — pinned horizontal scroll (Figma V3.0 2311:1327)
+   JS sets the section height to one screen + the distance the card row
+   has to travel; the pinned frame stays put while the row slides left.
+   Each card: icon on top, then the name and a 60% white description.
+   ========================================================= */
+.values {
+  position: relative;
+  background: var(--charcoal-900);
+}
+.values__pin {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  min-height: 831px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;
+  padding: 100px 0 100px var(--gutter);
+  overflow: hidden;
+}
+.values__title { color: var(--white); }
+.values__viewport { width: 100%; }
+.values__track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  padding-right: var(--gutter);
+  will-change: transform;
+}
+.value-card { width: 357px; height: 398px; }
+.value-card .glass-card__inner {
+  inset: 2px;
+  gap: 101px;
+}
+.value-card__icon {
+  width: 72px;
+  height: 72px;
+}
+.value-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16.226px;
+}
+.value-card__name {
+  font-size: 32.453px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--white);
+}
+.value-card__desc {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6); /* 60% white, as in the design (colour, not opacity, so it doesn't fight the GSAP reveal) */
+  transition: color var(--glass-time) var(--glass-ease);
+}
+.value-card:hover .value-card__desc { color: rgba(255, 255, 255, 0.85); } /* description brightens with the red tint */
+
+/* Slide bars: the active bar stretches out and turns silver */
+.values__bars {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.values__bars button {
+  --bar-w: 50px;
+  --bar-w-active: 138px;
+  position: relative;
+  width: var(--bar-w);
+  height: 4px;
+  padding: 0;
+  border: 0;
+  background: rgba(209, 211, 212, 0.37);
+  cursor: pointer;
+  transition: background-color .5s ease, width .6s var(--ease-out);
+}
+.values__bars button::after { content: ""; position: absolute; inset: -12px -7px; } /* bigger click area */
+.values__bars button:hover { background: rgba(209, 211, 212, 0.6); }
+.values__bars button.is-active { width: var(--bar-w-active); background: var(--silver); }
+.values__bars button:focus-visible { outline: 2px solid var(--red-500); outline-offset: 4px; }
+
+/* Without the pinned scroll (tablet, mobile, reduced motion): a normal sideways-scrolling row */
+.values.is-static .values__pin {
+  position: static;
+  height: auto;
+  min-height: 0;
+}
+.values.is-static .values__viewport {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 0;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.values.is-static .values__viewport::-webkit-scrollbar { display: none; }
+.values.is-static .value-card { scroll-snap-align: start; }
+
+/* =========================================================
+   INDUSTRIES — auto-advancing list with a 6s timer line
+   ========================================================= */
+.industries {
+  background: var(--warm-white-200);
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 100px var(--gutter);
+}
+.industries__title {
+  width: 646px;
+  line-height: 1.11;
+  color: var(--charcoal-700);
+}
+.industries__row {
+  display: flex;
+  align-items: center;
+  gap: 60px; /* image ↔ list */
+}
+.industries__image {
+  position: relative;
+  width: 49.1%; /* 648px at 1440 */
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.industries__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: opacity .8s ease, transform 1.4s var(--ease-out);
+}
+.industries__img.is-active { z-index: 1; opacity: 1; transform: scale(1); } /* incoming photo fades in on top */
+/* Cut-corner squares, as on concourse.ai: a 32px square in the section colour
+   notches the corner, with two frosted squares beside and below it */
+.industries__notch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  width: 64px;
+  height: 64px;
+  pointer-events: none;
+}
+.industries__notch span {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.industries__notch span:nth-child(1) { top: 0; right: 0; background: var(--warm-white-200); backdrop-filter: none; -webkit-backdrop-filter: none; }
+.industries__notch span:nth-child(2) { top: 0; right: 32px; }
+.industries__notch span:nth-child(3) { top: 32px; right: 0; }
+.industries__side {
+  flex: 1 1 0; /* fills the width next to the image */
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 46px;
+}
+.industries__list { width: 100%; }
+.industries__item {
+  position: relative;
+  border-top: 1px solid var(--warm-white-500);
+}
+.industries__item:last-child { border-bottom: 1px solid var(--warm-white-500); }
+.industries__btn {
+  width: 100%;
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  border: 0;
+  background: none;
+  text-align: left;
+  cursor: pointer;
+}
+.industries__name {
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--warm-white-800);
+  white-space: nowrap;
+  transition: color .3s ease;
+}
+.industries__btn:hover .industries__name { color: var(--charcoal-400); }
+.industries__item.is-active .industries__name { color: var(--charcoal-700); }
+.industries__desc {
+  display: none;
+  max-width: 412px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.industries__item.is-active .industries__desc {
+  display: block;
+  animation: fade-in .6s ease;
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+/* Timer line: fills 0 → 100% across the active item's top border */
+.industries__progress {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--charcoal-700);
+  transform: scaleX(0); /* script.js fills it 0 → 1 over 6s */
+  transform-origin: left center;
+}
+.industries__item.is-active .industries__progress { transform: scaleX(.15); } /* static state (no JS), ~85px as in the design */
+
+/* =========================================================
+   WHAT AFFECTS RATE
+   ========================================================= */
+.rate {
+  background: var(--charcoal-900);
+  padding: 100px var(--gutter);
+  display: flex;
+  align-items: center; /* title + graph centred against the card grid */
+  gap: 79px; /* Figma middle gap: 1320 − 531 − 710 */
+}
+/* Columns share the width in Figma's 531 : 710 ratio, so the middle gap never grows.
+   The title column keeps room for a one-line heading. */
+.rate__lead {
+  flex: 531 1 0;
+  min-width: 490px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  color: var(--white);
+}
+.rate__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.rate__intro {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.rate__graph {
+  width: 100%;
+  aspect-ratio: 531 / 394; /* Figma size; scales with the column */
+  overflow: hidden;
+  border-radius: 12px;
+}
+.rate__graph img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.rate__grid {
+  flex: 710 1 0;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+.rate-card { width: auto; height: 366px; }
+.rate-card .glass-card__inner {
+  inset: 2.13px 2px 4.75px;
+  gap: 101px;
+}
+.rate-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16.226px;
+}
+.rate-card__title {
+  font-size: 32.453px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--white);
+  white-space: nowrap;
+}
+.rate-card__desc {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6); /* 60% white, as in the design (colour, not opacity, so it doesn't fight the GSAP reveal) */
+}
+.rate-card__icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 0 7.886px 0.148px;
+}
+.rate-card__desc { transition: color var(--glass-time) var(--glass-ease); }
+.rate-card:hover .rate-card__desc { color: rgba(255, 255, 255, 0.85); } /* description brightens with the red tint */
+
+/* =========================================================
+   CTA
+   ========================================================= */
+.cta {
+  position: relative;
+  overflow: hidden;
+  padding: 80px 194px;
+  background: var(--warm-white-200);
+}
+.cta::before { /* grid + soft red corner, from the design (75% opacity) */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("assets/images/cta-bg.webp") center / cover no-repeat;
+  opacity: 0.75;
+}
+.cta__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+.cta__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+  color: var(--charcoal-500);
+}
+.cta__title {
+  max-width: 1052px;
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.cta__intro {
+  max-width: 646px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* =========================================================
+   FOOTER (unchanged from v2, on the v3 60px margins)
+   ========================================================= */
+.footer {
+  position: relative;
+  height: 756px;
+  overflow: hidden;
+  background: var(--charcoal-900);
+  color: var(--white);
+}
+
+.footer__grid { inset: 0; }
+.footer__grid > span {
+  position: absolute;
+  width: 119px;
+  height: 119px;
+  background: var(--blink-color);
+}
+
+.footer__inner {
+  position: absolute;
+  left: var(--gutter);
+  right: var(--gutter);
+  top: 39.12px;
+  padding: 100px 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.footer__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.footer__brand {
+  width: 501.09px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.footer__brand > img { width: 211.806px; height: 61px; }
+.footer__contact {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.footer__address { width: 309px; max-width: 100%; } /* fits 320px phones */
+.footer__contact a:hover { text-decoration: underline; }
+
+.footer__right {
+  width: 591px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.footer__about {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 30px;
+}
+.footer__cols {
+  display: flex;
+  justify-content: space-between;
+}
+.footer__col {
+  width: 166.3px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer__heading {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 25.2px;
+  white-space: nowrap;
+}
+.footer__links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+.footer__links li { opacity: 0.6; transition: opacity .2s ease; }
+.footer__links li:hover { opacity: 1; }
+.footer__links li.tall { line-height: 25.2px; }
+.footer__links--nowrap li { white-space: nowrap; }
+
+.footer__social {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.footer__social a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+  font-size: 16px;
+  line-height: 1.2;
+}
+.footer__social li.short a { height: 29px; }
+.footer__social span { opacity: 0.6; transition: opacity .2s ease; }
+.footer__social a:hover span { opacity: 1; }
+.footer__social img.dim { opacity: 0.6; }
+
+.footer__rule {
+  height: 5px;
+  padding: 2px 0;
+}
+.footer__rule::before {
+  content: "";
+  display: block;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 16px;
+  line-height: 24px;
+}
+.footer__copy { white-space: pre; }
+.footer__credit {
+  font-family: Arial, sans-serif;
+  text-align: right;
+}
+
+/* =========================================================
+   SCROLL REVEALS (driven by script.js)
+   ========================================================= */
+/* Until GSAP sets start states, keep reveal targets hidden (html.anim is set in <head>) */
+.anim [data-reveal]:not([data-reveal="stagger"]),
+.anim [data-reveal="stagger"] > *,
+.anim .stat-card {
+  visibility: hidden;
+}
+
+/* =========================================================
+   NAV ACTIONS + MOBILE MENU (☰ shows on tablet & mobile only)
+   ========================================================= */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.navbar__toggle {
+  display: none;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.navbar__toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--charcoal-700);
+}
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px var(--gutter) 40px;
+  overflow-y: auto;
+  background: var(--warm-white-200);
+  opacity: 0;
+  transform: translateY(-12px);
+  transition: opacity .35s var(--ease-out), transform .45s var(--ease-out);
+}
+.mobile-menu[hidden] { display: none; }
+.mobile-menu.is-open { opacity: 1; transform: none; }
+.mobile-menu__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.mobile-menu__bar .navbar__logo img { width: 166.667px; height: 48px; }
+.mobile-menu__close {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.mobile-menu__close span {
+  position: absolute;
+  left: 2px;
+  top: 13px;
+  width: 24px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--charcoal-700);
+}
+.mobile-menu__close span:first-child { transform: rotate(45deg); }
+.mobile-menu__close span:last-child { transform: rotate(-45deg); }
+.mobile-menu__nav {
+  display: flex;
+  flex-direction: column;
+}
+.mobile-menu__nav a {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--warm-white-500);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--charcoal-700);
+}
+.mobile-menu__nav a:first-child { border-top: 1px solid var(--warm-white-500); }
+.mobile-menu__nav a:hover { color: var(--red-500); }
+.mobile-menu__cta { align-self: flex-start; }
+html.menu-open { overflow: hidden; }
+
+/* =========================================================
+   TABLET — Figma "Homepage V3.0 – Tablet" (768px), used for 768–1199px
+   ========================================================= */
+@media (max-width: 1199px) {
+  :root { --gutter: 32px; }
+  body { min-width: 0; }
+  .section-title { font-size: 40px; }
+  .btn { font-size: 18px; }
+
+  /* Hero: light hero only (the dark scroll reveal is desktop-only, as in the designs) */
+  .hero-scene { height: auto !important; }
+  .hero-stage { position: relative; height: auto; min-height: 0; contain: none; }
+  .hero { position: relative; inset: auto; padding: 32px 0 80px; gap: 72px; transform: none !important; }
+  .hero-dark { display: none; }
+  .grid-bg--light { background-position: -47.42px -7px; } /* grid pinned to the left, as in Figma */
+  .grid-bg--light > span { left: calc(720px + var(--dx)); }
+  .hero__glow { left: 179px; }
+  .navbar { padding: 20px var(--gutter); }
+  .navbar__logo img { width: 166.667px; height: 48px; }
+  .navbar__menu { display: none; }
+  .navbar__toggle { display: flex; }
+  .navbar__cta { width: auto; }
+  .hero__body { width: 100%; gap: 72px; }
+  .hero__content { width: 100%; max-width: 704px; padding-inline: var(--gutter); }
+  .hero__title { font-size: 56px; }
+  .hero__line { gap: 10px; }
+  .hero__title-img { width: 119px; height: 58.333px; }
+  .associations { width: 100%; min-width: 0; gap: 24px; }
+  .associations__title { font-size: 20px; }
+  .associations__fade { width: 80px; }
+  .associations__fade--left, .associations__fade--right { top: 48px; }
+
+  /* About: photo on top, then heading, text and button */
+  .about { gap: 56px; padding: 80px var(--gutter); }
+  .about__row { flex-direction: column; align-items: stretch; gap: 32px; }
+  .about__media { flex: none; width: 100%; height: 440px; aspect-ratio: auto; }
+  .about__title { max-width: none; }
+  .about__body { flex: none; gap: 20px; }
+  .about__text { font-size: 18px; }
+  .about__body > .btn { margin-top: 8px; }
+  .stats { width: 100%; }
+  .stat-card { height: auto; flex-direction: column; gap: 16px; padding: 32px; }
+  .stat-card--flip .stat-card__value { order: -1; min-width: 0; }
+  .stat-card__num { font-size: 64px; }
+  .stat-card__label { font-size: 41.6px; margin-top: -8px; }
+  .stat-card__text { width: auto; max-width: 380px; }
+
+  /* Programs: one card per row, text left and photo right */
+  .programs { gap: 48px; padding: 80px var(--gutter); }
+  .programs__title { width: auto; line-height: 1.11; }
+  .programs__row { flex-direction: column; gap: 24px; }
+  .program-card {
+    height: auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 180px;
+    grid-template-areas: "top media" "explore media";
+    align-content: center;
+    align-items: center;
+    column-gap: 32px;
+    row-gap: 20px;
+  }
+  .program-card__top { grid-area: top; gap: 20px; align-self: end; }
+  .program-card__text { font-size: 18px; max-width: 385px; }
+  .program-card__bottom { display: contents; }
+  .program-card .explore { grid-area: explore; align-self: start; justify-self: start; }
+  .program-card__media { grid-area: media; width: 180px; height: 180px; }
+  .program-card:hover .program-card__media,
+  .program-card:focus-visible .program-card__media { transform: none; } /* no photo pop where it would overflow */
+
+  /* Core Values slider: tablet card size and spacing (Figma 2311:2356), V3.0 card layout */
+  .values__pin { min-height: 0; gap: 40px; padding: 80px 0 80px var(--gutter); }
+  .values__track { gap: 24px; }
+  .value-card { width: 300px; height: 364px; }
+  .value-card .glass-card__inner { inset: 2px 2.5px 2px 1.5px; gap: 64px; }
+  .value-card__icon { width: 64px; height: 64px; }
+  .value-card__body { gap: 14px; }
+  .value-card__name { font-size: 28px; }
+  .value-card__desc { font-size: 16px; }
+  .values__bars button { --bar-w: 40px; --bar-w-active: 110px; }
+
+  /* Industries: photo on top, list below */
+  .industries { gap: 48px; padding: 80px var(--gutter); }
+  .industries__title { width: auto; }
+  .industries__row { flex-direction: column; align-items: stretch; gap: 40px; }
+  .industries__image { width: 100%; height: 440px; aspect-ratio: auto; }
+  .industries__side { flex: none; gap: 40px; }
+  .industries__btn { padding: 20px 0; }
+  .industries__desc { max-width: none; }
+
+  /* What Affects Rate: graph on top, 2 × 2 cards */
+  .rate { flex-direction: column; align-items: stretch; gap: 40px; padding: 80px var(--gutter); }
+  .rate__lead { flex: none; min-width: 0; gap: 32px; }
+  .rate__graph { aspect-ratio: auto; height: 505px; }
+  .rate__grid { flex: none; gap: 26px; }
+  .rate-card { height: 340px; }
+  .rate-card .glass-card__inner { inset: 2.13px 2px 2.87px; justify-content: space-between; gap: 24px; }
+
+  /* CTA */
+  .cta { padding: 80px var(--gutter); }
+  .cta__content { gap: 32px; }
+  .cta__text { gap: 16px; }
+  .cta__title { font-size: 40px; }
+  .cta__intro { font-size: 18px; }
+
+  /* Footer: stacked, three link columns */
+  .footer { height: auto; }
+  .footer__inner { position: relative; left: auto; right: auto; top: auto; padding: 80px var(--gutter) 32px; gap: 24px; }
+  .footer__top { flex-direction: column; gap: 48px; }
+  .footer__brand, .footer__right { width: 100%; }
+  .footer__cols { gap: 24px; }
+  .footer__col { flex: 1 1 0; width: auto; min-width: 0; }
+}
+
+/* =========================================================
+   MOBILE — Figma "Homepage V3.0 – Mobile" (390px), used below 768px
+   ========================================================= */
+@media (max-width: 767px) {
+  :root { --gutter: 16px; }
+  .section-title { font-size: 32px; }
+  .btn { padding: 14px 20px; font-size: 16px; }
+
+  /* Hero */
+  .hero { padding: 16px 0 48px; gap: 48px; }
+  .hero__glow { left: 148px; }
+  .navbar { padding: 16px var(--gutter); }
+  .navbar__logo img { width: 133.333px; height: 38.4px; }
+  .navbar__actions { gap: 12px; }
+  .navbar__cta { padding: 10px 14px; font-size: 16px; }
+  .navbar__toggle { width: 24px; height: 24px; gap: 4.286px; }
+  .navbar__toggle span { width: 20.571px; height: 1.714px; }
+  .hero__body { gap: 48px; }
+  .hero__title { font-size: 32px; }
+  .hero__line { gap: 7px; }
+  .hero__title-img { width: 68px; height: 33.333px; border-radius: 4px; }
+  .associations { gap: 20px; }
+  .associations__title { font-size: 18px; }
+  .associations__set { zoom: 0.8; } /* logos 40 → 32px tall, 60 → 48px apart */
+  .associations__fade { width: 40px; height: 32px !important; }
+  .associations__fade--left, .associations__fade--right { top: 41.75px; }
+  .mobile-menu__bar .navbar__logo img { width: 133.333px; height: 38.4px; }
+  .mobile-menu__nav a { font-size: 24px; }
+
+  /* About */
+  .about { gap: 40px; padding: 56px var(--gutter); }
+  .about__row { gap: 24px; }
+  .about__media { height: 260px; }
+  .about__body { gap: 16px; }
+  .about__text { font-size: 16px; }
+  .about__body > .btn { margin-top: 8px; }
+  .stat-card { gap: 12px; padding: 24px; }
+  .stat-card__num { font-size: 50px; }
+  .stat-card__label { font-size: 32.5px; margin-top: -6px; }
+  .stat-card__text { max-width: 296px; font-size: 14px; }
+
+  /* Programs: photo on top of each card */
+  .programs { gap: 32px; padding: 56px var(--gutter); }
+  .programs__title { font-size: 32px; }
+  .programs__row { gap: 16px; }
+  .program-card {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "media" "top" "explore";
+    padding: 20px;
+    row-gap: 16px;
+  }
+  .program-card__top { gap: 12px; }
+  .program-card__title { font-size: 20px; }
+  .program-card__text { font-size: 16px; }
+  .program-card__media { width: 100%; height: 190px; margin-bottom: 4px; }
+  .explore { font-size: 16px; line-height: 21.333px; }
+  .explore::after { width: 55.11px; }
+
+  /* Core Values slider: mobile card size and spacing (Figma 2311:3303), V3.0 card layout */
+  .values__pin { gap: 32px; padding: 56px 0 56px var(--gutter); }
+  .values__track { gap: 16px; }
+  .value-card { width: 254.25px; height: 295.5px; border-radius: 6.474px; }
+  .value-card .glass-card__inner { inset: 1.5px 1.87px 1.58px 1.13px; padding: 18px; border-radius: 6.474px; gap: 48px; }
+  .value-card__icon { width: 52px; height: 52px; }
+  .value-card__body { gap: 10px; }
+  .value-card__name { font-size: 20px; }
+  .value-card__desc { font-size: 14px; }
+  .values__bars { gap: 10px; }
+  .values__bars button { --bar-w: 28px; --bar-w-active: 80px; height: 3px; }
+
+  /* Industries */
+  .industries { gap: 32px; padding: 64px var(--gutter); }
+  .industries__row { gap: 32px; }
+  .industries__image { height: 240px; }
+  .industries__side { gap: 32px; }
+  .industries__btn { gap: 8px; padding: 16px 0; }
+  .industries__name { font-size: 20px; white-space: normal; }
+  .industries__desc { font-size: 16px; }
+
+  /* What Affects Rate: cards in one column */
+  .rate { gap: 32px; padding: 56px var(--gutter); }
+  .rate__lead { gap: 24px; }
+  .rate__intro { font-size: 16px; font-weight: 400; }
+  .rate__graph { height: 257px; }
+  .rate__grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .rate-card { height: 244px; }
+  .rate-card .glass-card__inner { inset: 2.13px 2px 2.87px; }
+  .rate-card__title { font-size: 20px; }
+  .rate-card__desc { font-size: 16px; max-width: 272px; }
+  .rate-card__icon { width: 48px; height: 48px; }
+
+  /* CTA */
+  .cta { padding: 64px var(--gutter); }
+  .cta__title { font-size: 32px; }
+  .cta__intro { font-size: 16px; }
+
+  /* Footer: two link columns, Follow underneath, bottom line stacked */
+  .footer__inner { padding: 64px var(--gutter) 32px; }
+  .footer__cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 24px; }
+  .footer__col:last-child { grid-column: 1 / -1; }
+  .footer__links--nowrap li { white-space: normal; }
+  .footer__bottom { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .footer__copy { white-space: normal; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .associations__set { animation: none !important; }
+  .program-card:hover .explore::after { animation: none; }
+  *, *::before, *::after { transition-duration: 0s !important; }
+}
