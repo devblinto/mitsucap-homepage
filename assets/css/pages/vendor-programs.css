@@ -1,0 +1,213 @@
+/* =========================================================
+   Vendor Programs — /services/vendor-programs/
+   Figma: desktop 2532:27932 · tablet 2537:23 · mobile 2537:646
+   Page-only styles, all scoped under .page-vendor-programs.
+   Shared pieces (header, hero, presentation, testimonial, CTA,
+   footer, buttons, glass cards, program cards, explore link)
+   come from /styles.css and /assets/css/site.css.
+   ========================================================= */
+
+.page-vendor-programs .vp-pad-lg { padding-block: 120px; } /* sections with 120px top/bottom in Figma */
+
+/* ---------- Financing Support Built Into Your Sales Process (Figma 2532:28019) ---------- */
+.page-vendor-programs .vp-support {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1380px;
+  margin: 0 auto;
+}
+.page-vendor-programs .vp-support__head {
+  flex: 0 1 568px;
+  min-width: 0;
+}
+.page-vendor-programs .vp-support .section-title { color: var(--charcoal-700); }
+.page-vendor-programs .vp-support__cards {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+}
+.page-vendor-programs .vp-support-card {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.page-vendor-programs .vp-support-card__media {
+  position: relative;
+  height: 328px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.page-vendor-programs .vp-support-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left center; /* Figma crops these wide photos from the left edge */
+}
+.page-vendor-programs .vp-support-card__media::after { /* Figma's black wash: 10% (first) / 5% (second) */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+.page-vendor-programs .vp-support-card__media--light::after { background: rgba(0, 0, 0, 0.05); }
+.page-vendor-programs .vp-support-card__text {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+
+/* ---------- Vendor program benefits — 9 dark glass cards (Figma 2532:28059) ----------
+   Reuses the homepage glass card (rim, red hover); here the panel sits in the flow. */
+.page-vendor-programs .vp-benefits__title {
+  max-width: 640px;
+  margin-bottom: 80px;
+}
+.page-vendor-programs .vp-benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+.page-vendor-programs .vp-benefit {
+  width: auto;
+  min-width: 0;
+  min-height: 417px;
+  display: flex;
+  padding: 2px;
+  background: linear-gradient(143.11deg, #0c0c0d 5.3%, #636369 24.07%, #272729 38.38%, #636369 58.94%, #37373a 81.29%, #0c0c0d 94.71%);
+}
+.page-vendor-programs .vp-benefit .glass-card__inner {
+  position: relative;
+  flex: 1 1 auto;
+  gap: 72px;
+  padding: 24px 24px 32px;
+  background: linear-gradient(143.11deg, #141519 25.86%, #222224 94.71%);
+}
+.page-vendor-programs .vp-benefit__icon { width: 72px; height: 72px; }
+.page-vendor-programs .vp-benefit__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.page-vendor-programs .vp-benefit__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--white);
+}
+.page-vendor-programs .vp-benefit__text {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color var(--glass-time) var(--glass-ease);
+}
+.page-vendor-programs .vp-benefit:hover .vp-benefit__text { color: rgba(255, 255, 255, 0.85); }
+
+/* ---------- Our Solutions (Figma 2536:30831) — homepage program cards in a 3-col grid ---------- */
+.page-vendor-programs .vp-solutions .section-title {
+  margin-bottom: 80px;
+  color: var(--charcoal-700);
+  text-align: center;
+}
+.page-vendor-programs .vp-solutions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+.page-vendor-programs .vp-solutions__grid .program-card { flex: none; }
+.page-vendor-programs .vp-solutions__grid .program-card:last-child:nth-child(3n + 1) { grid-column: 2; } /* lone last card sits in the middle */
+.page-vendor-programs .program-card__text {
+  font-weight: 500;
+  line-height: 1.4;
+}
+.page-vendor-programs .program-card__media { position: relative; }
+.page-vendor-programs .program-card__media::after { /* Figma's 10–20% black wash on the thumbnails */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--wash, 0.1));
+  pointer-events: none;
+}
+.page-vendor-programs .program-card__media--dim { --wash: 0.2; }
+.page-vendor-programs .program-card__media--none { --wash: 0; }
+
+/* ---------- Company Presentation / Testimonial: section colours on this page ----------
+   Figma 2532:28103 (all three sizes): grey section with a white card.
+   Figma 2532:28111: testimonial on white. */
+.page-vendor-programs .presentation { background: var(--warm-white-200); }
+.page-vendor-programs .presentation__card { background: var(--white); }
+.page-vendor-programs .testimonial { background: var(--white); }
+
+/* =========================================================
+   TABLET (768–1199) — Figma 2537:23
+   ========================================================= */
+@media (max-width: 1199px) {
+  .page-vendor-programs .vp-pad-lg { padding-block: var(--section-pad); }
+
+  /* Support: heading on top, two photos side by side */
+  .page-vendor-programs .vp-support {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+  }
+  .page-vendor-programs .vp-support__head { flex: none; }
+  .page-vendor-programs .vp-support__cards { flex: none; align-items: center; gap: 24px; }
+  .page-vendor-programs .vp-support-card__media { height: 338px; }
+  .page-vendor-programs .vp-support-card__text { font-size: 18px; }
+
+  /* Benefits: two columns, the ninth card spans both */
+  .page-vendor-programs .vp-benefits__title { max-width: none; margin-bottom: 48px; }
+  .page-vendor-programs .vp-benefits__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+  .page-vendor-programs .vp-benefit { min-height: 0; background-image: linear-gradient(137deg, #0c0c0d 5.3%, #636369 24.07%, #272729 38.38%, #636369 58.94%, #37373a 81.29%, #0c0c0d 94.71%); }
+  .page-vendor-programs .vp-benefit:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    background-image: linear-gradient(164deg, #0c0c0d 5.3%, #636369 24.07%, #272729 38.38%, #636369 58.94%, #37373a 81.29%, #0c0c0d 94.71%);
+  }
+  .page-vendor-programs .vp-benefit .glass-card__inner { gap: 32px; }
+  .page-vendor-programs .vp-benefit__text { font-weight: 400; }
+
+  /* Solutions: one horizontal card per row (program-card tablet layout from styles.css) */
+  .page-vendor-programs .vp-solutions .section-title { margin-bottom: 48px; }
+  .page-vendor-programs .vp-solutions__grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .page-vendor-programs .vp-solutions__grid .program-card:last-child:nth-child(3n + 1) { grid-column: auto; }
+  .page-vendor-programs .program-card__text { max-width: none; }
+}
+
+/* =========================================================
+   MOBILE (≤767) — Figma 2537:646
+   ========================================================= */
+@media (max-width: 767px) {
+  .page-vendor-programs .vp-support .section-title,
+  .page-vendor-programs .vp-benefits__title { line-height: 1.11; }
+
+  /* Support: photos stack */
+  .page-vendor-programs .vp-support { gap: 32px; }
+  .page-vendor-programs .vp-support__cards { flex-direction: column; gap: 32px; }
+  .page-vendor-programs .vp-support-card { flex: none; width: 100%; }
+  .page-vendor-programs .vp-support-card__media { height: 356px; }
+  .page-vendor-programs .vp-support-card__text { font-size: 16px; }
+
+  /* Benefits: one column */
+  .page-vendor-programs .vp-benefits__title { margin-bottom: 32px; }
+  .page-vendor-programs .vp-benefits__grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .page-vendor-programs .vp-benefit:last-child:nth-child(odd) { grid-column: auto; }
+  .page-vendor-programs .vp-benefit .glass-card__inner { gap: 24px; padding: 20px; }
+  .page-vendor-programs .vp-benefit__icon { width: 48px; height: 48px; }
+  .page-vendor-programs .vp-benefit__title { font-size: 20px; }
+  .page-vendor-programs .vp-benefit__text { font-size: 16px; }
+
+  /* Solutions: photo on top (program-card mobile layout from styles.css) */
+  .page-vendor-programs .vp-solutions .section-title { margin-bottom: 32px; }
+  .page-vendor-programs .vp-solutions__grid { gap: 16px; }
+  .page-vendor-programs .vp-solutions__grid .program-card { row-gap: 12px; }
+  .page-vendor-programs .vp-solutions__grid .program-card__title { font-size: 24px; }
+  .page-vendor-programs .vp-solutions__grid .program-card__media { height: 228px; margin-bottom: 8px; }
+  .page-vendor-programs .vp-solutions__grid .explore { margin-top: 16px; } /* 12px gap + 4px spacer + 12px gap in Figma */
+}

@@ -1,0 +1,282 @@
+/* =========================================================
+   TRAC Lease — /services/trac-lease/
+   Figma: desktop 2525:1313 · tablet 2528:23 · mobile 2528:549
+   Page-only styles, all scoped under .page-trac-lease.
+   Shared pieces (header, hero, presentation, testimonial, CTA,
+   footer, buttons, program cards, explore link) come from
+   /styles.css and /assets/css/site.css.
+   ========================================================= */
+
+.page-trac-lease .trac-pad-lg { padding-block: 120px; } /* sections with 120px top/bottom in Figma */
+.page-trac-lease main .section-title { color: var(--charcoal-700); }
+
+/* Photo frames: rounded, cropped, 10% black wash as in Figma */
+.page-trac-lease .trac-vehicle__media,
+.page-trac-lease .trac-split__media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.page-trac-lease .trac-vehicle__media img,
+.page-trac-lease .trac-split__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.page-trac-lease .trac-vehicle__media::after,
+.page-trac-lease .trac-split__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+/* ---------- Financing Built For Commercial Vehicles (Figma 2525:1411) ---------- */
+.page-trac-lease .trac-vehicles {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+.page-trac-lease .trac-vehicles__head {
+  flex: 0 1 568px;
+  min-width: 0;
+}
+.page-trac-lease .trac-vehicles__cards {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+}
+.page-trac-lease .trac-vehicle {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.page-trac-lease .trac-vehicle__media { height: 328px; }
+.page-trac-lease .trac-vehicle__text {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+
+/* ---------- Residual Value Comparison (Figma 2526:1735) — photo left, text right ---------- */
+.page-trac-lease .trac-split {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+.page-trac-lease .trac-split__media {
+  flex: 0 1 648px;
+  min-width: 0;
+  aspect-ratio: 648 / 560;
+}
+.page-trac-lease .trac-split__content {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+.page-trac-lease .trac-split__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.page-trac-lease .trac-split__intro {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+
+/* ---------- When Actual And Estimated Values Differ (Figma 2525:1423) ----------
+   Two stacked "paper" rows: translucent white texture + 10% noise and a soft
+   80px shadow (it shows through the next row's translucent fill). */
+.page-trac-lease .trac-differ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+.page-trac-lease .trac-differ .section-title {
+  max-width: 828px;
+  text-align: center;
+}
+.page-trac-lease .trac-rows {
+  width: 100%;
+  max-width: 1050px;
+  display: flex;
+  flex-direction: column;
+}
+.page-trac-lease .trac-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 39px 59px; /* + 1px border = Figma's 40/60 (Figma strokes sit inside) */
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+  background: url("/assets/images/trac-lease/row-1.webp") center / cover no-repeat;
+}
+.page-trac-lease .trac-row::before { /* Figma noise layer at 10% */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/assets/images/stat-noise.webp") left top / 2048px 2048px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+.page-trac-lease .trac-row > * { position: relative; }
+.page-trac-lease .trac-row--2 {
+  border-color: transparent;
+  background-image: url("/assets/images/trac-lease/row-2.webp");
+}
+.page-trac-lease .trac-row__title {
+  flex: 0 1 401px;
+  min-width: 0;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+}
+.page-trac-lease .trac-row__text {
+  flex: 0 1 380px;
+  min-width: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+/* Second row: text on the left, right-aligned title on the right (title stays first in the DOM) */
+.page-trac-lease .trac-row--flip .trac-row__title {
+  order: 2;
+  flex-basis: 407px;
+  text-align: right;
+}
+
+/* ---------- Our Solutions (Figma 2536:30263) — homepage program cards, white on grey ---------- */
+.page-trac-lease .trac-solutions .section-title {
+  margin-bottom: 80px;
+  text-align: center;
+}
+.page-trac-lease .trac-solutions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+.page-trac-lease .trac-solutions__grid .program-card {
+  flex: none;
+  background: var(--white);
+}
+.page-trac-lease .trac-solutions__grid .program-card:hover,
+.page-trac-lease .trac-solutions__grid .program-card:focus-visible { background: var(--charcoal-900); }
+.page-trac-lease .trac-solutions__grid .program-card:last-child:nth-child(3n + 1) { grid-column: 2; } /* lone last card sits in the middle */
+.page-trac-lease .program-card__text {
+  font-weight: 500;
+  line-height: 1.4;
+}
+.page-trac-lease .program-card__media { position: relative; }
+.page-trac-lease .program-card__media::after { /* Figma's 10–20% black wash on the thumbnails */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--wash, 0.1));
+  pointer-events: none;
+}
+.page-trac-lease .program-card__media--dim { --wash: 0.2; }
+.page-trac-lease .program-card__media--clear { --wash: 0; } /* Sale/Leaseback thumbnail has no wash */
+
+/* =========================================================
+   TABLET (768–1199) — Figma 2528:23
+   ========================================================= */
+@media (max-width: 1199px) {
+  .page-trac-lease .trac-pad-lg { padding-block: var(--section-pad); }
+
+  /* Vehicles: heading on top, two photos side by side */
+  .page-trac-lease .trac-vehicles {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+  }
+  .page-trac-lease .trac-vehicles__head { flex: none; }
+  .page-trac-lease .trac-vehicles__cards { flex: none; gap: 24px; }
+  .page-trac-lease .trac-vehicle__media { height: 338px; }
+  .page-trac-lease .trac-vehicle__text { font-size: 18px; }
+
+  /* Residual: photo on top, text below */
+  .page-trac-lease .trac-split {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+  }
+  .page-trac-lease .trac-split__media { flex: none; width: 100%; aspect-ratio: auto; height: 608px; }
+  .page-trac-lease .trac-split__content { flex: none; }
+  .page-trac-lease .trac-split__intro { font-size: 18px; }
+
+  /* Rows: full width, 260px title column */
+  .page-trac-lease .trac-differ { gap: 48px; }
+  .page-trac-lease .trac-differ .section-title { max-width: 596px; }
+  .page-trac-lease .trac-rows { max-width: none; }
+  .page-trac-lease .trac-row { gap: 0; padding: 31px 39px; }
+  .page-trac-lease .trac-row__title,
+  .page-trac-lease .trac-row--flip .trac-row__title { flex: 0 0 260px; font-size: 32px; }
+  .page-trac-lease .trac-row__text { flex: 1 1 0; font-weight: 400; }
+
+  /* Solutions: one horizontal card per row (program-card tablet layout from styles.css) */
+  .page-trac-lease .trac-solutions .section-title { margin-bottom: 48px; }
+  .page-trac-lease .trac-solutions__grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .page-trac-lease .trac-solutions__grid .program-card:last-child:nth-child(3n + 1) { grid-column: auto; }
+  .page-trac-lease .program-card__text { max-width: none; }
+}
+
+/* =========================================================
+   MOBILE (≤767) — Figma 2528:549
+   ========================================================= */
+@media (max-width: 767px) {
+  .page-trac-lease main .section-title { line-height: 1.11; } /* Mobile/Heading/H2 Tight */
+
+  /* Vehicles: photos stack */
+  .page-trac-lease .trac-vehicles { gap: 32px; }
+  .page-trac-lease .trac-vehicles__cards { flex-direction: column; gap: 32px; }
+  .page-trac-lease .trac-vehicle { flex: none; width: 100%; }
+  .page-trac-lease .trac-vehicle__media { height: 356px; }
+  .page-trac-lease .trac-vehicle__text { font-size: 16px; }
+
+  /* Residual */
+  .page-trac-lease .trac-split { gap: 32px; }
+  .page-trac-lease .trac-split__media { height: 309px; }
+  .page-trac-lease .trac-split__intro { font-size: 16px; }
+
+  /* Rows: title over text, both left-aligned */
+  .page-trac-lease .trac-differ { gap: 32px; }
+  .page-trac-lease .trac-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 23px;
+  }
+  .page-trac-lease .trac-row__title,
+  .page-trac-lease .trac-row--flip .trac-row__title {
+    flex: none;
+    order: 0;
+    font-size: 20px;
+    text-align: left;
+  }
+  .page-trac-lease .trac-row__text { flex: none; font-size: 16px; }
+
+  /* Solutions: photo on top (program-card mobile layout from styles.css) */
+  .page-trac-lease .trac-solutions .section-title { margin-bottom: 32px; }
+  .page-trac-lease .trac-solutions__grid { gap: 16px; }
+  .page-trac-lease .trac-solutions__grid .program-card { row-gap: 12px; }
+  .page-trac-lease .trac-solutions__grid .program-card__title { font-size: 24px; }
+  .page-trac-lease .trac-solutions__grid .program-card__media { height: 228px; margin-bottom: 8px; }
+  .page-trac-lease .trac-solutions__grid .program-card:first-child .program-card__media { height: 318px; } /* Figma: first card has a square photo */
+  .page-trac-lease .trac-solutions__grid .explore { margin-top: 16px; } /* 12px gap + 4px spacer + 12px gap in Figma */
+}

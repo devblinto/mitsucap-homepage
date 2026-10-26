@@ -1,0 +1,35 @@
+<!-- ============ PAGE TOP: glow background + header + inner-page hero (Figma "01 Hero" 2577:25) ============
+     .page-top wraps the header AND the hero so the soft red/white glow sits behind both.
+     Paste the full contents of _partials/header.html where marked.
+
+     Options
+     - Subtitle (.page-hero__intro) and the button row (.page-hero__actions) are optional: delete if unused.
+     - No photo: delete .page-hero__media and add class "page-hero--text-only" to .page-hero.
+     - Photo: /assets/images/<page-slug>/hero.webp (Figma frame 555×460 → export ~1110×920, WebP).
+       Photo ratio 555/460 desktop, 704/583 tablet, 358/297 mobile (handled by CSS, object-fit: cover).
+     - Title colour: default #22232B; add "page-hero--title-500" for #30313C (associations, philosophy,
+       our team, affiliations — check your Figma frame).
+     - Photo tint (only if your Figma photo has a black fill on top): page-hero--tint-10 / --tint-15 / --tint-20.
+     Reveal: the hero plays on page load (data-reveal-group="load").
+     Title case: Figma shows hero titles capitalised ("Benefits Of Leasing"); type them that way —
+     CSS text-transform can't be used on data-reveal="chars" headings (letters are split). -->
+<div class="page-top">
+  <div class="page-top__bg" aria-hidden="true">
+    <div class="page-glow"><span class="page-glow__white"></span><span class="page-glow__pink"></span><span class="page-glow__red"></span></div>
+  </div>
+
+  <!-- PASTE _partials/header.html HERE -->
+
+  <section class="page-hero" data-reveal-group="load">
+    <div class="page-hero__text">
+      <h1 class="page-hero__title" data-reveal="chars">Benefits Of Leasing</h1>
+      <p class="page-hero__intro" data-reveal="from-below" data-reveal-at="0.5" data-reveal-distance="30">There are many benefits of leasing equipment, all of which will help you rethink spending and grow your business to levels that would not be possible without leasing your equipment.</p>
+      <div class="page-hero__actions" data-reveal="from-below" data-reveal-at="0.7" data-reveal-distance="40">
+        <a href="/contact/" class="btn btn--red btn--shadow-red">Contact Us</a>
+      </div>
+    </div>
+    <div class="page-hero__media" data-reveal="from-right" data-reveal-at="0.4" data-reveal-distance="40">
+      <img src="/assets/images/PAGE-SLUG/hero.webp" alt="DESCRIBE THE PHOTO" width="1110" height="920" decoding="async" fetchpriority="high">
+    </div>
+  </section>
+</div>

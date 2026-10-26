@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FMV Lease (Operating Lease) | MitsuCap</title>
+  <meta name="description" content="A Fair Market Value (FMV) Lease gives you the right, but not the obligation, to buy leased equipment at the end of the term for its then-current worth. Lower payments and flexible end-of-term options from MitsuCap.">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/pages/fmv-lease.css">
+  <script>
+    document.documentElement.classList.add("js");
+    // Hide reveal targets until GSAP has set their start states. Fallback: show everything after 4s.
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("anim");
+      setTimeout(function () { if (!window.__animReady) document.documentElement.classList.remove("anim"); }, 4000);
+    }
+  </script>
+</head>
+<body>
+  <div class="page fmv-page">
+
+    <!-- ============ PAGE TOP: glow + header + hero (Figma 2402:36215) ============ -->
+    <div class="page-top">
+      <div class="page-top__bg" aria-hidden="true">
+        <div class="page-glow"><span class="page-glow__white"></span><span class="page-glow__pink"></span><span class="page-glow__red"></span></div>
+      </div>
+
+      <header class="site-header">
+        <div class="site-header__bar">
+          <a href="/" class="site-header__logo" aria-label="MitsuCap home">
+            <img src="/assets/icons/logo.svg" alt="MitsuCap – Global lease &amp; finance solutions" width="222.222" height="64">
+          </a>
+
+          <nav class="site-nav" id="site-nav" aria-label="Main">
+            <!-- Tablet & mobile overlay: logo + close (hidden on desktop) -->
+            <div class="site-nav__top">
+              <a href="/" class="site-header__logo" aria-label="MitsuCap home"><img src="/assets/icons/logo.svg" alt="" width="133.333" height="38.4"></a>
+              <button type="button" class="site-nav__close" aria-label="Close menu"><svg aria-hidden="true"><use href="/assets/icons/mega-menu.svg#close"/></svg></button>
+            </div>
+
+            <ul class="site-nav__list">
+              <li class="site-nav__item">
+                <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-about">About Us<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+                <div class="mega" id="mega-about">
+                  <div class="mega__panel">
+                    <div class="mega__group">
+                      <p class="mega__heading">About Us</p>
+                      <div class="mega__cols">
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/about-us/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#about-us"/></svg></span><span class="mega__label">About Us</span></a></li>
+                          <li><a class="mega__link" href="/mitsucaps-philosophy/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#philosophy"/></svg></span><span class="mega__label">MitsuCap’s Philosophy</span></a></li>
+                          <li><a class="mega__link" href="/our-team/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#our-team"/></svg></span><span class="mega__label">Our Team</span></a></li>
+                          <li><a class="mega__link" href="/associations/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#associations"/></svg></span><span class="mega__label">Associations</span></a></li>
+                          <li><a class="mega__link" href="/affiliations/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#affiliations"/></svg></span><span class="mega__label">Affiliations</span></a></li>
+                          <li><a class="mega__link" href="/career/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#career"/></svg></span><span class="mega__label">Career</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="site-nav__item is-current">
+                <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-solutions">Solutions<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+                <div class="mega" id="mega-solutions">
+                  <div class="mega__panel">
+                    <div class="mega__group mega__group--2col">
+                      <p class="mega__heading">Solutions</p>
+                      <div class="mega__cols">
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/services/fmv-lease-operating-lease/" aria-current="page"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#fmv"/></svg></span><span class="mega__label">FMV Lease (Operating Lease)</span></a></li>
+                          <li><a class="mega__link" href="/services/saleleaseback/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#saleleaseback"/></svg></span><span class="mega__label">Sale/Leaseback</span></a></li>
+                          <li><a class="mega__link" href="/services/put-lease/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#put"/></svg></span><span class="mega__label">PUT Lease</span></a></li>
+                          <li><a class="mega__link" href="/services/capital-lease/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#capital"/></svg></span><span class="mega__label">Capital Lease</span></a></li>
+                        </ul>
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/services/tax-exempt-municipal-lease/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#tax-exempt"/></svg></span><span class="mega__label">Tax-Exempt Municipal Lease</span></a></li>
+                          <li><a class="mega__link" href="/services/trac-lease/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#trac"/></svg></span><span class="mega__label">TRAC Lease</span></a></li>
+                          <li><a class="mega__link" href="/services/vendor-programs/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#vendor"/></svg></span><span class="mega__label">Vendor Programs</span></a></li>
+                          <li><a class="mega__link" href="/services/bank-credit-union/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#bank"/></svg></span><span class="mega__label">Bank &amp; Credit Union Programs</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="site-nav__item">
+                <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-industries">Industries<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+                <div class="mega" id="mega-industries">
+                  <div class="mega__panel">
+                    <div class="mega__group mega__group--3col">
+                      <p class="mega__heading">Industries</p>
+                      <div class="mega__cols">
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/industries-served/#power-utility"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#power"/></svg></span><span class="mega__label">Power – Utility</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#aviation-airport"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#aviation"/></svg></span><span class="mega__label">Aviation – Airport</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#rail-intermodal"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#rail"/></svg></span><span class="mega__label">Rail – Intermodal</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#material-handling-warehousing"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#material"/></svg></span><span class="mega__label">Material Handling – Warehousing</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#industrial-manufacturing"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#industrial"/></svg></span><span class="mega__label">Industrial – Manufacturing</span></a></li>
+                        </ul>
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/industries-served/#construction-rental-houses"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#construction"/></svg></span><span class="mega__label">Construction – Rental Houses</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#oil-gas-chemical"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#oilgas"/></svg></span><span class="mega__label">Oil/Gas – Chemical</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#specialty-vehicles-equipment"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#trac"/></svg></span><span class="mega__label">Specialty Vehicles/<wbr>Equipment</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#medical"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#medical"/></svg></span><span class="mega__label">Medical</span></a></li>
+                        </ul>
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/industries-served/#marine"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#marine"/></svg></span><span class="mega__label">Marine</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#computer-electronics"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#computer"/></svg></span><span class="mega__label">Computer – Electronics</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#vendor-private-label"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#vendor-private"/></svg></span><span class="mega__label">Vendor – Private Label</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#bank-credit-union"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#bank"/></svg></span><span class="mega__label">Bank &amp; Credit Union</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="site-nav__item">
+                <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-resources">Resources<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+                <div class="mega" id="mega-resources">
+                  <div class="mega__panel mega__panel--multi">
+                    <div class="mega__group">
+                      <p class="mega__heading">Resources</p>
+                      <div class="mega__cols">
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/blog/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#blog"/></svg></span><span class="mega__label">Blog</span></a></li>
+                          <li><a class="mega__link" href="/news/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#news"/></svg></span><span class="mega__label">News</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="mega__group">
+                      <p class="mega__heading">Information</p>
+                      <div class="mega__cols">
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/benefits-of-leasing/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#benefits"/></svg></span><span class="mega__label">Benefits of Leasing</span></a></li>
+                          <li><a class="mega__link" href="/brochures/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#brochures"/></svg></span><span class="mega__label">Brochures</span></a></li>
+                          <li><a class="mega__link" href="/forms/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#forms"/></svg></span><span class="mega__label">Forms</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="site-nav__item">
+                <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-contact">Contact Us<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+                <div class="mega" id="mega-contact">
+                  <div class="mega__panel">
+                    <div class="mega__group">
+                      <p class="mega__heading">Contact Us</p>
+                      <div class="mega__cols">
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/contact/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#contact"/></svg></span><span class="mega__label">Contact Us</span></a></li>
+                          <li><a class="mega__link" href="/schedule-a-call/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#schedule"/></svg></span><span class="mega__label">Schedule a Call</span></a></li>
+                          <li><a class="mega__link" href="/get-a-quote/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#quote"/></svg></span><span class="mega__label">Get a Quote</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Tablet & mobile overlay: full-width CTA (hidden on desktop) -->
+            <div class="site-nav__cta"><a href="/get-a-quote/" class="btn btn--red btn--block">Get a Quote</a></div>
+          </nav>
+
+          <div class="site-header__actions">
+            <a href="/get-a-quote/" class="btn btn--red site-header__cta">Get a Quote</a>
+            <button type="button" class="site-header__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+          </div>
+        </div>
+      </header>
+
+      <section class="page-hero" data-reveal-group="load">
+        <div class="page-hero__text">
+          <h1 class="page-hero__title" data-reveal="chars">FMV Lease (Operating Lease)</h1>
+          <p class="page-hero__intro" data-reveal="from-below" data-reveal-at="0.5" data-reveal-distance="30">A Fair Market Value (FMV) Lease provides the Lessee the right, but not the obligation, to purchase a leased asset at the end of the lease term for a price that represents the item’s then‐current worth. The FMV Lease end of term purchase option price is not determined in advance.</p>
+          <div class="page-hero__actions" data-reveal="from-below" data-reveal-at="0.7" data-reveal-distance="40">
+            <a href="/schedule-a-call/" class="btn btn--red btn--shadow-red">Schedule a Free Consultation</a>
+          </div>
+        </div>
+        <div class="page-hero__media" data-reveal="from-right" data-reveal-at="0.4" data-reveal-distance="40">
+          <img src="/assets/images/fmv-lease/hero.webp" alt="Yellow excavator next to a mobile crushing plant on a work site" width="1020" height="678" decoding="async" fetchpriority="high">
+        </div>
+      </section>
+    </div>
+
+    <main>
+      <!-- ============ A FLEXIBLE APPROACH (Figma 2404:36705) ============ -->
+      <section class="fmv-approach">
+        <div class="fmv-approach__head" data-reveal-group>
+          <h2 class="fmv-title section-title" data-reveal="chars">A Flexible Approach To Equipment Financing</h2>
+          <p class="fmv-approach__sub" data-reveal="from-below" data-reveal-at="0.5" data-reveal-distance="30">The structure is commonly evaluated against two key tests.</p>
+        </div>
+        <div class="fmv-approach__cards" data-reveal="stagger">
+          <article class="fmv-approach__card">
+            <div class="fmv-approach__media fmv-approach__media--shade">
+              <img src="/assets/images/fmv-lease/flexible-cranes.webp" alt="Row of yellow mobile cranes with extended booms under a blue sky" width="720" height="514" decoding="async" loading="lazy">
+            </div>
+            <p class="fmv-approach__text">A fair market value lease (FMV) may not qualify as an Operating Lease, also known as a “True Lease” or “Tax Lease.”</p>
+          </article>
+          <article class="fmv-approach__card">
+            <div class="fmv-approach__media">
+              <img src="/assets/images/fmv-lease/flexible-warehouse.webp" alt="Excavator, generator trailer and machinery parked outside a warehouse" width="720" height="540" decoding="async" loading="lazy">
+            </div>
+            <p class="fmv-approach__text">A key feature of this lease is that it does not require full payout of the equipment cost, unlike a Capital or Finance Lease.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ============ TWO COMMON TESTS (Figma 2404:36613) — homepage stat cards: rise in + count up ============ -->
+      <section class="fmv-tests">
+        <h2 class="fmv-tests__title fmv-title section-title" data-reveal-group data-reveal="chars">Two Common Tests</h2>
+        <ul class="fmv-tests__list">
+          <li class="stat-card stat-card--b">
+            <p class="stat-card__value"><span class="stat-card__num"><span data-count="75">75</span>%</span></p>
+            <p class="stat-card__text">The term of the lease is generally not greater than 75% of the equipment’s anticipated useful life.</p>
+          </li>
+          <li class="stat-card stat-card--a stat-card--flip">
+            <p class="stat-card__text">The present value of the lease payments should not exceed 90% of the fair market value of the equipment using the Lessee’s incremental cost of borrowing.</p>
+            <p class="stat-card__value"><span class="stat-card__num"><span data-count="90">90</span>%</span></p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============ FLEXIBILITY DURING THE LEASE AND BEYOND (Figma 2404:36796) ============ -->
+      <section class="fmv-flex">
+        <div class="fmv-flex__intro" data-reveal-group>
+          <h2 class="fmv-flex__title fmv-title section-title" data-reveal="chars">Flexibility During The Lease And Beyond</h2>
+          <p class="fmv-flex__text fmv-lead" data-reveal="from-below" data-reveal-at="0.5" data-reveal-distance="30">A significant benefit is that the monthly payments are also less than on a finance type lease. Typically, the Lessee either returns the equipment at the conclusion of the lease or may be granted the opportunity to purchase the equipment from the Lessor for “the then fair market value.” Payments under this kind of lease structure are treated (by the I.R.S.) as rental payments and therefore are 100% tax deductible operating expenses. Also, as rental payments, neither the asset nor its corresponding liability needs to appear on the company’s balance sheet. The Lessor retains the right to depreciate the equipment.</p>
+        </div>
+        <ul class="fmv-flex__list" data-reveal="stagger">
+          <li class="fmv-highlight">
+            <span class="fmv-highlight__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M29.3333 22.6667L18 11.3333L11.3333 18L2.66667 9.33333" stroke="#ED1C24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21.3333 22.6667H29.3333V14.6667" stroke="#ED1C24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h3 class="fmv-highlight__title">Lower Monthly Payments</h3>
+          </li>
+          <li class="fmv-highlight">
+            <span class="fmv-highlight__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M28 16C27.9934 18.3926 27.2717 20.7287 25.9275 22.7081C24.5834 24.6875 22.6782 26.2199 20.4567 27.1085C18.2352 27.9971 15.7988 28.2013 13.4603 27.6949C11.1219 27.1886 8.98822 25.9947 7.33333 24.2667L4 21.3333" stroke="#ED1C24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 28V21.3333H10.6667" stroke="#ED1C24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 16C4.00662 13.6074 4.72834 11.2713 6.07247 9.29193C7.41659 7.31251 9.32175 5.7801 11.5433 4.8915C13.7648 4.00289 16.2012 3.79867 18.5397 4.30505C20.8781 4.81143 23.0118 6.0053 24.6667 7.73333L28 10.6667" stroke="#ED1C24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 4V10.6667H21.3333" stroke="#ED1C24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h3 class="fmv-highlight__title">Flexible End-of-Term Options</h3>
+          </li>
+          <li class="fmv-highlight">
+            <span class="fmv-highlight__icon" aria-hidden="true"><svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M16 2.66667H2.66667V16L15.0667 28.4C15.3159 28.6443 15.651 28.7811 16 28.7811C16.349 28.7811 16.6841 28.6443 16.9333 28.4L28.4 16.9333C28.6443 16.6841 28.7811 16.349 28.7811 16C28.7811 15.651 28.6443 15.3159 28.4 15.0667L16 2.66667Z" stroke="#ED1C24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M11.3333 9.33333C11.3333 10.4379 10.4379 11.3333 9.33333 11.3333C8.22876 11.3333 7.33333 10.4379 7.33333 9.33333C7.33333 8.22876 8.22876 7.33333 9.33333 7.33333C10.4379 7.33333 11.3333 8.22876 11.3333 9.33333Z" stroke="#ED1C24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h3 class="fmv-highlight__title">Fair Market Value Purchase</h3>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ============ END-OF-TERM OPTIONS (Figma 2404:36827) — homepage glass cards ============ -->
+      <section class="fmv-options">
+        <h2 class="fmv-options__title section-title" data-reveal-group data-reveal="chars">Options That Keep Your Business Flexible</h2>
+        <ul class="fmv-options__grid" data-reveal="stagger">
+          <li class="glass-card fmv-option"><div class="glass-card__inner">
+            <span class="fmv-option__icon" aria-hidden="true"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M15 12H57C60.3137 12 63 14.6863 63 18V60C63 63.3137 60.3137 66 57 66H15C11.6863 66 9 63.3137 9 60V18C9 14.6863 11.6863 12 15 12Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M48 6V18M24 6V18M9 30H63M24 42H30M42 42H48M24 54H30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="fmv-option__body">
+              <h3 class="fmv-option__title">Continue Renting</h3>
+              <p class="fmv-option__desc">The Lessee may have the option to continue renting the equipment on a monthly basis.</p>
+            </div>
+          </div></li>
+          <li class="glass-card fmv-option"><div class="glass-card__inner">
+            <span class="fmv-option__icon" aria-hidden="true"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M63 36C62.9851 41.3834 61.3612 46.6395 58.3369 51.0932C55.3127 55.5468 51.0261 58.9948 46.0276 60.9941C41.0292 62.9935 35.5473 63.453 30.2858 62.3136C25.0243 61.1743 20.2235 58.4881 16.5 54.6L9 48" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 63V48H24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 36C9.0149 30.6166 10.6388 25.3605 13.6631 20.9068C16.6873 16.4532 20.9739 13.0052 25.9723 11.0059C30.9708 9.00651 36.4527 8.547 41.7142 9.68636C46.9757 10.8257 51.7765 13.5119 55.5 17.4L63 24" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M63 9V24H48" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="fmv-option__body">
+              <h3 class="fmv-option__title">Re-Lease</h3>
+              <p class="fmv-option__desc">The Lessee may have the option to “re‐lease” the equipment for a defined term.</p>
+            </div>
+          </div></li>
+          <li class="glass-card fmv-option"><div class="glass-card__inner">
+            <span class="fmv-option__icon" aria-hidden="true"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M36 46.5C36 53.9558 29.9558 60 22.5 60C15.0442 60 9 53.9558 9 46.5C9 39.0442 15.0442 33 22.5 33C29.9558 33 36 39.0442 36 46.5Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M57 12L48 21L32.1 36.9M48 21L57 30M57 12L63 6M57 12L63 18" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="fmv-option__body">
+              <h3 class="fmv-option__title">Purchase</h3>
+              <p class="fmv-option__desc">The Lessee may have the option to purchase the equipment at the then fair market value.</p>
+            </div>
+          </div></li>
+          <li class="glass-card fmv-option"><div class="glass-card__inner">
+            <span class="fmv-option__icon" aria-hidden="true"><svg width="72" height="72" viewBox="0 0 72 72" fill="none"><path d="M27 42L12 27L27 12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 27H45C48.9782 27 52.7936 28.5804 55.6066 31.3934C58.4196 34.2064 60 38.0218 60 42C60 45.9782 58.4196 49.7936 55.6066 52.6066C52.7936 55.4196 48.9782 57 45 57H33" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="fmv-option__body">
+              <h3 class="fmv-option__title">Return</h3>
+              <p class="fmv-option__desc">Or, the Lessee may return the equipment with no further rental obligation.</p>
+            </div>
+          </div></li>
+        </ul>
+      </section>
+
+      <!-- ============ EQUIPMENT EXPERTISE (Figma 2404:36879) ============ -->
+      <section class="fmv-expertise" data-reveal-group>
+        <div class="fmv-expertise__content">
+          <div class="fmv-expertise__text">
+            <h2 class="fmv-title section-title" data-reveal="chars">Financing Should Fit The Asset—And The Business Behind It.</h2>
+            <p class="fmv-lead" data-reveal="from-below" data-reveal-at="0.5" data-reveal-distance="30">MitsuCap takes a consultative approach to equipment financing, considering the equipment, its use, and the needs of your business when developing a financing structure.</p>
+          </div>
+          <a href="/contact/" class="btn btn--dark btn--semibold" data-reveal="from-below" data-reveal-at="0.7" data-reveal-distance="40">Discuss Your Equipment Needs</a>
+        </div>
+        <div class="fmv-expertise__media" data-reveal="from-right" data-reveal-at="0.2" data-reveal-distance="40">
+          <img src="/assets/images/fmv-lease/equipment-boilers.webp" alt="Industrial boiler room with orange burners and yellow and blue pipework" width="1300" height="929" decoding="async" loading="lazy">
+        </div>
+      </section>
+
+      <!-- ============ OUR SOLUTIONS (Figma 2536:29083) — homepage program cards ============ -->
+      <section class="fmv-solutions">
+        <h2 class="fmv-solutions__title section-title" data-reveal-group data-reveal="chars">Our Solutions</h2>
+        <div class="fmv-solutions__grid" data-reveal="stagger">
+          <a href="/services/vendor-programs/" class="program-card">
+            <div class="program-card__top">
+              <h3 class="program-card__title">Vendor Programs</h3>
+              <p class="program-card__text">Programs supporting equipment manufacturers with financing options to boost sales.</p>
+            </div>
+            <div class="program-card__bottom">
+              <span class="explore">Explore<span class="explore__icon" aria-hidden="true"><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span></span></span>
+              <span class="program-card__media"><img src="/assets/images/fmv-lease/solution-vendor.webp" alt="Mobile diesel generator on a trailer" width="720" height="480" decoding="async" loading="lazy"></span>
+            </div>
+          </a>
+          <a href="/services/capital-lease/" class="program-card">
+            <div class="program-card__top">
+              <h3 class="program-card__title">Capital Lease</h3>
+              <p class="program-card__text">A financing structure designed for businesses that intend to use and ultimately own their equipment.</p>
+            </div>
+            <div class="program-card__bottom">
+              <span class="explore">Explore<span class="explore__icon" aria-hidden="true"><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span></span></span>
+              <span class="program-card__media"><img src="/assets/images/fmv-lease/solution-capital.webp" alt="Industrial boiler room with orange burners" width="720" height="514" decoding="async" loading="lazy"></span>
+            </div>
+          </a>
+          <a href="/services/put-lease/" class="program-card">
+            <div class="program-card__top">
+              <h3 class="program-card__title">PUT Lease</h3>
+              <p class="program-card__text">Predetermined purchase option with lower payments throughout the lease term.</p>
+            </div>
+            <div class="program-card__bottom">
+              <span class="explore">Explore<span class="explore__icon" aria-hidden="true"><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span></span></span>
+              <span class="program-card__media program-card__media--tint-20"><img src="/assets/images/fmv-lease/solution-put.webp" alt="Containerised power units on a construction site" width="720" height="514" decoding="async" loading="lazy"></span>
+            </div>
+          </a>
+          <a href="/services/tax-exempt-municipal-lease/" class="program-card">
+            <div class="program-card__top">
+              <h3 class="program-card__title">Tax-Exempt Municipal Lease</h3>
+              <p class="program-card__text">Cost-effective financing for qualified government and public-sector entities.</p>
+            </div>
+            <div class="program-card__bottom">
+              <span class="explore">Explore<span class="explore__icon" aria-hidden="true"><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span></span></span>
+              <span class="program-card__media"><img src="/assets/images/fmv-lease/solution-taxexempt.webp" alt="Satellite dishes and communication towers at sunset" width="720" height="514" decoding="async" loading="lazy"></span>
+            </div>
+          </a>
+          <a href="/services/saleleaseback/" class="program-card">
+            <div class="program-card__top">
+              <h3 class="program-card__title">Sale/Leaseback</h3>
+              <p class="program-card__text">Unlock working capital from equipment you already own while continuing to use it in your business.</p>
+            </div>
+            <div class="program-card__bottom">
+              <span class="explore">Explore<span class="explore__icon" aria-hidden="true"><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span></span></span>
+              <span class="program-card__media program-card__media--tint-0"><img src="/assets/images/fmv-lease/solution-saleleaseback.webp" alt="Rows of industrial battery banks in a facility" width="720" height="514" decoding="async" loading="lazy"></span>
+            </div>
+          </a>
+          <a href="/services/trac-lease/" class="program-card">
+            <div class="program-card__top">
+              <h3 class="program-card__title">TRAC Lease</h3>
+              <p class="program-card__text">A flexible lease for commercial vehicles and fleet equipment with a set residual value.</p>
+            </div>
+            <div class="program-card__bottom">
+              <span class="explore">Explore<span class="explore__icon" aria-hidden="true"><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span></span></span>
+              <span class="program-card__media program-card__media--tint-20"><img src="/assets/images/fmv-lease/solution-trac.webp" alt="Fleet of white semi trucks parked in a row" width="720" height="514" decoding="async" loading="lazy"></span>
+            </div>
+          </a>
+          <a href="/services/bank-credit-union/" class="program-card">
+            <div class="program-card__top">
+              <h3 class="program-card__title">Bank &amp; Credit Union Programs</h3>
+              <p class="program-card__text">Programs created to support equipment leasing relationships for banks and credit unions.</p>
+            </div>
+            <div class="program-card__bottom">
+              <span class="explore">Explore<span class="explore__icon" aria-hidden="true"><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span></span></span>
+              <span class="program-card__media"><img src="/assets/images/fmv-lease/solution-bank.webp" alt="Business people reviewing financial documents at a table" width="720" height="514" decoding="async" loading="lazy"></span>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="presentation">
+        <div class="presentation__card" data-reveal-group>
+          <div class="presentation__media" data-reveal="from-left" data-reveal-at="0.2" data-reveal-distance="40">
+            <img src="/assets/images/shared/presentation.webp" alt="MitsuCap company presentation cover" width="1180" height="916" decoding="async" loading="lazy">
+          </div>
+          <div class="presentation__body">
+            <h2 class="presentation__title" data-reveal="chars" data-reveal-at="0.3">We Finance The Equipment That Makes Your Business Run</h2>
+            <a href="/brochures/" class="btn btn--dark btn--semibold" data-reveal="from-below" data-reveal-at="0.6" data-reveal-distance="30">View Presentation</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="testimonial">
+        <figure class="testimonial__card" data-reveal-group>
+          <blockquote class="testimonial__quote">
+            <img class="testimonial__mark" src="/assets/icons/quote-mark.svg" alt="" width="46.72" height="30.464" data-reveal="from-below" data-reveal-at="0.2" data-reveal-distance="20">
+            <p class="testimonial__text" data-reveal="from-below" data-reveal-at="0.35" data-reveal-distance="40">“The results were clear. The MitsuCap difference was their knowledge of my equipment as well as my industry”</p>
+          </blockquote>
+          <figcaption class="testimonial__author" data-reveal="from-below" data-reveal-at="0.6" data-reveal-distance="30">
+            <img class="testimonial__avatar" src="/assets/images/shared/testimonial-rl.webp" alt="" width="120" height="120" loading="lazy">
+            <span>
+              <cite class="testimonial__name">R.L</cite>
+              <span class="testimonial__role">President, US Sales for airport products</span>
+            </span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="cta cta--inner">
+        <div class="cta__content" data-reveal-group>
+          <div class="cta__text">
+            <h2 class="cta__title" data-reveal="chars">Looking for a First‑Class Business Relationship?</h2>
+            <p class="cta__intro" data-reveal="from-below" data-reveal-at="0.5" data-reveal-distance="40">Let’s talk about your equipment needs and the financing structure that works for your business.</p>
+          </div>
+          <a href="/get-a-quote/" class="btn btn--red btn--shadow-red" data-reveal="from-below" data-reveal-at="0.7" data-reveal-distance="40">Get a Quote</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__grid grid-bg grid-bg--dark blink-grid" aria-hidden="true" data-cell="120" data-anchor="left" data-offset-x="0" data-offset-y="0" data-line="1">
+        <span style="left:480px;top:0"></span>
+        <span style="left:1560px;top:0"></span>
+        <span style="left:960px;top:120px"></span>
+        <span style="left:120px;top:360px"></span>
+        <span style="left:1800px;top:480px"></span>
+        <span style="left:600px;top:720px"></span>
+        <span style="left:1440px;top:720px"></span>
+      </div>
+
+      <div class="footer__inner">
+        <div class="footer__top">
+          <div class="footer__brand">
+            <img src="/assets/icons/logo-footer.svg" alt="MitsuCap" width="211.806" height="61">
+            <ul class="footer__contact">
+              <li class="footer__address">MitsuCap Lease &amp; Finance, Inc. PO Box 262368 Houston, TX 77207</li>
+              <li><a href="tel:2817517548">281 751 7548</a></li>
+              <li><a href="mailto:info@mitsucap.com">info@mitsucap.com</a></li>
+              <li><a href="/contact/">Map &amp; Directions</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__right">
+            <p class="footer__about">We recognize the uniqueness of every equipment acquisition and take a consultative approach when helping you get the equipment you need by the time you need it.</p>
+            <div class="footer__cols">
+              <div class="footer__col">
+                <h2 class="footer__heading">Solutions</h2>
+                <ul class="footer__links">
+                  <li style="width:152px"><a href="/services/fmv-lease-operating-lease/">FMV Lease (Operating Lease)</a></li>
+                  <li><a href="/services/saleleaseback/">Sale/Leaseback</a></li>
+                  <li><a href="/services/put-lease/">PUT Lease</a></li>
+                  <li class="tall"><a href="/services/capital-lease/">Capital Lease</a></li>
+                  <li><a href="/services/tax-exempt-municipal-lease/">Tax-Exempt Municipal Lease</a></li>
+                  <li><a href="/services/trac-lease/">TRAC Lease</a></li>
+                  <li><a href="/services/vendor-programs/">Vendor Programs</a></li>
+                  <li><a href="/services/bank-credit-union/">Bank &amp; Credit Union Programs</a></li>
+                </ul>
+              </div>
+              <div class="footer__col">
+                <h2 class="footer__heading">Company</h2>
+                <ul class="footer__links footer__links--nowrap">
+                  <li><a href="/about-us/">About Us</a></li>
+                  <li><a href="/mitsucaps-philosophy/">MitsuCap’s Philosophy</a></li>
+                  <li><a href="/our-team/">Our Team</a></li>
+                  <li><a href="/industries-served/">Industries Served</a></li>
+                  <li class="tall"><a href="/benefits-of-leasing/">Benefits of Leasing</a></li>
+                  <li class="tall"><a href="/forms/">Forms</a></li>
+                  <li class="tall"><a href="/career/">Career</a></li>
+                  <li class="tall"><a href="/associations/">Associations</a></li>
+                </ul>
+              </div>
+              <div class="footer__col">
+                <h2 class="footer__heading">Follow</h2>
+                <ul class="footer__social">
+                  <li><a href="#"><img src="/assets/icons/x.svg" alt="" width="14" height="14"><span>X (Twitter)</span></a></li>
+                  <li><a href="#"><img src="/assets/icons/linkedin.svg" alt="" width="14" height="14" class="dim"><span>LinkedIn</span></a></li>
+                  <li class="short"><a href="#"><img src="/assets/icons/instagram.svg" alt="" width="14" height="14"><span>Instagram</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__rule"></div>
+
+        <div class="footer__bottom">
+          <p class="footer__copy">© MitsuCap Global Lease &amp; Finance Solutions  2026</p>
+          <p class="footer__credit">Made by Blinto LLC</p>
+        </div>
+      </div>
+    </footer>
+  </div><!-- /.page -->
+
+  <script src="/assets/js/vendor/lenis.min.js"></script>
+  <script src="/assets/js/vendor/gsap.min.js"></script>
+  <script src="/assets/js/vendor/ScrollTrigger.min.js"></script>
+  <script src="/assets/js/vendor/SplitText.min.js"></script>
+  <script src="/script.js"></script>
+</body>
+</html>

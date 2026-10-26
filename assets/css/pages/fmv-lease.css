@@ -1,0 +1,429 @@
+/* =========================================================
+   FMV Lease (Operating Lease) solution page
+   /services/fmv-lease-operating-lease/
+   Figma: desktop 2387:35675 · tablet 2443:23 · mobile 2445:23
+   Shared parts (header, hero, presentation, testimonial, CTA,
+   footer) come from styles.css + site.css. Everything here is
+   scoped to .fmv-page or uses the .fmv- prefix.
+   Reused homepage components:
+     .stat-card  → "Two Common Tests" (rise-in + count-up from script.js)
+     .glass-card → "Options" cards (gradient rim + red hover)
+     .program-card / .explore → "Our Solutions" cards
+   ========================================================= */
+
+/* ---------- Hero ---------- */
+/* Headings here are written in the Title Case Figma renders. No text-transform:
+   the "chars" reveal splits words into one box per letter, so "capitalize"
+   would upper-case every letter. */
+.fmv-page .page-hero__title { text-transform: none; }
+/* Photo proportions per breakpoint (Figma) */
+@media (max-width: 1199px) {
+  .fmv-page .page-hero__media { aspect-ratio: 704 / 582; }
+}
+@media (max-width: 767px) {
+  .fmv-page .page-hero__media { aspect-ratio: 358 / 296; }
+}
+
+/* ---------- Shared bits ---------- */
+.fmv-title { color: var(--charcoal-700); }
+.fmv-lead {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+
+/* =========================================================
+   02 A FLEXIBLE APPROACH (Figma 2404:36705)
+   ========================================================= */
+.fmv-approach {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding: 120px var(--site-gutter);
+  background: var(--white);
+}
+.fmv-approach__head {
+  flex: 0 1 568px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.fmv-approach__sub {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.fmv-approach__cards {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  gap: 32px;
+}
+.fmv-approach__card {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.fmv-approach__media {
+  position: relative;
+  height: 328px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.fmv-approach__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.fmv-approach__media--shade::after { /* 10% black tint on the first photo */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+.fmv-approach__text {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+
+/* =========================================================
+   03 TWO COMMON TESTS (Figma 2404:36613)
+   ========================================================= */
+.fmv-tests {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+  padding: 120px var(--site-gutter);
+  background: var(--warm-white-200);
+}
+.fmv-tests__title { text-align: center; }
+.fmv-tests__list {
+  width: min(1050px, 100%);
+  display: flex;
+  flex-direction: column;
+}
+.fmv-tests .stat-card {
+  height: auto;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 60px;
+}
+.fmv-tests .stat-card + .stat-card { margin-top: 0; }
+.fmv-tests .stat-card--b { min-height: 176px; }
+.fmv-tests .stat-card--a { min-height: 180px; }
+.fmv-tests .stat-card__value {
+  min-width: 0;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+}
+.fmv-tests .stat-card__num { font-size: 80px; text-box: normal; }
+.fmv-tests .stat-card__text {
+  width: 380px;
+  font-weight: 500;
+  text-box: normal;
+}
+
+/* =========================================================
+   04 FLEXIBILITY DURING THE LEASE (Figma 2404:36796)
+   ========================================================= */
+.fmv-flex {
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  padding: var(--section-pad) var(--site-gutter);
+  background: var(--white);
+}
+.fmv-flex__intro {
+  display: flex;
+  align-items: flex-start;
+  gap: 60px;
+}
+.fmv-flex__title { flex: 560 1 0; min-width: 0; }
+.fmv-flex__text { flex: 700 1 0; min-width: 0; }
+.fmv-flex__list {
+  display: flex;
+  gap: 24px;
+}
+.fmv-highlight {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 28px;
+  border-radius: 16px;
+  background: var(--warm-white-200);
+}
+.fmv-highlight__icon {
+  flex-shrink: 0;
+  display: flex;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--white);
+}
+.fmv-highlight__icon svg { display: block; width: 32px; height: 32px; }
+.fmv-highlight__title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+}
+
+/* =========================================================
+   05 END-OF-TERM OPTIONS (Figma 2404:36827) — glass cards
+   ========================================================= */
+.fmv-options {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: var(--section-pad) var(--site-gutter);
+  background: var(--charcoal-900);
+}
+.fmv-options__title {
+  max-width: 640px;
+  color: var(--white);
+}
+.fmv-options__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+/* The homepage glass card has a fixed width and an absolutely placed panel;
+   here the panel sits in the flow so the card follows its content. */
+.fmv-option.glass-card {
+  width: auto;
+  min-height: 358px;
+  padding: 2px;
+  display: flex;
+}
+.fmv-option .glass-card__inner {
+  position: relative;
+  flex: 1 1 auto;
+  gap: 72px;
+  padding: 24px 24px 32px;
+}
+.fmv-option__icon {
+  display: block;
+  width: 72px;
+  height: 72px;
+  color: var(--white);
+  transition: color var(--glass-time) var(--glass-ease);
+}
+.fmv-option__icon svg { display: block; width: 100%; height: 100%; }
+.fmv-option:hover .fmv-option__icon { color: var(--red-500); }
+.fmv-option__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.fmv-option__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--white);
+}
+/* "Continue Renting" needs 257px of the 260px column; keep it on one line on wide
+   screens even when a scrollbar takes a few pixels (Figma shows one line) */
+@media (min-width: 1400px) { .fmv-option__title { white-space: nowrap; } }
+.fmv-option__desc {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color var(--glass-time) var(--glass-ease);
+}
+.fmv-option:hover .fmv-option__desc { color: rgba(255, 255, 255, 0.85); }
+
+/* =========================================================
+   06 EQUIPMENT EXPERTISE (Figma 2404:36879)
+   ========================================================= */
+.fmv-expertise {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  padding: var(--section-pad) var(--site-gutter);
+  background: var(--warm-white-200);
+}
+.fmv-expertise__content {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+.fmv-expertise__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.fmv-expertise__media {
+  flex: 0 1 648px;
+  min-width: 0;
+  aspect-ratio: 648 / 560;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.fmv-expertise__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================================================
+   07 OUR SOLUTIONS (Figma 2536:29083) — homepage program cards
+   ========================================================= */
+.fmv-solutions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  padding: 120px var(--site-gutter);
+  background: var(--white);
+}
+.fmv-solutions__title {
+  max-width: 665px;
+  color: var(--charcoal-700);
+  text-align: center;
+}
+.fmv-solutions__grid {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* the last card sits in the middle */
+  gap: 32px;
+}
+.fmv-solutions__grid > .program-card { flex: 0 0 calc((100% - 64px) / 3); }
+.fmv-solutions .program-card__media { position: relative; }
+.fmv-solutions .program-card__media::after { /* photo tint, as in Figma */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--tint, 0.1));
+  pointer-events: none;
+}
+.fmv-solutions .program-card__media--tint-0 { --tint: 0; }
+.fmv-solutions .program-card__media--tint-20 { --tint: 0.2; }
+
+/* =========================================================
+   TABLET (768–1199px)
+   ========================================================= */
+@media (max-width: 1199px) {
+  .fmv-lead { font-size: 18px; }
+
+  .fmv-approach {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+    padding: 80px var(--site-gutter);
+  }
+  .fmv-approach__head { flex: none; }
+  .fmv-approach__cards { gap: 24px; }
+  .fmv-approach__media { height: auto; aspect-ratio: 340 / 338; }
+  .fmv-approach__text { font-size: 18px; }
+
+  .fmv-tests { gap: 48px; padding: 80px var(--site-gutter); }
+  .fmv-tests .stat-card,
+  .fmv-tests .stat-card--b,
+  .fmv-tests .stat-card--a {
+    min-height: 0;
+    flex-direction: row;
+    gap: 24px;
+    padding: 32px 40px;
+  }
+  .fmv-tests .stat-card--flip .stat-card__value { order: 0; }
+  .fmv-tests .stat-card__value { font-weight: 500; }
+  .fmv-tests .stat-card__num { font-size: 56px; }
+  .fmv-tests .stat-card__text { flex: 1 1 0; width: auto; min-width: 0; max-width: none; }
+
+  .fmv-flex { gap: 48px; }
+  .fmv-flex__intro { flex-direction: column; gap: 24px; }
+  .fmv-flex__title,
+  .fmv-flex__text { flex: none; }
+  .fmv-flex__list { flex-direction: column; gap: 16px; }
+  .fmv-highlight {
+    flex-direction: row;
+    align-items: center;
+    padding: 24px;
+  }
+
+  .fmv-options { gap: 48px; }
+  .fmv-options__title { max-width: none; }
+  .fmv-options__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .fmv-option.glass-card { min-height: 309px; }
+  .fmv-option .glass-card__inner { gap: 48px; }
+
+  .fmv-expertise {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 40px;
+  }
+  .fmv-expertise__media { flex: none; width: 100%; aspect-ratio: 704 / 502; }
+
+  .fmv-solutions { gap: 48px; padding: 80px var(--site-gutter); }
+  .fmv-solutions__grid { flex-direction: column; gap: 24px; }
+  .fmv-solutions__grid > .program-card { flex: none; }
+  .fmv-solutions .program-card__text { max-width: none; } /* Figma text column is 428px */
+}
+
+/* =========================================================
+   MOBILE (≤767px)
+   ========================================================= */
+@media (max-width: 767px) {
+  .fmv-lead { font-size: 16px; }
+
+  .fmv-approach { gap: 32px; padding: 56px var(--site-gutter); }
+  .fmv-approach__cards { flex-direction: column; gap: 32px; }
+  .fmv-approach__card { gap: 16px; }
+  .fmv-approach__media { aspect-ratio: 358 / 316; }
+  .fmv-approach__sub,
+  .fmv-approach__text { font-size: 16px; }
+
+  .fmv-tests { gap: 32px; padding: 56px var(--site-gutter); }
+  .fmv-tests .stat-card,
+  .fmv-tests .stat-card--b,
+  .fmv-tests .stat-card--a {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 24px;
+  }
+  .fmv-tests .stat-card--flip .stat-card__value { order: -1; }
+  .fmv-tests .stat-card__value { font-weight: 600; }
+  .fmv-tests .stat-card__num { font-size: 32px; }
+  .fmv-tests .stat-card__text { flex: none; width: 100%; font-size: 16px; }
+
+  .fmv-flex { gap: 32px; }
+  .fmv-flex__intro { gap: 20px; }
+  .fmv-flex__list { gap: 12px; }
+  .fmv-highlight { gap: 16px; padding: 16px; }
+  .fmv-highlight__title { font-size: 20px; }
+
+  .fmv-options { gap: 32px; }
+  .fmv-options__grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .fmv-option.glass-card { min-height: 0; }
+  .fmv-option .glass-card__inner { gap: 24px; padding: 20px; }
+  .fmv-option__icon { width: 48px; height: 48px; }
+  .fmv-option__title { font-size: 24px; }
+  .fmv-option__desc { font-size: 16px; }
+
+  .fmv-expertise { gap: 32px; }
+  .fmv-expertise__media { aspect-ratio: 358 / 309; }
+
+  .fmv-solutions { gap: 32px; padding: 56px var(--site-gutter); }
+  .fmv-solutions__grid { gap: 16px; }
+  .fmv-solutions .program-card { row-gap: 20px; }
+  .fmv-solutions .program-card__title { font-size: 24px; }
+  .fmv-solutions .program-card__media { height: auto; margin-bottom: 0; aspect-ratio: 318 / 228; }
+  .fmv-solutions .program-card .explore { margin-top: 8px; } /* text → link: 28px, as in Figma */
+}

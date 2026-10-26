@@ -1,0 +1,56 @@
+<!-- ============ SMALL SHARED ELEMENTS ============
+     Buttons, "Explore →" link, pills, eyebrow, section wrapper + section heading.
+     Classes come from /styles.css (.btn, .btn--red, .btn--dark, .btn--shadow-red, .btn--plain,
+     .section-title, .explore) and /assets/css/site.css (everything else). -->
+
+<!-- Buttons (54px tall: 16px/20px padding, 18px text; 14px/20px + 16px text on mobile) -->
+<a href="/get-a-quote/" class="btn btn--red btn--shadow-red">Get a Quote</a>          <!-- primary red -->
+<a href="/contact/" class="btn btn--dark btn--semibold">Contact Us</a>                 <!-- dark (inner pages use SemiBold) -->
+<a href="/" class="btn btn--outline">Back to Home</a>                                  <!-- outlined, 1.5px charcoal border -->
+<a href="/contact/" class="btn btn--outline btn--outline-light">Contact Us</a>         <!-- outlined, on dark backgrounds -->
+<a href="/contact/" class="btn btn--white">Contact Us</a>                              <!-- white, on dark backgrounds -->
+<a href="/get-a-quote/" class="btn btn--red btn--block">Get a Quote</a>                <!-- full width -->
+<div class="btn-row">…buttons…</div>                                                 <!-- 12px gap row, wraps -->
+
+<!-- "Explore →" text link: text + arrow + short 2px underline. On hover the arrow slides
+     through and the underline redraws (same as the homepage program cards).
+     Add class "explore--light" on dark backgrounds. -->
+<a href="/services/fmv-lease-operating-lease/" class="explore">Explore<span class="explore__icon" aria-hidden="true"><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span><span class="explore__arrow"><img src="/assets/icons/arrow-head.svg" alt="" class="explore__head"><img src="/assets/icons/arrow-line.svg" alt="" class="explore__line"></span></span></a>
+<!-- Note: the underline is a fixed 56px (sized for the word "Explore"). For longer words
+     add a page rule, e.g. .my-link.explore::after { width: 90px; }  -->
+
+<!-- Pills / tags -->
+<ul class="pill-list">
+  <li class="pill">Default (white)</li>
+  <li class="pill pill--grey">Grey</li>
+  <li class="pill pill--red">Red tint</li>
+  <li class="pill pill--dark">Dark</li>
+</ul>
+
+<!-- Red uppercase eyebrow -->
+<p class="eyebrow">Brochures</p>
+
+<!-- Section wrapper: 100/80/56px vertical padding, 60/32/16px side margins.
+     Backgrounds: default grey #F4F4F4, .section--white, .section--dark.
+     .section--flush-top / .section--flush-bottom remove the top/bottom padding. -->
+<section class="section section--white">
+
+  <!-- Section heading, centred (title + optional intro). Title sizes: 56 / 40 / 32. -->
+  <div class="section-head section-head--center" data-reveal-group>
+    <h2 class="section-title" data-reveal="chars">Why Lease Your Equipment?</h2>
+    <p class="section-head__intro" data-reveal="from-below" data-reveal-at="0.5" data-reveal-distance="30">Optional intro text.</p>
+  </div>
+
+  <!-- Section heading, split: title left, intro right (stacks below 1200px) -->
+  <div class="section-head section-head--split" data-reveal-group>
+    <h2 class="section-title" data-reveal="chars">Flexible Options at Lease End</h2>
+    <p class="section-head__intro" data-reveal="from-right" data-reveal-at="0.5" data-reveal-distance="30">Yet, at lease end, you have flexible options …</p>
+  </div>
+
+  <!-- Section heading, left aligned: just omit the modifier -->
+  <div class="section-head" data-reveal-group>
+    <h2 class="section-title" data-reveal="chars">Left-aligned title</h2>
+  </div>
+
+  <!-- …page content… -->
+</section>

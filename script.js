@@ -14,6 +14,11 @@
                                  (own trigger).
    - data-count="20"             Number counts up from 0 (stat cards).
 
+   Site header + mega menu (.site-header, all pages; markup in _partials/header.html,
+   styles in assets/css/site.css): see startSiteHeader. Desktop dropdowns open on
+   hover/click; tablet & mobile use a full-screen accordion menu (scroll locked,
+   Lenis paused, focus trapped, Esc closes).
+
    Stat cards (.stat-card): each rises in as it scrolls into view and its
    number counts up; cards entering together play one after another.
 
@@ -87,6 +92,35 @@
   const remeasure = () => { for (const job of measureJobs) job(); runScrollJobs(); };
   let resizeTimer;
   window.addEventListener("resize", () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(remeasure, 120); });
+
+  // Same-page anchor links glide to their target, including full-path links like
+  // /industries-served/#medical while already on that page. The target's
+  // scroll-margin-top is kept as the gap above it.
+  const anchorTarget = (hash) => {
+    if (!hash || hash === "#") return null;
+    try { return document.getElementById(decodeURIComponent(hash.slice(1))); } catch (_) { return null; }
+  };
+  const anchorY = (target) => scrollPos() + target.getBoundingClientRect().top - (parseFloat(getComputedStyle(target).scrollMarginTop) || 0);
+  document.addEventListener("click", (e) => {
+    const link = e.target.closest("a[href*='#']");
+    if (!link || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    const url = new URL(link.href, location.href);
+    if (url.origin !== location.origin || url.pathname !== location.pathname) return;
+    const target = anchorTarget(url.hash);
+    if (!target) return;
+    e.preventDefault();
+    scrollToY(anchorY(target));
+    history.pushState(null, "", url.hash);
+  });
+  // Arriving with a #hash: settle on the target once pinned sections have measured
+  window.addEventListener("load", () => {
+    const target = anchorTarget(location.hash);
+    if (!target) return;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const y = anchorY(target);
+      if (lenis) lenis.scrollTo(y, { immediate: true }); else window.scrollTo(0, y);
+    }));
+  });
   window.addEventListener("load", remeasure);
   if (document.fonts) document.fonts.ready.then(remeasure);
 
@@ -114,37 +148,163 @@
     });
   }
 
-  // Tablet & mobile menu (☰). Locks page scrolling while open; Esc or a link closes it.
-  function startMobileMenu() {
-    const menu = document.getElementById("mobile-menu");
-    const toggle = document.querySelector(".navbar__toggle");
-    if (!menu || !toggle) return;
-    const closeBtn = menu.querySelector(".mobile-menu__close");
+  // Site header + mega menu (shared by every page; markup in _partials/header.html).
+  // Desktop (≥1200px): hovering a top item opens its dropdown (short close delay so the
+  //   pointer can travel to the panel); clicking/Enter/Space toggles it; ↓ opens it and
+  //   focuses the first link; Esc closes and returns focus; clicking outside or tabbing
+  //   away closes it. Wide panels are shifted back inside the page margins.
+  // Tablet & mobile: ☰ opens .site-nav as a full-screen dialog (scroll locked, Lenis
+  //   paused, focus kept inside, Esc / close button / any link closes it). Top items
+  //   become accordion sections; one is open at a time.
+  function startSiteHeader(header) {
+    const nav = header.querySelector(".site-nav");
+    const toggle = header.querySelector(".site-header__toggle");
+    const closeBtn = header.querySelector(".site-nav__close");
+    const items = [...header.querySelectorAll(".site-nav__item")];
+    if (!nav) return;
+    const desktop = window.matchMedia("(min-width: 1200px)");
+    const HOVER_CLOSE_DELAY = 180;
+    let openItem = null;
+    let closeTimer = 0;
+    let menuOpen = false;
+    let openedAt = 0; // scroll position when a desktop dropdown opened
 
-    function open() {
-      menu.hidden = false;
-      requestAnimationFrame(() => menu.classList.add("is-open"));
+    const triggerOf = (item) => item.querySelector(".site-nav__trigger");
+    const megaOf = (item) => item.querySelector(".mega");
+
+    // Keep a wide dropdown inside the page margins (desktop only)
+    function placePanel(item) {
+      const mega = megaOf(item);
+      mega.style.setProperty("--mega-shift", "0px");
+      if (!desktop.matches) return;
+      const gutter = parseFloat(getComputedStyle(header).paddingRight) || 0;
+      const itemLeft = item.getBoundingClientRect().left;
+      const left = itemLeft + mega.offsetLeft;
+      const maxLeft = document.documentElement.clientWidth - gutter - mega.offsetWidth;
+      const shift = Math.min(0, maxLeft - left);
+      mega.style.setProperty("--mega-shift", `${Math.round(shift)}px`);
+    }
+
+    function openSection(item) {
+      clearTimeout(closeTimer);
+      if (openItem && openItem !== item) closeSection(openItem);
+      openItem = item;
+      openedAt = scrollPos();
+      if (desktop.matches) placePanel(item);
+      item.classList.add("is-open");
+      triggerOf(item).setAttribute("aria-expanded", "true");
+    }
+    function closeSection(item) {
+      if (!item) return;
+      item.classList.remove("is-open");
+      triggerOf(item).setAttribute("aria-expanded", "false");
+      if (openItem === item) openItem = null;
+    }
+
+    items.forEach((item) => {
+      const trigger = triggerOf(item);
+      trigger.addEventListener("click", (e) => {
+        // A desktop mouse click on an item the pointer already opened keeps it open
+        const hoverOpened = desktop.matches && e.pointerType === "mouse";
+        if (item.classList.contains("is-open") && !hoverOpened) closeSection(item);
+        else openSection(item);
+      });
+      trigger.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowDown" && desktop.matches) {
+          e.preventDefault();
+          openSection(item);
+          const first = item.querySelector(".mega__link");
+          if (first) first.focus();
+        }
+      });
+      // Desktop hover (mouse only; touch uses click)
+      item.addEventListener("pointerenter", (e) => {
+        if (!desktop.matches || e.pointerType !== "mouse") return;
+        openSection(item);
+      });
+      item.addEventListener("pointerleave", (e) => {
+        if (!desktop.matches || e.pointerType !== "mouse") return;
+        clearTimeout(closeTimer);
+        closeTimer = setTimeout(() => closeSection(item), HOVER_CLOSE_DELAY);
+      });
+      // Tabbing out of a desktop dropdown closes it
+      item.addEventListener("focusout", (e) => {
+        if (!desktop.matches) return;
+        if (!item.contains(e.relatedTarget)) closeSection(item);
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (desktop.matches && openItem && !openItem.contains(e.target)) closeSection(openItem);
+    });
+
+    // Scrolling the page away (>60px) closes a desktop dropdown (the homepage hero
+    // reveal would otherwise slide over it)
+    scrollJobs.push(() => {
+      if (openItem && desktop.matches && Math.abs(scrollPos() - openedAt) > 60) closeSection(openItem);
+    });
+
+    // ---- Tablet & mobile overlay ----
+    const focusables = () => [...nav.querySelectorAll("a[href], button:not([disabled])")]
+      .filter((el) => el.offsetParent !== null || el === closeBtn);
+
+    function openMenu() {
+      menuOpen = true;
+      nav.classList.add("is-open");
+      nav.setAttribute("role", "dialog");
+      nav.setAttribute("aria-modal", "true");
       toggle.setAttribute("aria-expanded", "true");
       root.classList.add("menu-open");
       if (lenis) lenis.stop();
-      closeBtn.focus();
+      // wait a moment for visibility to switch on before moving focus
+      setTimeout(() => { if (menuOpen && closeBtn) closeBtn.focus(); }, 30);
     }
-    function close() {
-      menu.classList.remove("is-open");
+    function closeMenu(returnFocus = true) {
+      if (!menuOpen) return;
+      menuOpen = false;
+      nav.classList.remove("is-open");
+      nav.removeAttribute("role");
+      nav.removeAttribute("aria-modal");
       toggle.setAttribute("aria-expanded", "false");
       root.classList.remove("menu-open");
       if (lenis) lenis.start();
-      setTimeout(() => { if (!menu.classList.contains("is-open")) menu.hidden = true; }, 350);
-      toggle.focus();
+      if (openItem) closeSection(openItem);
+      if (returnFocus) toggle.focus();
     }
-    toggle.addEventListener("click", open);
-    closeBtn.addEventListener("click", close);
-    menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", close));
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !menu.hidden) close(); });
-    // Close if the window grows to desktop width while open
-    window.matchMedia("(min-width: 1200px)").addEventListener("change", (e) => { if (e.matches && !menu.hidden) close(); });
+    if (toggle) toggle.addEventListener("click", openMenu);
+    if (closeBtn) closeBtn.addEventListener("click", () => closeMenu());
+    nav.querySelectorAll("a[href]").forEach((a) => a.addEventListener("click", () => {
+      closeMenu(false);
+      if (desktop.matches && openItem) closeSection(openItem);
+    }));
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        if (menuOpen) { closeMenu(); return; }
+        if (openItem) {
+          const trigger = triggerOf(openItem);
+          closeSection(openItem);
+          trigger.focus();
+        }
+        return;
+      }
+      // Focus trap inside the open overlay
+      if (e.key === "Tab" && menuOpen) {
+        const list = focusables();
+        if (!list.length) return;
+        const first = list[0], last = list[list.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    });
+
+    // Switching between desktop and tablet layouts resets everything
+    desktop.addEventListener("change", () => {
+      closeMenu(false);
+      if (openItem) closeSection(openItem);
+    });
   }
-  startMobileMenu();
+  document.querySelectorAll(".site-header").forEach(startSiteHeader);
 
   // Hero scroll scene (modelled on theclimatepledge.com).
   // While the stage is pinned, a rounded window grows from the headline photo to

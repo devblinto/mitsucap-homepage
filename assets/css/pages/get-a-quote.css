@@ -1,0 +1,629 @@
+/* =========================================================
+   Get a Quote page — /get-a-quote/
+   Figma: desktop 2546:23 · tablet 2549:23 · mobile 2549:839
+   Shared parts (header, hero, footer) come from styles.css + site.css.
+   Everything here is scoped to .page-get-a-quote and uses the .gaq prefix.
+   Form behaviour (validation, Netlify POST, success state, progress,
+   drag & drop): /assets/js/pages/get-a-quote.js
+   ========================================================= */
+
+.page-get-a-quote {
+  --gaq-line: #e0e0e2;          /* Figma input / divider stroke */
+  --gaq-line-strong: #c7c7cc;   /* selected radio option stroke */
+  --gaq-muted: #a0a0a5;         /* charcoal-200: placeholders, "$" prefix */
+}
+
+/* =========================================================
+   02 QUOTE FORM SECTION (Figma 2546:109)
+   Desktop: form (848) | 32 | sidebar (440): progress card, then contact card.
+   ========================================================= */
+.page-get-a-quote .gaq {
+  padding-bottom: 120px;
+}
+.page-get-a-quote .gaq__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 848fr) minmax(360px, 440fr);
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "main progress"
+    "main contact";
+  column-gap: 32px;
+  row-gap: 24px;
+  align-items: start;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.page-get-a-quote .gaq__main { grid-area: main; min-width: 0; }
+.page-get-a-quote .gaq-progress { grid-area: progress; }
+.page-get-a-quote .gaq-contact { grid-area: contact; }
+
+.page-get-a-quote .gaq__hidden { display: none; }
+
+/* After a successful send: success panel + contact card only */
+.page-get-a-quote .gaq__layout.is-sent { grid-template-rows: auto; grid-template-areas: "main contact"; }
+.page-get-a-quote .gaq__layout.is-sent .gaq-progress { display: none; }
+
+.page-get-a-quote .gaq__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.page-get-a-quote .gaq__form[hidden] { display: none; }
+
+/* ---------- Step card ---------- */
+.page-get-a-quote .gaq-step {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+  margin: 0;
+  padding: 40px;
+  border: 0;
+  border-radius: 16px;
+  background: var(--warm-white-200);
+  scroll-margin-top: 24px;
+}
+.page-get-a-quote .gaq-step:focus { outline: none; }
+.page-get-a-quote .gaq-step__head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--gaq-line);
+}
+.page-get-a-quote .gaq-step__num {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--red-500);
+  color: var(--warm-white-200);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.page-get-a-quote .gaq-step__title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+}
+
+/* ---------- Rows + fields ---------- */
+.page-get-a-quote .gaq-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.page-get-a-quote .gaq-row--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.page-get-a-quote .gaq-row--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.page-get-a-quote .gaq-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+/* Side-by-side fields share row tracks (subgrid), so inputs stay level when a long
+   label wraps (e.g. "Company / Organization Name" between 1200 and ~1300px). */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 768px) {
+    .page-get-a-quote :is(.gaq-row--2, .gaq-row--3) { row-gap: 0; }
+    .page-get-a-quote :is(.gaq-row--2, .gaq-row--3) > .gaq-field {
+      display: grid;
+      grid-row: span 4; /* label · control · hint · error */
+      grid-template-rows: subgrid;
+      gap: 0;
+    }
+    .page-get-a-quote :is(.gaq-row--2, .gaq-row--3) > .gaq-field > .gaq-field__label { align-self: end; margin-bottom: 8px; }
+    .page-get-a-quote :is(.gaq-row--2, .gaq-row--3) > .gaq-field > :is(.gaq-field__hint, .gaq-field__error) { margin-top: 8px; }
+  }
+}
+.page-get-a-quote .gaq-field__label {
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+}
+.page-get-a-quote .gaq-field__req {
+  margin-left: 4px;
+  font-size: 18px;
+  color: var(--red-500);
+}
+.page-get-a-quote .gaq-field__hint {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.page-get-a-quote .gaq-field__error {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--red-600); /* darker red: 4.9:1 on the grey card */
+}
+.page-get-a-quote .gaq-field__error:empty { display: none; }
+
+/* ---------- Text inputs, selects, date, textarea ---------- */
+.page-get-a-quote .gaq-input {
+  display: block;
+  width: 100%;
+  height: 56px;
+  margin: 0;
+  padding: 0 16px;
+  border: 1px solid var(--gaq-line);
+  border-radius: 8px;
+  background-color: var(--white);
+  font: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.page-get-a-quote .gaq-input::placeholder { color: var(--gaq-muted); opacity: 1; }
+.page-get-a-quote .gaq-input:hover { border-color: var(--gaq-line-strong); }
+.page-get-a-quote .gaq-input:focus { outline: none; }
+.page-get-a-quote .gaq-input:focus-visible {
+  border-color: var(--charcoal-400);
+  outline: 2px solid var(--red-500);
+  outline-offset: 2px;
+}
+.page-get-a-quote .gaq-input[aria-invalid="true"] { border-color: var(--red-500); }
+
+.page-get-a-quote .gaq-input--select {
+  padding-right: 44px;
+  background-image: url("/assets/icons/get-a-quote/chevron.svg");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 20px 20px;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  text-overflow: ellipsis;
+}
+/* Empty required select shows its placeholder in grey */
+.page-get-a-quote .gaq-input--select:invalid { color: var(--gaq-muted); }
+.page-get-a-quote .gaq-input--select option { color: var(--charcoal-500); }
+
+.page-get-a-quote .gaq-input--date {
+  position: relative;
+  padding-right: 16px;
+  background-image: url("/assets/icons/get-a-quote/calendar.svg");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 20px 20px;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.page-get-a-quote .gaq-input--date:invalid { color: var(--gaq-muted); } /* empty: "mm / dd / yyyy" in grey */
+.page-get-a-quote .gaq-input--date::-webkit-datetime-edit { padding: 0; }
+.page-get-a-quote .gaq-input--date::-webkit-calendar-picker-indicator {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  padding: 0;
+  opacity: 0; /* the Figma calendar icon (background) shows through */
+  cursor: pointer;
+}
+
+.page-get-a-quote .gaq-input--textarea {
+  height: 160px;
+  min-height: 160px;
+  padding: 16px;
+  resize: vertical;
+}
+
+/* "$" prefix */
+.page-get-a-quote .gaq-affix { position: relative; }
+.page-get-a-quote .gaq-affix__prefix {
+  position: absolute;
+  top: 50%;
+  left: 17px;
+  transform: translateY(-50%);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--gaq-muted);
+  pointer-events: none;
+}
+.page-get-a-quote .gaq-affix .gaq-input { padding-left: 36px; }
+
+/* ---------- Condition: New / Used radio buttons ---------- */
+.page-get-a-quote .gaq-choice {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+.page-get-a-quote .gaq-choice legend {
+  float: left; /* lets the legend sit in the flow like a normal label (the fieldset's 8px gap follows it) */
+  width: 100%;
+  padding: 0;
+}
+.page-get-a-quote .gaq-choice__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.page-get-a-quote .gaq-choice__option {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 24px 14px 20px;
+  border: 1px solid var(--gaq-line);
+  border-radius: 8px;
+  background: var(--white);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+  cursor: pointer;
+  transition: border-color .2s ease;
+}
+.page-get-a-quote .gaq-choice__option:hover,
+.page-get-a-quote .gaq-choice__option:has(:checked) { border-color: var(--gaq-line-strong); }
+.page-get-a-quote .gaq-choice__input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  background: url("/assets/icons/get-a-quote/radio.svg") center / 18px 18px no-repeat;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+.page-get-a-quote .gaq-choice__input:checked { background-image: url("/assets/icons/get-a-quote/radio-selected.svg"); }
+.page-get-a-quote .gaq-choice__input:focus { outline: none; }
+.page-get-a-quote .gaq-choice__option:has(:focus-visible) {
+  outline: 2px solid var(--red-500);
+  outline-offset: 2px;
+}
+
+/* ---------- Attachments drop zone ---------- */
+.page-get-a-quote .gaq-upload { position: relative; } /* anchors the visually hidden file input */
+.page-get-a-quote .gaq-upload__zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 16px;
+  border: 1.5px dashed var(--gaq-muted);
+  border-radius: 12px;
+  background: var(--white);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color .2s ease, background-color .2s ease;
+}
+.page-get-a-quote .gaq-upload__zone:hover,
+.page-get-a-quote .gaq-upload.is-dragover .gaq-upload__zone {
+  border-color: var(--red-500);
+  background: var(--red-50);
+}
+.page-get-a-quote .gaq-upload:has(.gaq-upload__input:focus-visible) .gaq-upload__zone {
+  outline: 2px solid var(--red-500);
+  outline-offset: 2px;
+}
+.page-get-a-quote .gaq-upload__text {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+}
+.page-get-a-quote .gaq-upload__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.page-get-a-quote .gaq-upload__list:empty { display: none; }
+.page-get-a-quote .gaq-upload__file {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px 10px 16px;
+  border: 1px solid var(--gaq-line);
+  border-radius: 8px;
+  background: var(--white);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.page-get-a-quote .gaq-upload__name {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.page-get-a-quote .gaq-upload__size { flex: none; color: var(--charcoal-400); font-weight: 400; }
+.page-get-a-quote .gaq-upload__remove {
+  flex: none;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--red-600);
+  cursor: pointer;
+}
+.page-get-a-quote .gaq-upload__remove:hover { background: var(--red-50); }
+.page-get-a-quote .gaq-upload__remove:focus-visible { outline: 2px solid var(--red-500); outline-offset: 1px; }
+
+/* ---------- Submit row ---------- */
+.page-get-a-quote .gaq-submit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+}
+.page-get-a-quote .gaq-submit__btn { border: 0; cursor: pointer; }
+.page-get-a-quote .gaq-submit__btn[aria-disabled="true"] { opacity: .7; cursor: progress; }
+.page-get-a-quote .gaq-submit__note {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.page-get-a-quote .gaq-submit__status {
+  flex: 1 0 100%;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--red-600);
+}
+.page-get-a-quote .gaq-submit__status:empty { display: none; }
+
+/* ---------- Success state (after a successful POST) ---------- */
+.page-get-a-quote .gaq-success {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 56px 40px;
+  border-radius: 16px;
+  background: var(--warm-white-200);
+  scroll-margin-top: 24px;
+}
+.page-get-a-quote .gaq-success[hidden] { display: none; }
+.page-get-a-quote .gaq-success:focus { outline: none; }
+.page-get-a-quote .gaq-success__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  background: var(--red-500);
+  color: var(--white);
+}
+.page-get-a-quote .gaq-success__title {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+}
+.page-get-a-quote .gaq-success__text {
+  max-width: 560px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.page-get-a-quote .gaq-success .btn { margin-top: 16px; }
+
+/* =========================================================
+   PROGRESS CARD (Figma 2546:349)
+   ========================================================= */
+.page-get-a-quote .gaq-progress {
+  padding: 32px;
+  border-radius: 16px;
+  background: var(--warm-white-200);
+}
+.page-get-a-quote .gaq-progress__list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* 2 × 16px connector between steps, centred under the 36px circle */
+.page-get-a-quote .gaq-progress__step + .gaq-progress__step::before {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 16px;
+  margin-left: 17px;
+  background: var(--gaq-line);
+}
+.page-get-a-quote .gaq-progress__link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 0;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+  transition: color .2s ease;
+}
+.page-get-a-quote .gaq-progress__link:hover { color: var(--charcoal-500); }
+.page-get-a-quote .gaq-progress__link:focus-visible {
+  outline: 2px solid var(--red-500);
+  outline-offset: 2px;
+}
+.page-get-a-quote .gaq-progress__num {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid var(--gaq-line);
+  border-radius: 50%;
+  background: var(--white);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-400);
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+.page-get-a-quote .gaq-progress__step.is-active .gaq-progress__link { color: var(--charcoal-500); }
+.page-get-a-quote .gaq-progress__step.is-active .gaq-progress__num {
+  border-color: var(--red-500);
+  background: var(--red-500);
+  color: var(--warm-white-200);
+}
+
+/* =========================================================
+   CONTACT DETAILS CARD (Figma 2546:366) — dark, white icons
+   ========================================================= */
+.page-get-a-quote .gaq-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 48px 40px;
+  border-radius: 16px;
+  background: var(--charcoal-900);
+}
+.page-get-a-quote .gaq-contact__title {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--warm-white-200);
+}
+.page-get-a-quote .gaq-contact__list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 100%;
+}
+.page-get-a-quote .gaq-contact__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.page-get-a-quote .gaq-contact__icon {
+  flex: none;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.06);
+}
+.page-get-a-quote .gaq-contact__text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  min-width: 0;
+}
+.page-get-a-quote .gaq-contact__label {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--warm-white-200);
+}
+.page-get-a-quote .gaq-contact__value {
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6);
+  overflow-wrap: anywhere;
+}
+.page-get-a-quote .gaq-contact__link { transition: color .2s ease; }
+.page-get-a-quote .gaq-contact__link:hover { color: var(--white); }
+.page-get-a-quote .gaq-contact__link:focus-visible {
+  outline: 2px solid var(--red-500);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+.page-get-a-quote .gaq-contact__btn { margin-top: 8px; } /* 32 + 8 = Figma's 40px */
+
+/* =========================================================
+   TABLET (768–1199) — Figma 2549:23
+   Single column: progress → form → contact details.
+   ========================================================= */
+@media (max-width: 1199px) {
+  .page-get-a-quote .gaq { padding-bottom: var(--section-pad); }
+  .page-get-a-quote .gaq__layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: none;
+    grid-template-areas:
+      "progress"
+      "main"
+      "contact";
+    max-width: none;
+  }
+  .page-get-a-quote .gaq__layout.is-sent { grid-template-areas: "main" "contact"; }
+
+  .page-get-a-quote .gaq-step { padding: 32px; }
+  .page-get-a-quote .gaq-field__label { font-size: 18px; }
+  .page-get-a-quote .gaq-choice__option { font-size: 18px; }
+
+  .page-get-a-quote .gaq-progress { padding: 24px 32px; }
+
+  .page-get-a-quote .gaq-contact { padding: 40px 32px; }
+  .page-get-a-quote .gaq-contact__title { font-size: 32px; }
+  .page-get-a-quote .gaq-contact__value { font-size: 18px; }
+
+  .page-get-a-quote .gaq-success { padding: 48px 32px; }
+  .page-get-a-quote .gaq-success__title { font-size: 32px; }
+  .page-get-a-quote .gaq-success__text { font-size: 18px; }
+}
+
+/* =========================================================
+   MOBILE (≤767) — Figma 2549:839
+   Every row stacks; 52px inputs; 16px text.
+   ========================================================= */
+@media (max-width: 767px) {
+  .page-get-a-quote .gaq__layout { row-gap: 16px; }
+  .page-get-a-quote .gaq__form { gap: 16px; }
+
+  .page-get-a-quote .gaq-step {
+    gap: 20px;
+    padding: 24px 20px;
+  }
+  .page-get-a-quote .gaq-step__num { font-size: 16px; }
+  .page-get-a-quote .gaq-step__title { flex: 1 1 0; min-width: 0; font-size: 20px; }
+
+  .page-get-a-quote .gaq-row,
+  .page-get-a-quote .gaq-row--2,
+  .page-get-a-quote .gaq-row--3 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+  }
+  .page-get-a-quote .gaq-field__label { font-size: 16px; }
+  .page-get-a-quote .gaq-field__req { font-size: 16px; font-weight: 400; }
+  .page-get-a-quote .gaq-field__hint,
+  .page-get-a-quote .gaq-field__error { font-size: 14px; }
+
+  .page-get-a-quote .gaq-input { height: 52px; font-size: 16px; }
+  .page-get-a-quote .gaq-input--textarea { height: 160px; }
+  .page-get-a-quote .gaq-affix__prefix { font-size: 16px; }
+  .page-get-a-quote .gaq-affix .gaq-input { padding-left: 34px; }
+  .page-get-a-quote .gaq-choice__option { font-size: 16px; }
+  .page-get-a-quote .gaq-upload__text { font-size: 16px; }
+  .page-get-a-quote .gaq-upload__file,
+  .page-get-a-quote .gaq-upload__remove { font-size: 14px; }
+
+  .page-get-a-quote .gaq-submit__note,
+  .page-get-a-quote .gaq-submit__status { font-size: 14px; }
+
+  .page-get-a-quote .gaq-progress { padding: 20px; }
+  .page-get-a-quote .gaq-progress__num { font-size: 16px; }
+
+  .page-get-a-quote .gaq-contact { padding: 32px 20px; }
+  .page-get-a-quote .gaq-contact__title { font-size: 20px; }
+  .page-get-a-quote .gaq-contact__label,
+  .page-get-a-quote .gaq-contact__value { font-size: 16px; }
+
+  .page-get-a-quote .gaq-success { padding: 40px 20px; gap: 12px; }
+  .page-get-a-quote .gaq-success__icon { width: 56px; height: 56px; }
+  .page-get-a-quote .gaq-success__title { font-size: 20px; }
+  .page-get-a-quote .gaq-success__text { font-size: 16px; }
+}

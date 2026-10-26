@@ -1,0 +1,286 @@
+/* =========================================================
+   Tax-Exempt Municipal Lease — /services/tax-exempt-municipal-lease/
+   Figma: desktop 2519:828 · tablet 2523:23 · mobile 2523:595
+   Page-only styles, all scoped under .page-tax-exempt.
+   Shared pieces (header, hero, presentation, testimonial, CTA,
+   footer, buttons, glass cards, program cards, explore link)
+   come from /styles.css and /assets/css/site.css.
+   ========================================================= */
+
+.page-tax-exempt .tx-pad-lg { padding-block: 120px; } /* sections with 120px top/bottom in Figma */
+
+/* Figma capitalises headings; the copy is typed in title case instead (text-transform would
+   capitalise every letter once the "chars" reveal splits them). */
+
+/* ---------- Flexible Financing For Essential Public Equipment (Figma 2519:915) ---------- */
+.page-tax-exempt .tx-public {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1380px;
+  margin: 0 auto;
+}
+.page-tax-exempt .tx-public__head {
+  flex: 0 1 568px;
+  min-width: 0;
+}
+.page-tax-exempt .tx-public__head .section-title { color: var(--charcoal-700); }
+.page-tax-exempt .tx-public__cards {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+}
+.page-tax-exempt .tx-public-card {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.page-tax-exempt .tx-public-card__media {
+  position: relative;
+  height: 328px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.page-tax-exempt .tx-public-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.page-tax-exempt .tx-public-card__media--wash::after { /* 10% black wash on the first photo, as in Figma */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+.page-tax-exempt .tx-public-card__text {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+
+/* ---------- Tax-Exempt Lease Explanation (Figma 2519:939) ----------
+   Three stacked "paper" rows: translucent white texture + 10% noise,
+   a soft 80px shadow (it shows through the next row's translucent fill). */
+.page-tax-exempt .tx-explain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+.page-tax-exempt .tx-explain .section-title {
+  color: var(--charcoal-700);
+  text-align: center;
+}
+.page-tax-exempt .tx-rows {
+  width: 100%;
+  max-width: 1050.5px;
+  display: flex;
+  flex-direction: column;
+}
+.page-tax-exempt .tx-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 60px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+  background: url("/assets/images/tax-exempt-municipal-lease/row-1.webp") center / cover no-repeat;
+}
+.page-tax-exempt .tx-row::before { /* Figma noise layer at 10% */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/assets/images/stat-noise.webp") left top / 2048px 2048px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+.page-tax-exempt .tx-row > * { position: relative; }
+.page-tax-exempt .tx-row--2 {
+  border-color: transparent;
+  background-image: url("/assets/images/tax-exempt-municipal-lease/row-2.webp");
+}
+.page-tax-exempt .tx-row--3 { background-image: url("/assets/images/tax-exempt-municipal-lease/row-3.webp"); }
+.page-tax-exempt .tx-row__title {
+  flex: 0 1 var(--tx-title-w, 355px); /* Figma text boxes: 355 / 306 / 310px — each title wraps to two lines */
+  min-width: 0;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+}
+.page-tax-exempt .tx-row--2 { --tx-title-w: 306px; }
+.page-tax-exempt .tx-row--3 { --tx-title-w: 310px; }
+.page-tax-exempt .tx-row__text {
+  flex: 0 1 380px;
+  min-width: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+/* Middle row: text on the left, right-aligned title on the right (title stays first in the DOM) */
+.page-tax-exempt .tx-row--flip .tx-row__title { order: 2; text-align: right; }
+
+/* ---------- How The Municipal Lease Structure Works (Figma 2519:977) ----------
+   Reuses the homepage glass card (rim, red hover); here the panel sits in the flow. */
+.page-tax-exempt .tx-works .section-title {
+  max-width: 640px;
+  margin-bottom: 80px;
+  color: var(--white);
+}
+.page-tax-exempt .tx-works__grid {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+}
+.page-tax-exempt .tx-works-card {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
+  display: flex;
+  padding: 2px;
+  background: linear-gradient(147.53deg, #0c0c0d 5.3%, #636369 24.07%, #272729 38.38%, #636369 58.94%, #37373a 81.29%, #0c0c0d 94.71%);
+}
+.page-tax-exempt .tx-works-card .glass-card__inner {
+  position: relative;
+  flex: 1 1 auto;
+  gap: 72px;
+  padding: 24px 24px 32px;
+  background: linear-gradient(147.58deg, #141519 25.86%, #222224 94.71%);
+}
+.page-tax-exempt .tx-works-card__icon { width: 72px; height: 72px; }
+.page-tax-exempt .tx-works-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.page-tax-exempt .tx-works-card__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--white);
+}
+.page-tax-exempt .tx-works-card__desc {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color var(--glass-time) var(--glass-ease);
+}
+.page-tax-exempt .tx-works-card:hover .tx-works-card__desc { color: rgba(255, 255, 255, 0.85); }
+
+/* ---------- Our Solutions (Figma 2536:30127) — homepage program cards in a 3-col grid ---------- */
+.page-tax-exempt .tx-solutions .section-title {
+  margin-bottom: 80px;
+  color: var(--charcoal-700);
+  text-align: center;
+}
+.page-tax-exempt .tx-solutions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+.page-tax-exempt .tx-solutions__grid .program-card { flex: none; }
+.page-tax-exempt .tx-solutions__grid .program-card:last-child:nth-child(3n + 1) { grid-column: 2; } /* lone last card sits in the middle */
+.page-tax-exempt .program-card__text {
+  font-weight: 500;
+  line-height: 1.4;
+}
+.page-tax-exempt .program-card__media { position: relative; }
+.page-tax-exempt .program-card__media::after { /* Figma's 10–20% black wash on the thumbnails */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--wash, 0.1));
+  pointer-events: none;
+}
+.page-tax-exempt .program-card__media--dim { --wash: 0.2; }
+.page-tax-exempt .program-card__media--clear { --wash: 0; } /* Sale/Leaseback thumbnail has no wash */
+
+/* =========================================================
+   TABLET (768–1199) — Figma 2523:23
+   ========================================================= */
+@media (max-width: 1199px) {
+  .page-tax-exempt .tx-pad-lg { padding-block: var(--section-pad); }
+
+  /* Flexible financing: heading on top, two photos side by side */
+  .page-tax-exempt .tx-public {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+  }
+  .page-tax-exempt .tx-public__head { flex: none; }
+  .page-tax-exempt .tx-public__cards { flex: none; gap: 24px; }
+  .page-tax-exempt .tx-public-card__media { height: 338px; }
+  .page-tax-exempt .tx-public-card__text { font-size: 18px; }
+
+  /* Explanation rows: full width, 240px title column, Regular body */
+  .page-tax-exempt .tx-explain { gap: 48px; }
+  .page-tax-exempt .tx-rows { max-width: none; }
+  .page-tax-exempt .tx-row { gap: 0; padding: 32px 40px; } /* the 240px title column makes the space */
+  .page-tax-exempt .tx-row__title { flex: 0 0 240px; font-size: 32px; }
+  .page-tax-exempt .tx-row__text { flex: 1 1 0; font-weight: 400; }
+
+  /* Dark cards: one per row */
+  .page-tax-exempt .tx-works .section-title { max-width: none; margin-bottom: 48px; }
+  .page-tax-exempt .tx-works__grid { flex-direction: column; gap: 16px; }
+  .page-tax-exempt .tx-works-card { flex: none; background-image: linear-gradient(163.54deg, #0c0c0d 5.3%, #636369 24.07%, #272729 38.38%, #636369 58.94%, #37373a 81.29%, #0c0c0d 94.71%); }
+  .page-tax-exempt .tx-works-card .glass-card__inner { gap: 40px; background-image: linear-gradient(163.68deg, #141519 25.86%, #222224 94.71%); }
+  .page-tax-exempt .tx-works-card__desc { font-weight: 400; }
+
+  /* Solutions: one horizontal card per row (program-card tablet layout from styles.css) */
+  .page-tax-exempt .tx-solutions .section-title { margin-bottom: 48px; }
+  .page-tax-exempt .tx-solutions__grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .page-tax-exempt .tx-solutions__grid .program-card:last-child:nth-child(3n + 1) { grid-column: auto; }
+  .page-tax-exempt .program-card__text { max-width: none; }
+}
+
+/* =========================================================
+   MOBILE (≤767) — Figma 2523:595
+   ========================================================= */
+@media (max-width: 767px) {
+  .page-tax-exempt .section-title { line-height: 1.11; }
+
+  /* Flexible financing: photos stack */
+  .page-tax-exempt .tx-public { gap: 32px; }
+  .page-tax-exempt .tx-public__cards { flex-direction: column; gap: 32px; }
+  .page-tax-exempt .tx-public-card { flex: none; width: 100%; }
+  .page-tax-exempt .tx-public-card__media { height: 356px; }
+  .page-tax-exempt .tx-public-card__text { font-size: 16px; }
+
+  /* Explanation rows: title over text */
+  .page-tax-exempt .tx-explain { gap: 32px; }
+  .page-tax-exempt .tx-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 24px;
+  }
+  .page-tax-exempt .tx-row__title { flex: none; font-size: 20px; }
+  .page-tax-exempt .tx-row__text { flex: none; font-size: 16px; }
+  .page-tax-exempt .tx-row--flip .tx-row__title { order: 0; text-align: left; }
+
+  /* Dark cards */
+  .page-tax-exempt .tx-works .section-title { margin-bottom: 32px; }
+  .page-tax-exempt .tx-works__grid { gap: 12px; }
+  .page-tax-exempt .tx-works-card { background-image: linear-gradient(154.46deg, #0c0c0d 5.3%, #636369 24.07%, #272729 38.38%, #636369 58.94%, #37373a 81.29%, #0c0c0d 94.71%); }
+  .page-tax-exempt .tx-works-card .glass-card__inner { gap: 24px; padding: 20px; background-image: linear-gradient(154.61deg, #141519 25.86%, #222224 94.71%); }
+  .page-tax-exempt .tx-works-card__icon { width: 48px; height: 48px; }
+  .page-tax-exempt .tx-works-card__title { font-size: 24px; }
+  .page-tax-exempt .tx-works-card__desc { font-size: 16px; }
+
+  /* Solutions: photo on top (program-card mobile layout from styles.css) */
+  .page-tax-exempt .tx-solutions .section-title { margin-bottom: 32px; }
+  .page-tax-exempt .tx-solutions__grid { gap: 16px; }
+  .page-tax-exempt .tx-solutions__grid .program-card { row-gap: 12px; }
+  .page-tax-exempt .tx-solutions__grid .program-card__title { font-size: 24px; }
+  .page-tax-exempt .tx-solutions__grid .program-card__media { height: 228px; margin-bottom: 8px; }
+  .page-tax-exempt .tx-solutions__grid .explore { margin-top: 16px; } /* 12px gap + 4px spacer + 12px gap in Figma */
+}

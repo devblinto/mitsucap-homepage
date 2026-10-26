@@ -1,0 +1,205 @@
+/* =========================================================
+   Brochures — /brochures/ (+ /brochures/coming-soon/)
+   Figma: desktop 2600:514 · tablet 2603:635 · mobile 2603:2027
+          Coming Soon: desktop 2600:23 · tablet 2603:23 · mobile 2603:1408
+   Page-only styles, all scoped under .page-brochures.
+   Shared pieces (header, hero, coming-soon card, testimonial, CTA, footer,
+   buttons, section + section heading) come from /styles.css and /assets/css/site.css.
+   Headings are typed in title case: text-transform can't be used on
+   data-reveal="chars" headings (SplitText wraps every letter).
+   ========================================================= */
+
+/* ---------- "Download Our Brochures" (Figma 2600:991) ---------- */
+.page-brochures .brochures__head { margin-bottom: 56px; }
+
+.page-brochures .brochures__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px;
+}
+
+/* Split card: text panel left, photo right */
+.page-brochures .brochure-card {
+  display: grid;
+  grid-template-columns: minmax(0, 344fr) minmax(0, 300fr);   /* Figma 344 + 300 = 644 */
+  min-height: 341px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--warm-white-200);
+}
+.page-brochures .brochure-card__body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  min-width: 0;
+  padding: 32px;
+}
+.page-brochures .brochure-card__top {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.page-brochures .brochure-card__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+}
+.page-brochures .brochure-card__text {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.page-brochures .brochure-card__media {
+  position: relative;
+  min-height: 100%;
+}
+.page-brochures .brochure-card__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Black tint over some photos (Figma: 20% or 10% per card, none on others) */
+.page-brochures .brochure-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: var(--brochure-tint, 0);
+  pointer-events: none;
+}
+.page-brochures .brochure-card__media--tint-10 { --brochure-tint: 0.1; }
+.page-brochures .brochure-card__media--tint-20 { --brochure-tint: 0.2; }
+
+/* "Download Brochure ↓" link: text + download icon + short 2px underline
+   (same family as the shared "Explore →" link; on hover the arrow drops
+   through the tray and the underline redraws). */
+.page-brochures .brochure-dl {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  align-self: flex-start;
+  gap: 5px;
+  height: 34px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+  white-space: nowrap;
+}
+.page-brochures .brochure-dl__label {
+  position: relative;
+  padding-top: 1px;
+}
+.page-brochures .brochure-dl__label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 25.75px;
+  width: 90%;          /* Figma: 154px under "Download Brochure" (171px) */
+  height: 2px;
+  background: var(--charcoal-500);
+}
+.page-brochures .brochure-dl__icon {
+  position: relative;
+  flex: none;
+  width: 24px;
+  height: 24px;
+}
+.page-brochures .brochure-dl__arrows {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 18.7px;      /* clips the arrow just above the tray */
+  overflow: hidden;
+}
+.page-brochures .brochure-dl__arrows img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 24px;
+  height: 24px;
+  transition: transform .5s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.page-brochures .brochure-dl__arrows img:first-child { transform: translateY(-18px); }
+.page-brochures .brochure-dl__base {
+  position: absolute;
+  left: 4px;
+  top: 19.9px;
+  width: 16px;
+  height: 1.6px;
+  border-radius: 0.8px;
+  background: var(--charcoal-500);
+}
+.page-brochures .brochure-dl:hover .brochure-dl__arrows img:first-child,
+.page-brochures .brochure-dl:focus-visible .brochure-dl__arrows img:first-child { transform: translateY(0); }
+.page-brochures .brochure-dl:hover .brochure-dl__arrows img:last-child,
+.page-brochures .brochure-dl:focus-visible .brochure-dl__arrows img:last-child { transform: translateY(18px); }
+.page-brochures .brochure-dl:hover .brochure-dl__label::after,
+.page-brochures .brochure-dl:focus-visible .brochure-dl__label::after {
+  animation: explore-line .8s cubic-bezier(0.65, 0, 0.35, 1);   /* keyframes in /styles.css */
+}
+.page-brochures .brochure-dl:focus-visible {
+  outline: 2px solid var(--red-500);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   TABLET (768–1199px) — Figma 2603:1224: one card per row
+   ========================================================= */
+@media (max-width: 1199px) {
+  .page-brochures .brochures__head { margin-bottom: 40px; }
+  .page-brochures .brochures__grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  /* Figma groups the cards in pairs: 16px inside a pair, 24px between pairs */
+  .page-brochures .brochure-card:nth-child(2n + 3) { margin-top: 8px; }
+
+  .page-brochures .brochure-card {
+    grid-template-columns: minmax(0, 424fr) minmax(0, 280fr);   /* Figma 424 + 280 = 704 */
+    min-height: 320px;
+  }
+  .page-brochures .brochure-card__body { padding: 28px; }
+  .page-brochures .brochure-card__title { font-size: 24px; }
+  .page-brochures .brochure-card__text { font-weight: 400; }
+}
+
+/* =========================================================
+   MOBILE (≤767px) — Figma 2603:2623: photo on top, text below
+   ========================================================= */
+@media (max-width: 767px) {
+  .page-brochures .brochures__head { margin-bottom: 32px; }
+  .page-brochures .brochures__head .section-title { line-height: 1.11; }   /* Figma "Mobile/H2 Tight" */
+  .page-brochures .brochure-card:nth-child(2n + 3) { margin-top: 0; }
+
+  .page-brochures .brochure-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+  }
+  .page-brochures .brochure-card__media {
+    order: -1;
+    height: 220px;
+    min-height: 0;
+  }
+  .page-brochures .brochure-card__body {
+    justify-content: flex-start;
+    padding: 20px;
+  }
+  .page-brochures .brochure-card__title { font-size: 20px; }
+  .page-brochures .brochure-card__text { font-size: 16px; }
+
+  .page-brochures .brochure-dl { font-size: 16px; }
+  .page-brochures .brochure-dl__label { padding-top: 2.5px; }
+  .page-brochures .brochure-dl__label::after { top: 24.25px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-brochures .brochure-dl__arrows img { transition: none; }
+  .page-brochures .brochure-dl:is(:hover, :focus-visible) .brochure-dl__arrows img:first-child { transform: translateY(-18px); }
+  .page-brochures .brochure-dl:is(:hover, :focus-visible) .brochure-dl__arrows img:last-child { transform: none; }
+  .page-brochures .brochure-dl:is(:hover, :focus-visible) .brochure-dl__label::after { animation: none; }
+}

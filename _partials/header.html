@@ -1,0 +1,148 @@
+<!-- ============ SITE HEADER + MEGA MENU (shared · Figma 2647:23 / 2648:423 / 2648:92) ============
+     Copy exactly. Do not edit links here per page; to mark the current page add
+     aria-current="page" to its .mega__link and class "is-current" to its .site-nav__item.
+     Behaviour: script.js → startSiteHeader(). Styles: assets/css/site.css. -->
+<header class="site-header">
+  <div class="site-header__bar">
+    <a href="/" class="site-header__logo" aria-label="MitsuCap home">
+      <img src="/assets/icons/logo.svg" alt="MitsuCap – Global lease &amp; finance solutions" width="222.222" height="64">
+    </a>
+
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <!-- Tablet & mobile overlay: logo + close (hidden on desktop) -->
+      <div class="site-nav__top">
+        <a href="/" class="site-header__logo" aria-label="MitsuCap home"><img src="/assets/icons/logo.svg" alt="" width="133.333" height="38.4"></a>
+        <button type="button" class="site-nav__close" aria-label="Close menu"><svg aria-hidden="true"><use href="/assets/icons/mega-menu.svg#close"/></svg></button>
+      </div>
+
+      <ul class="site-nav__list">
+        <li class="site-nav__item">
+          <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-about">About Us<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+          <div class="mega" id="mega-about">
+            <div class="mega__panel">
+              <div class="mega__group">
+                <p class="mega__heading">About Us</p>
+                <div class="mega__cols">
+                  <ul class="mega__col">
+                    <li><a class="mega__link" href="/about-us/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#about-us"/></svg></span><span class="mega__label">About Us</span></a></li>
+                    <li><a class="mega__link" href="/mitsucaps-philosophy/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#philosophy"/></svg></span><span class="mega__label">MitsuCap’s Philosophy</span></a></li>
+                    <li><a class="mega__link" href="/our-team/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#our-team"/></svg></span><span class="mega__label">Our Team</span></a></li>
+                    <li><a class="mega__link" href="/associations/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#associations"/></svg></span><span class="mega__label">Associations</span></a></li>
+                    <li><a class="mega__link" href="/affiliations/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#affiliations"/></svg></span><span class="mega__label">Affiliations</span></a></li>
+                    <li><a class="mega__link" href="/career/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#career"/></svg></span><span class="mega__label">Career</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="site-nav__item">
+          <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-solutions">Solutions<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+          <div class="mega" id="mega-solutions">
+            <div class="mega__panel">
+              <div class="mega__group mega__group--2col">
+                <p class="mega__heading">Solutions</p>
+                <div class="mega__cols">
+                  <ul class="mega__col">
+                    <li><a class="mega__link" href="/services/fmv-lease-operating-lease/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#fmv"/></svg></span><span class="mega__label">FMV Lease (Operating Lease)</span></a></li>
+                    <li><a class="mega__link" href="/services/saleleaseback/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#saleleaseback"/></svg></span><span class="mega__label">Sale/Leaseback</span></a></li>
+                    <li><a class="mega__link" href="/services/put-lease/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#put"/></svg></span><span class="mega__label">PUT Lease</span></a></li>
+                    <li><a class="mega__link" href="/services/capital-lease/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#capital"/></svg></span><span class="mega__label">Capital Lease</span></a></li>
+                  </ul>
+                  <ul class="mega__col">
+                    <li><a class="mega__link" href="/services/tax-exempt-municipal-lease/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#tax-exempt"/></svg></span><span class="mega__label">Tax-Exempt Municipal Lease</span></a></li>
+                    <li><a class="mega__link" href="/services/trac-lease/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#trac"/></svg></span><span class="mega__label">TRAC Lease</span></a></li>
+                    <li><a class="mega__link" href="/services/vendor-programs/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#vendor"/></svg></span><span class="mega__label">Vendor Programs</span></a></li>
+                    <li><a class="mega__link" href="/services/bank-credit-union/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#bank"/></svg></span><span class="mega__label">Bank &amp; Credit Union Programs</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="site-nav__item">
+          <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-industries">Industries<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+          <div class="mega" id="mega-industries">
+            <div class="mega__panel">
+              <div class="mega__group mega__group--3col">
+                <p class="mega__heading">Industries</p>
+                <div class="mega__cols">
+                  <ul class="mega__col">
+                    <li><a class="mega__link" href="/industries-served/#power-utility"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#power"/></svg></span><span class="mega__label">Power – Utility</span></a></li>
+                    <li><a class="mega__link" href="/industries-served/#aviation-airport"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#aviation"/></svg></span><span class="mega__label">Aviation – Airport</span></a></li>
+                    <li><a class="mega__link" href="/industries-served/#rail-intermodal"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#rail"/></svg></span><span class="mega__label">Rail – Intermodal</span></a></li>
+                    <li><a class="mega__link" href="/industries-served/#material-handling-warehousing"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#material"/></svg></span><span class="mega__label">Material Handling – Warehousing</span></a></li>
+                    <li><a class="mega__link" href="/industries-served/#industrial-manufacturing"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#industrial"/></svg></span><span class="mega__label">Industrial – Manufacturing</span></a></li>
+                  </ul>
+                  <ul class="mega__col">
+                    <li><a class="mega__link" href="/industries-served/#construction-rental-houses"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#construction"/></svg></span><span class="mega__label">Construction – Rental Houses</span></a></li>
+                    <li><a class="mega__link" href="/industries-served/#oil-gas-chemical"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#oilgas"/></svg></span><span class="mega__label">Oil/Gas – Chemical</span></a></li>
+                    <li><a class="mega__link" href="/industries-served/#specialty-vehicles-equipment"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#trac"/></svg></span><span class="mega__label">Specialty Vehicles/<wbr>Equipment</span></a></li>
+                    <li><a class="mega__link" href="/industries-served/#medical"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#medical"/></svg></span><span class="mega__label">Medical</span></a></li>
+                  </ul>
+                  <ul class="mega__col">
+                    <li><a class="mega__link" href="/industries-served/#marine"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#marine"/></svg></span><span class="mega__label">Marine</span></a></li>
+                    <li><a class="mega__link" href="/industries-served/#computer-electronics"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#computer"/></svg></span><span class="mega__label">Computer – Electronics</span></a></li>
+                    <li><a class="mega__link" href="/industries-served/#vendor-private-label"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#vendor-private"/></svg></span><span class="mega__label">Vendor – Private Label</span></a></li>
+                    <li><a class="mega__link" href="/industries-served/#bank-credit-union"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#bank"/></svg></span><span class="mega__label">Bank &amp; Credit Union</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="site-nav__item">
+          <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-resources">Resources<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+          <div class="mega" id="mega-resources">
+            <div class="mega__panel mega__panel--multi">
+              <div class="mega__group">
+                <p class="mega__heading">Resources</p>
+                <div class="mega__cols">
+                  <ul class="mega__col">
+                    <li><a class="mega__link" href="/blog/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#blog"/></svg></span><span class="mega__label">Blog</span></a></li>
+                    <li><a class="mega__link" href="/news/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#news"/></svg></span><span class="mega__label">News</span></a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="mega__group">
+                <p class="mega__heading">Information</p>
+                <div class="mega__cols">
+                  <ul class="mega__col">
+                    <li><a class="mega__link" href="/benefits-of-leasing/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#benefits"/></svg></span><span class="mega__label">Benefits of Leasing</span></a></li>
+                    <li><a class="mega__link" href="/brochures/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#brochures"/></svg></span><span class="mega__label">Brochures</span></a></li>
+                    <li><a class="mega__link" href="/forms/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#forms"/></svg></span><span class="mega__label">Forms</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="site-nav__item">
+          <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-contact">Contact Us<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+          <div class="mega" id="mega-contact">
+            <div class="mega__panel">
+              <div class="mega__group">
+                <p class="mega__heading">Contact Us</p>
+                <div class="mega__cols">
+                  <ul class="mega__col">
+                    <li><a class="mega__link" href="/contact/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#contact"/></svg></span><span class="mega__label">Contact Us</span></a></li>
+                    <li><a class="mega__link" href="/schedule-a-call/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#schedule"/></svg></span><span class="mega__label">Schedule a Call</span></a></li>
+                    <li><a class="mega__link" href="/get-a-quote/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#quote"/></svg></span><span class="mega__label">Get a Quote</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <!-- Tablet & mobile overlay: full-width CTA (hidden on desktop) -->
+      <div class="site-nav__cta"><a href="/get-a-quote/" class="btn btn--red btn--block">Get a Quote</a></div>
+    </nav>
+
+    <div class="site-header__actions">
+      <a href="/get-a-quote/" class="btn btn--red site-header__cta">Get a Quote</a>
+      <button type="button" class="site-header__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>

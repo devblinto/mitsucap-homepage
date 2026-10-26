@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get a Quote | MitsuCap</title>
+  <meta name="description" content="Request an equipment leasing or financing quote from MitsuCap. Complete the form and a MitsuCap Financial Advisor will contact you shortly.">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/pages/get-a-quote.css">
+  <script>
+    document.documentElement.classList.add("js");
+    // Hide reveal targets until GSAP has set their start states. Fallback: show everything after 4s.
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("anim");
+      setTimeout(function () { if (!window.__animReady) document.documentElement.classList.remove("anim"); }, 4000);
+    }
+  </script>
+</head>
+<body class="page-get-a-quote">
+  <div class="page">
+
+    <div class="page-top">
+      <div class="page-top__bg" aria-hidden="true">
+        <div class="page-glow"><span class="page-glow__white"></span><span class="page-glow__pink"></span><span class="page-glow__red"></span></div>
+      </div>
+
+      <header class="site-header">
+        <div class="site-header__bar">
+          <a href="/" class="site-header__logo" aria-label="MitsuCap home">
+            <img src="/assets/icons/logo.svg" alt="MitsuCap – Global lease &amp; finance solutions" width="222.222" height="64">
+          </a>
+
+          <nav class="site-nav" id="site-nav" aria-label="Main">
+            <!-- Tablet & mobile overlay: logo + close (hidden on desktop) -->
+            <div class="site-nav__top">
+              <a href="/" class="site-header__logo" aria-label="MitsuCap home"><img src="/assets/icons/logo.svg" alt="" width="133.333" height="38.4"></a>
+              <button type="button" class="site-nav__close" aria-label="Close menu"><svg aria-hidden="true"><use href="/assets/icons/mega-menu.svg#close"/></svg></button>
+            </div>
+
+            <ul class="site-nav__list">
+              <li class="site-nav__item">
+                <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-about">About Us<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+                <div class="mega" id="mega-about">
+                  <div class="mega__panel">
+                    <div class="mega__group">
+                      <p class="mega__heading">About Us</p>
+                      <div class="mega__cols">
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/about-us/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#about-us"/></svg></span><span class="mega__label">About Us</span></a></li>
+                          <li><a class="mega__link" href="/mitsucaps-philosophy/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#philosophy"/></svg></span><span class="mega__label">MitsuCap’s Philosophy</span></a></li>
+                          <li><a class="mega__link" href="/our-team/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#our-team"/></svg></span><span class="mega__label">Our Team</span></a></li>
+                          <li><a class="mega__link" href="/associations/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#associations"/></svg></span><span class="mega__label">Associations</span></a></li>
+                          <li><a class="mega__link" href="/affiliations/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#affiliations"/></svg></span><span class="mega__label">Affiliations</span></a></li>
+                          <li><a class="mega__link" href="/career/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#career"/></svg></span><span class="mega__label">Career</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="site-nav__item">
+                <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-solutions">Solutions<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+                <div class="mega" id="mega-solutions">
+                  <div class="mega__panel">
+                    <div class="mega__group mega__group--2col">
+                      <p class="mega__heading">Solutions</p>
+                      <div class="mega__cols">
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/services/fmv-lease-operating-lease/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#fmv"/></svg></span><span class="mega__label">FMV Lease (Operating Lease)</span></a></li>
+                          <li><a class="mega__link" href="/services/saleleaseback/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#saleleaseback"/></svg></span><span class="mega__label">Sale/Leaseback</span></a></li>
+                          <li><a class="mega__link" href="/services/put-lease/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#put"/></svg></span><span class="mega__label">PUT Lease</span></a></li>
+                          <li><a class="mega__link" href="/services/capital-lease/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#capital"/></svg></span><span class="mega__label">Capital Lease</span></a></li>
+                        </ul>
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/services/tax-exempt-municipal-lease/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#tax-exempt"/></svg></span><span class="mega__label">Tax-Exempt Municipal Lease</span></a></li>
+                          <li><a class="mega__link" href="/services/trac-lease/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#trac"/></svg></span><span class="mega__label">TRAC Lease</span></a></li>
+                          <li><a class="mega__link" href="/services/vendor-programs/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#vendor"/></svg></span><span class="mega__label">Vendor Programs</span></a></li>
+                          <li><a class="mega__link" href="/services/bank-credit-union/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#bank"/></svg></span><span class="mega__label">Bank &amp; Credit Union Programs</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="site-nav__item">
+                <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-industries">Industries<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+                <div class="mega" id="mega-industries">
+                  <div class="mega__panel">
+                    <div class="mega__group mega__group--3col">
+                      <p class="mega__heading">Industries</p>
+                      <div class="mega__cols">
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/industries-served/#power-utility"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#power"/></svg></span><span class="mega__label">Power – Utility</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#aviation-airport"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#aviation"/></svg></span><span class="mega__label">Aviation – Airport</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#rail-intermodal"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#rail"/></svg></span><span class="mega__label">Rail – Intermodal</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#material-handling-warehousing"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#material"/></svg></span><span class="mega__label">Material Handling – Warehousing</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#industrial-manufacturing"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#industrial"/></svg></span><span class="mega__label">Industrial – Manufacturing</span></a></li>
+                        </ul>
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/industries-served/#construction-rental-houses"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#construction"/></svg></span><span class="mega__label">Construction – Rental Houses</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#oil-gas-chemical"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#oilgas"/></svg></span><span class="mega__label">Oil/Gas – Chemical</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#specialty-vehicles-equipment"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#trac"/></svg></span><span class="mega__label">Specialty Vehicles/<wbr>Equipment</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#medical"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#medical"/></svg></span><span class="mega__label">Medical</span></a></li>
+                        </ul>
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/industries-served/#marine"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#marine"/></svg></span><span class="mega__label">Marine</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#computer-electronics"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#computer"/></svg></span><span class="mega__label">Computer – Electronics</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#vendor-private-label"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#vendor-private"/></svg></span><span class="mega__label">Vendor – Private Label</span></a></li>
+                          <li><a class="mega__link" href="/industries-served/#bank-credit-union"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#bank"/></svg></span><span class="mega__label">Bank &amp; Credit Union</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="site-nav__item">
+                <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-resources">Resources<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+                <div class="mega" id="mega-resources">
+                  <div class="mega__panel mega__panel--multi">
+                    <div class="mega__group">
+                      <p class="mega__heading">Resources</p>
+                      <div class="mega__cols">
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/blog/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#blog"/></svg></span><span class="mega__label">Blog</span></a></li>
+                          <li><a class="mega__link" href="/news/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#news"/></svg></span><span class="mega__label">News</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="mega__group">
+                      <p class="mega__heading">Information</p>
+                      <div class="mega__cols">
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/benefits-of-leasing/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#benefits"/></svg></span><span class="mega__label">Benefits of Leasing</span></a></li>
+                          <li><a class="mega__link" href="/brochures/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#brochures"/></svg></span><span class="mega__label">Brochures</span></a></li>
+                          <li><a class="mega__link" href="/forms/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#forms"/></svg></span><span class="mega__label">Forms</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="site-nav__item is-current">
+                <button type="button" class="site-nav__trigger" aria-expanded="false" aria-controls="mega-contact">Contact Us<svg class="site-nav__chevron site-nav__chevron--desktop" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron-nav"/></svg><svg class="site-nav__chevron site-nav__chevron--mobile" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#chevron"/></svg></button>
+                <div class="mega" id="mega-contact">
+                  <div class="mega__panel">
+                    <div class="mega__group">
+                      <p class="mega__heading">Contact Us</p>
+                      <div class="mega__cols">
+                        <ul class="mega__col">
+                          <li><a class="mega__link" href="/contact/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#contact"/></svg></span><span class="mega__label">Contact Us</span></a></li>
+                          <li><a class="mega__link" href="/schedule-a-call/"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#schedule"/></svg></span><span class="mega__label">Schedule a Call</span></a></li>
+                          <li><a class="mega__link" href="/get-a-quote/" aria-current="page"><span class="mega__tile"><svg class="mega__icon" aria-hidden="true"><use href="/assets/icons/mega-menu.svg#quote"/></svg></span><span class="mega__label">Get a Quote</span></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+
+            <!-- Tablet & mobile overlay: full-width CTA (hidden on desktop) -->
+            <div class="site-nav__cta"><a href="/get-a-quote/" class="btn btn--red btn--block">Get a Quote</a></div>
+          </nav>
+
+          <div class="site-header__actions">
+            <a href="/get-a-quote/" class="btn btn--red site-header__cta">Get a Quote</a>
+            <button type="button" class="site-header__toggle" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+          </div>
+        </div>
+      </header>
+
+      <!-- ============ 01 HERO (Figma 2546:100) ============ -->
+      <section class="page-hero" data-reveal-group="load">
+        <div class="page-hero__text">
+          <h1 class="page-hero__title" data-reveal="chars">Request A Quote</h1>
+          <p class="page-hero__intro" data-reveal="from-below" data-reveal-at="0.5" data-reveal-distance="30">Complete the form below and a MitsuCap Financial Advisor will contact you shortly.</p>
+        </div>
+        <div class="page-hero__media" data-reveal="from-right" data-reveal-at="0.4" data-reveal-distance="40">
+          <img src="/assets/images/get-a-quote/hero.webp" alt="Row of yellow mobile cranes with extended booms under a blue sky" width="1110" height="793" decoding="async" fetchpriority="high">
+        </div>
+      </section>
+    </div>
+
+    <main>
+      <!-- ============ 02 QUOTE FORM (Figma 2546:109) ============
+           Desktop: form left, sidebar (progress + contact details) right.
+           Tablet/mobile: progress → form → contact details (the sidebar wrapper becomes display: contents).
+           Netlify Forms: no backend yet; /assets/js/pages/get-a-quote.js validates and posts with fetch
+           and shows the success panel. Field names must stay in this static HTML for Netlify to detect them. -->
+      <section class="section section--white gaq" aria-label="Quote request">
+        <div class="gaq__layout">
+          <nav class="gaq-progress" aria-label="Quote form steps" data-reveal-group data-reveal="from-right" data-reveal-distance="40">
+            <ol class="gaq-progress__list">
+              <li class="gaq-progress__step is-active"><a class="gaq-progress__link" href="#gaq-step-1" aria-current="step"><span class="gaq-progress__num" aria-hidden="true">1</span><span class="gaq-progress__label">Contact Information</span></a></li>
+              <li class="gaq-progress__step"><a class="gaq-progress__link" href="#gaq-step-2"><span class="gaq-progress__num" aria-hidden="true">2</span><span class="gaq-progress__label">Customer Information</span></a></li>
+              <li class="gaq-progress__step"><a class="gaq-progress__link" href="#gaq-step-3"><span class="gaq-progress__num" aria-hidden="true">3</span><span class="gaq-progress__label">Equipment &amp; Payment</span></a></li>
+            </ol>
+          </nav>
+
+          <div class="gaq__main">
+            <form class="gaq__form" id="quote-form" name="get-a-quote" method="POST" action="/get-a-quote/?sent=1" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="get-a-quote">
+              <div class="gaq__hidden" hidden>
+                <label>Don’t fill this out if you’re human: <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+                <!-- Extra attachment slots: the visible picker accepts up to 3 files and the page JS
+                     sends them as attachment-1 … attachment-3 (Netlify stores one file per field). -->
+                <input type="file" name="attachment-2" tabindex="-1">
+                <input type="file" name="attachment-3" tabindex="-1">
+              </div>
+
+              <fieldset class="gaq-step" id="gaq-step-1" aria-labelledby="gaq-step-1-title" tabindex="-1" data-reveal-group data-reveal="from-below" data-reveal-distance="40">
+                <div class="gaq-step__head">
+                  <span class="gaq-step__num" aria-hidden="true">1</span>
+                  <h2 class="gaq-step__title" id="gaq-step-1-title"><span class="sr-only">Step 1: </span>Contact Information</h2>
+                </div>
+                <div class="gaq-row gaq-row--2">
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-first-name">First Name<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <input class="gaq-input" id="gaq-first-name" name="first-name" type="text" autocomplete="given-name" required aria-describedby="gaq-first-name-error">
+                    <p class="gaq-field__error" id="gaq-first-name-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-last-name">Last Name<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <input class="gaq-input" id="gaq-last-name" name="last-name" type="text" autocomplete="family-name" required aria-describedby="gaq-last-name-error">
+                    <p class="gaq-field__error" id="gaq-last-name-error"></p>
+                  </div>
+                </div>
+                <div class="gaq-row gaq-row--2">
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-title">Title</label>
+                    <input class="gaq-input" id="gaq-title" name="title" type="text" autocomplete="organization-title" aria-describedby="gaq-title-error">
+                    <p class="gaq-field__error" id="gaq-title-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-email">Email<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <input class="gaq-input" id="gaq-email" name="email" type="email" autocomplete="email" required aria-describedby="gaq-email-error">
+                    <p class="gaq-field__error" id="gaq-email-error"></p>
+                  </div>
+                </div>
+                <div class="gaq-row gaq-row--3">
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-phone">Phone Number<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <input class="gaq-input" id="gaq-phone" name="phone" type="tel" autocomplete="tel" required aria-describedby="gaq-phone-error">
+                    <p class="gaq-field__error" id="gaq-phone-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-phone-ext">Ext.</label>
+                    <input class="gaq-input" id="gaq-phone-ext" name="phone-ext" type="text" autocomplete="tel-extension" inputmode="numeric" maxlength="10" aria-describedby="gaq-phone-ext-error">
+                    <p class="gaq-field__error" id="gaq-phone-ext-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-cellular">Cellular</label>
+                    <input class="gaq-input" id="gaq-cellular" name="cellular" type="tel" autocomplete="off" aria-describedby="gaq-cellular-error">
+                    <p class="gaq-field__error" id="gaq-cellular-error"></p>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="gaq-step" id="gaq-step-2" aria-labelledby="gaq-step-2-title" tabindex="-1" data-reveal-group data-reveal="from-below" data-reveal-distance="40">
+                <div class="gaq-step__head">
+                  <span class="gaq-step__num" aria-hidden="true">2</span>
+                  <h2 class="gaq-step__title" id="gaq-step-2-title"><span class="sr-only">Step 2: </span>Customer Information</h2>
+                </div>
+                <div class="gaq-row gaq-row--2">
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-company">Company / Organization Name<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <input class="gaq-input" id="gaq-company" name="company" type="text" autocomplete="organization" required aria-describedby="gaq-company-error">
+                    <p class="gaq-field__error" id="gaq-company-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-entity-type">Entity Type<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <select class="gaq-input gaq-input--select" id="gaq-entity-type" name="entity-type" required data-required-msg="Please select an entity type." aria-describedby="gaq-entity-type-error">
+                      <option value="" disabled selected>Select Entity</option>
+                      <option>Corporation</option>
+                      <option>Individual</option>
+                      <option>LLC</option>
+                      <option>Municipal</option>
+                      <option>Partnership</option>
+                      <option>Sole Proprietorship</option>
+                      <option>Others</option>
+                    </select>
+                    <p class="gaq-field__error" id="gaq-entity-type-error"></p>
+                  </div>
+                </div>
+                <div class="gaq-row gaq-row--1">
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-website">Website<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <input class="gaq-input" id="gaq-website" name="website" type="text" autocomplete="url" inputmode="url" required aria-describedby="gaq-website-error" data-validate="website">
+                    <p class="gaq-field__error" id="gaq-website-error"></p>
+                  </div>
+                </div>
+                <div class="gaq-row gaq-row--2">
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-address-line-1">Address Line 1</label>
+                    <input class="gaq-input" id="gaq-address-line-1" name="address-line-1" type="text" autocomplete="address-line1" aria-describedby="gaq-address-line-1-error">
+                    <p class="gaq-field__error" id="gaq-address-line-1-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-address-line-2">Address Line 2</label>
+                    <input class="gaq-input" id="gaq-address-line-2" name="address-line-2" type="text" autocomplete="address-line2" aria-describedby="gaq-address-line-2-error">
+                    <p class="gaq-field__error" id="gaq-address-line-2-error"></p>
+                  </div>
+                </div>
+                <div class="gaq-row gaq-row--3">
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-city">City<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <input class="gaq-input" id="gaq-city" name="city" type="text" autocomplete="address-level2" required aria-describedby="gaq-city-error">
+                    <p class="gaq-field__error" id="gaq-city-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-state">State<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <select class="gaq-input gaq-input--select" id="gaq-state" name="state" required data-required-msg="Please select a state." aria-describedby="gaq-state-error">
+                      <option value="" disabled selected>Select State</option>
+                      <option>Alabama</option>
+                      <option>Alaska</option>
+                      <option>Arizona</option>
+                      <option>Arkansas</option>
+                      <option>California</option>
+                      <option>Colorado</option>
+                      <option>Connecticut</option>
+                      <option>Delaware</option>
+                      <option>District of Columbia</option>
+                      <option>Florida</option>
+                      <option>Georgia</option>
+                      <option>Hawaii</option>
+                      <option>Idaho</option>
+                      <option>Illinois</option>
+                      <option>Indiana</option>
+                      <option>Iowa</option>
+                      <option>Kansas</option>
+                      <option>Kentucky</option>
+                      <option>Louisiana</option>
+                      <option>Maine</option>
+                      <option>Maryland</option>
+                      <option>Massachusetts</option>
+                      <option>Michigan</option>
+                      <option>Minnesota</option>
+                      <option>Mississippi</option>
+                      <option>Missouri</option>
+                      <option>Montana</option>
+                      <option>Nebraska</option>
+                      <option>Nevada</option>
+                      <option>New Hampshire</option>
+                      <option>New Jersey</option>
+                      <option>New Mexico</option>
+                      <option>New York</option>
+                      <option>North Carolina</option>
+                      <option>North Dakota</option>
+                      <option>Ohio</option>
+                      <option>Oklahoma</option>
+                      <option>Oregon</option>
+                      <option>Pennsylvania</option>
+                      <option>Rhode Island</option>
+                      <option>South Carolina</option>
+                      <option>South Dakota</option>
+                      <option>Tennessee</option>
+                      <option>Texas</option>
+                      <option>Utah</option>
+                      <option>Vermont</option>
+                      <option>Virginia</option>
+                      <option>Washington</option>
+                      <option>West Virginia</option>
+                      <option>Wisconsin</option>
+                      <option>Wyoming</option>
+                    </select>
+                    <p class="gaq-field__error" id="gaq-state-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-state-optional">State (Optional)</label>
+                    <input class="gaq-input" id="gaq-state-optional" name="state-optional" type="text" aria-describedby="gaq-state-optional-error">
+                    <p class="gaq-field__error" id="gaq-state-optional-error"></p>
+                  </div>
+                </div>
+                <div class="gaq-row gaq-row--3">
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-zip-code">Zip Code</label>
+                    <input class="gaq-input" id="gaq-zip-code" name="zip-code" type="text" autocomplete="postal-code" inputmode="numeric" maxlength="10" aria-describedby="gaq-zip-code-error">
+                    <p class="gaq-field__error" id="gaq-zip-code-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-zip-ext">Zip Ext.</label>
+                    <input class="gaq-input" id="gaq-zip-ext" name="zip-ext" type="text" inputmode="numeric" maxlength="4" aria-describedby="gaq-zip-ext-error">
+                    <p class="gaq-field__error" id="gaq-zip-ext-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-country">Country</label>
+                    <select class="gaq-input gaq-input--select" id="gaq-country" name="country" autocomplete="country-name" aria-describedby="gaq-country-error">
+                      <option>Afghanistan</option>
+                      <option>Albania</option>
+                      <option>Algeria</option>
+                      <option>Andorra</option>
+                      <option>Angola</option>
+                      <option>Antigua and Barbuda</option>
+                      <option>Argentina</option>
+                      <option>Armenia</option>
+                      <option>Australia</option>
+                      <option>Austria</option>
+                      <option>Azerbaijan</option>
+                      <option>Bahamas</option>
+                      <option>Bahrain</option>
+                      <option>Bangladesh</option>
+                      <option>Barbados</option>
+                      <option>Belarus</option>
+                      <option>Belgium</option>
+                      <option>Belize</option>
+                      <option>Benin</option>
+                      <option>Bhutan</option>
+                      <option>Bolivia</option>
+                      <option>Bosnia and Herzegovina</option>
+                      <option>Botswana</option>
+                      <option>Brazil</option>
+                      <option>Brunei</option>
+                      <option>Bulgaria</option>
+                      <option>Burkina Faso</option>
+                      <option>Burundi</option>
+                      <option>Cabo Verde</option>
+                      <option>Cambodia</option>
+                      <option>Cameroon</option>
+                      <option>Canada</option>
+                      <option>Central African Republic</option>
+                      <option>Chad</option>
+                      <option>Chile</option>
+                      <option>China</option>
+                      <option>Colombia</option>
+                      <option>Comoros</option>
+                      <option>Congo</option>
+                      <option>Costa Rica</option>
+                      <option>Côte d’Ivoire</option>
+                      <option>Croatia</option>
+                      <option>Cuba</option>
+                      <option>Cyprus</option>
+                      <option>Czech Republic</option>
+                      <option>Democratic Republic of the Congo</option>
+                      <option>Denmark</option>
+                      <option>Djibouti</option>
+                      <option>Dominica</option>
+                      <option>Dominican Republic</option>
+                      <option>Ecuador</option>
+                      <option>Egypt</option>
+                      <option>El Salvador</option>
+                      <option>Equatorial Guinea</option>
+                      <option>Eritrea</option>
+                      <option>Estonia</option>
+                      <option>Eswatini</option>
+                      <option>Ethiopia</option>
+                      <option>Fiji</option>
+                      <option>Finland</option>
+                      <option>France</option>
+                      <option>Gabon</option>
+                      <option>Gambia</option>
+                      <option>Georgia</option>
+                      <option>Germany</option>
+                      <option>Ghana</option>
+                      <option>Greece</option>
+                      <option>Grenada</option>
+                      <option>Guatemala</option>
+                      <option>Guinea</option>
+                      <option>Guinea-Bissau</option>
+                      <option>Guyana</option>
+                      <option>Haiti</option>
+                      <option>Honduras</option>
+                      <option>Hungary</option>
+                      <option>Iceland</option>
+                      <option>India</option>
+                      <option>Indonesia</option>
+                      <option>Iran</option>
+                      <option>Iraq</option>
+                      <option>Ireland</option>
+                      <option>Israel</option>
+                      <option>Italy</option>
+                      <option>Jamaica</option>
+                      <option>Japan</option>
+                      <option>Jordan</option>
+                      <option>Kazakhstan</option>
+                      <option>Kenya</option>
+                      <option>Kiribati</option>
+                      <option>Kuwait</option>
+                      <option>Kyrgyzstan</option>
+                      <option>Laos</option>
+                      <option>Latvia</option>
+                      <option>Lebanon</option>
+                      <option>Lesotho</option>
+                      <option>Liberia</option>
+                      <option>Libya</option>
+                      <option>Liechtenstein</option>
+                      <option>Lithuania</option>
+                      <option>Luxembourg</option>
+                      <option>Madagascar</option>
+                      <option>Malawi</option>
+                      <option>Malaysia</option>
+                      <option>Maldives</option>
+                      <option>Mali</option>
+                      <option>Malta</option>
+                      <option>Marshall Islands</option>
+                      <option>Mauritania</option>
+                      <option>Mauritius</option>
+                      <option>Mexico</option>
+                      <option>Micronesia</option>
+                      <option>Moldova</option>
+                      <option>Monaco</option>
+                      <option>Mongolia</option>
+                      <option>Montenegro</option>
+                      <option>Morocco</option>
+                      <option>Mozambique</option>
+                      <option>Myanmar</option>
+                      <option>Namibia</option>
+                      <option>Nauru</option>
+                      <option>Nepal</option>
+                      <option>Netherlands</option>
+                      <option>New Zealand</option>
+                      <option>Nicaragua</option>
+                      <option>Niger</option>
+                      <option>Nigeria</option>
+                      <option>North Korea</option>
+                      <option>North Macedonia</option>
+                      <option>Norway</option>
+                      <option>Oman</option>
+                      <option>Pakistan</option>
+                      <option>Palau</option>
+                      <option>Panama</option>
+                      <option>Papua New Guinea</option>
+                      <option>Paraguay</option>
+                      <option>Peru</option>
+                      <option>Philippines</option>
+                      <option>Poland</option>
+                      <option>Portugal</option>
+                      <option>Puerto Rico</option>
+                      <option>Qatar</option>
+                      <option>Romania</option>
+                      <option>Russia</option>
+                      <option>Rwanda</option>
+                      <option>Saint Kitts and Nevis</option>
+                      <option>Saint Lucia</option>
+                      <option>Saint Vincent and the Grenadines</option>
+                      <option>Samoa</option>
+                      <option>San Marino</option>
+                      <option>São Tomé and Príncipe</option>
+                      <option>Saudi Arabia</option>
+                      <option>Senegal</option>
+                      <option>Serbia</option>
+                      <option>Seychelles</option>
+                      <option>Sierra Leone</option>
+                      <option>Singapore</option>
+                      <option>Slovakia</option>
+                      <option>Slovenia</option>
+                      <option>Solomon Islands</option>
+                      <option>Somalia</option>
+                      <option>South Africa</option>
+                      <option>South Korea</option>
+                      <option>South Sudan</option>
+                      <option>Spain</option>
+                      <option>Sri Lanka</option>
+                      <option>Sudan</option>
+                      <option>Suriname</option>
+                      <option>Sweden</option>
+                      <option>Switzerland</option>
+                      <option>Syria</option>
+                      <option>Taiwan</option>
+                      <option>Tajikistan</option>
+                      <option>Tanzania</option>
+                      <option>Thailand</option>
+                      <option>Timor-Leste</option>
+                      <option>Togo</option>
+                      <option>Tonga</option>
+                      <option>Trinidad and Tobago</option>
+                      <option>Tunisia</option>
+                      <option>Turkey</option>
+                      <option>Turkmenistan</option>
+                      <option>Tuvalu</option>
+                      <option>Uganda</option>
+                      <option>Ukraine</option>
+                      <option>United Arab Emirates</option>
+                      <option>United Kingdom</option>
+                      <option selected>United States</option>
+                      <option>Uruguay</option>
+                      <option>Uzbekistan</option>
+                      <option>Vanuatu</option>
+                      <option>Vatican City</option>
+                      <option>Venezuela</option>
+                      <option>Vietnam</option>
+                      <option>Yemen</option>
+                      <option>Zambia</option>
+                      <option>Zimbabwe</option>
+                    </select>
+                    <p class="gaq-field__error" id="gaq-country-error"></p>
+                  </div>
+                </div>
+              </fieldset>
+
+              <fieldset class="gaq-step" id="gaq-step-3" aria-labelledby="gaq-step-3-title" tabindex="-1" data-reveal-group data-reveal="from-below" data-reveal-distance="40">
+                <div class="gaq-step__head">
+                  <span class="gaq-step__num" aria-hidden="true">3</span>
+                  <h2 class="gaq-step__title" id="gaq-step-3-title"><span class="sr-only">Step 3: </span>Equipment &amp; Payment Information</h2>
+                </div>
+                <div class="gaq-row gaq-row--1">
+                  <fieldset class="gaq-field gaq-choice" aria-describedby="gaq-condition-error">
+                    <legend class="gaq-field__label">Condition<span class="gaq-field__req" aria-hidden="true">*</span></legend>
+                    <div class="gaq-choice__options">
+                      <label class="gaq-choice__option"><input class="gaq-choice__input" type="radio" name="condition" value="New" checked required>New</label>
+                      <label class="gaq-choice__option"><input class="gaq-choice__input" type="radio" name="condition" value="Used" required>Used</label>
+                    </div>
+                    <p class="gaq-field__error" id="gaq-condition-error"></p>
+                  </fieldset>
+                </div>
+                <div class="gaq-row gaq-row--2">
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-equipment-type">Equipment Type<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <input class="gaq-input" id="gaq-equipment-type" name="equipment-type" type="text" required aria-describedby="gaq-equipment-type-error">
+                    <p class="gaq-field__error" id="gaq-equipment-type-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-make">Make</label>
+                    <input class="gaq-input" id="gaq-make" name="make" type="text" aria-describedby="gaq-make-error">
+                    <p class="gaq-field__error" id="gaq-make-error"></p>
+                  </div>
+                </div>
+                <div class="gaq-row gaq-row--2">
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-model">Model</label>
+                    <input class="gaq-input" id="gaq-model" name="model" type="text" aria-describedby="gaq-model-error">
+                    <p class="gaq-field__error" id="gaq-model-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-year-model">Year Model</label>
+                    <select class="gaq-input gaq-input--select" id="gaq-year-model" name="year-model" aria-describedby="gaq-year-model-error">
+                      <option selected>New</option>
+                      <option>2020</option>
+                      <option>2019</option>
+                      <option>2018</option>
+                      <option>2017</option>
+                      <option>2016</option>
+                      <option>2015</option>
+                      <option>2014</option>
+                      <option>2013</option>
+                      <option>2012</option>
+                      <option>2011</option>
+                      <option>2010</option>
+                      <option>2009</option>
+                      <option>2008</option>
+                      <option>2007</option>
+                      <option>2006</option>
+                      <option>2005</option>
+                      <option>2004</option>
+                      <option>2003</option>
+                      <option>2002</option>
+                      <option>2001</option>
+                      <option>2000</option>
+                      <option>1999</option>
+                      <option>1998</option>
+                      <option>1997</option>
+                      <option>1996</option>
+                      <option>1995</option>
+                      <option>1994</option>
+                      <option>1993</option>
+                      <option>1992</option>
+                      <option>1991</option>
+                      <option>1990</option>
+                      <option>1989</option>
+                      <option>1988</option>
+                      <option>1987</option>
+                      <option>1986</option>
+                      <option>1985</option>
+                      <option>1984</option>
+                      <option>1983</option>
+                      <option>1982</option>
+                      <option>1981</option>
+                      <option>1980</option>
+                      <option>1979</option>
+                      <option>1978</option>
+                      <option>1977</option>
+                      <option>1976</option>
+                      <option>1975</option>
+                      <option>1974</option>
+                      <option>1973</option>
+                      <option>1972</option>
+                      <option>1971</option>
+                      <option>1970</option>
+                      <option>1969</option>
+                      <option>1968</option>
+                      <option>1967</option>
+                      <option>1966</option>
+                      <option>1965</option>
+                      <option>1964</option>
+                      <option>1963</option>
+                      <option>1962</option>
+                      <option>1961</option>
+                      <option>1960</option>
+                      <option>1959</option>
+                      <option>1958</option>
+                      <option>1957</option>
+                      <option>1956</option>
+                      <option>1955</option>
+                      <option>1954</option>
+                      <option>1953</option>
+                      <option>1952</option>
+                      <option>1951</option>
+                      <option>1950</option>
+                    </select>
+                    <p class="gaq-field__error" id="gaq-year-model-error"></p>
+                  </div>
+                </div>
+                <div class="gaq-row gaq-row--2">
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-delivery-date">Estimated Delivery Date<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <input class="gaq-input gaq-input--date" id="gaq-delivery-date" name="delivery-date" type="date" required data-required-msg="Please enter an estimated delivery date." aria-describedby="gaq-delivery-date-error">
+                    <p class="gaq-field__error" id="gaq-delivery-date-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-serial-no">Serial No. (If used)</label>
+                    <input class="gaq-input" id="gaq-serial-no" name="serial-no" type="text" aria-describedby="gaq-serial-no-error">
+                    <p class="gaq-field__error" id="gaq-serial-no-error"></p>
+                  </div>
+                </div>
+                <div class="gaq-row gaq-row--2">
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-equipment-cost">Equipment Total Cost ($)<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <div class="gaq-affix">
+                      <span class="gaq-affix__prefix" aria-hidden="true">$</span>
+                      <input class="gaq-input" id="gaq-equipment-cost" name="equipment-cost" type="text" inputmode="decimal" required data-required-msg="Please enter the equipment total cost." aria-describedby="gaq-equipment-cost-error" data-validate="money">
+                    </div>
+                    <p class="gaq-field__error" id="gaq-equipment-cost-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-soft-costs">Soft Costs ($)<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <div class="gaq-affix">
+                      <span class="gaq-affix__prefix" aria-hidden="true">$</span>
+                      <input class="gaq-input" id="gaq-soft-costs" name="soft-costs" type="text" inputmode="decimal" required data-required-msg="Please enter the soft costs (0 if none)." aria-describedby="gaq-soft-costs-hint gaq-soft-costs-error" data-validate="money">
+                    </div>
+                    <p class="gaq-field__hint" id="gaq-soft-costs-hint">(freight, installation, training, etc.)</p>
+                    <p class="gaq-field__error" id="gaq-soft-costs-error"></p>
+                  </div>
+                </div>
+                <div class="gaq-row gaq-row--2">
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-down-payment">Down Payment - if any ($)<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <div class="gaq-affix">
+                      <span class="gaq-affix__prefix" aria-hidden="true">$</span>
+                      <input class="gaq-input" id="gaq-down-payment" name="down-payment" type="text" inputmode="decimal" required data-required-msg="Please enter a down payment amount (0 if none)." aria-describedby="gaq-down-payment-error" data-validate="money">
+                    </div>
+                    <p class="gaq-field__error" id="gaq-down-payment-error"></p>
+                  </div>
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-trade-in">Trade-In / Other Discount ($)</label>
+                    <div class="gaq-affix">
+                      <span class="gaq-affix__prefix" aria-hidden="true">$</span>
+                      <input class="gaq-input" id="gaq-trade-in" name="trade-in" type="text" inputmode="decimal" aria-describedby="gaq-trade-in-error" data-validate="money">
+                    </div>
+                    <p class="gaq-field__error" id="gaq-trade-in-error"></p>
+                  </div>
+                </div>
+                <div class="gaq-row gaq-row--1">
+                  <div class="gaq-field">
+                    <label class="gaq-field__label" for="gaq-term">Preferred Length of Term<span class="gaq-field__req" aria-hidden="true">*</span></label>
+                    <select class="gaq-input gaq-input--select" id="gaq-term" name="term" required data-required-msg="Please select a preferred length of term." aria-describedby="gaq-term-error">
+                      <option value="" disabled selected>Select Your Term</option>
+                      <option>24 Months</option>
+                      <option>36 Months</option>
+                      <option>48 Months</option>
+                      <option>60 Months</option>
+                      <option>72 Months</option>
+                      <option>84 Months</option>
+                      <option>Other</option>
+                    </select>
+                    <p class="gaq-field__error" id="gaq-term-error"></p>
+                  </div>
+                </div>
+                <div class="gaq-field">
+                  <label class="gaq-field__label" for="gaq-notes">Additional Notes</label>
+                  <textarea class="gaq-input gaq-input--textarea" id="gaq-notes" name="notes" aria-describedby="gaq-notes-error" rows="5"></textarea>
+                  <p class="gaq-field__error" id="gaq-notes-error"></p>
+                </div>
+                <div class="gaq-field gaq-upload">
+                  <span class="gaq-field__label" id="gaq-attachments-label">Attachments</span>
+                  <label class="gaq-upload__zone" for="gaq-attachments">
+                    <img class="gaq-upload__icon" src="/assets/icons/get-a-quote/upload.svg" alt="" width="32" height="32">
+                    <span class="gaq-upload__text">Drag &amp; drop files here, or browse</span>
+                  </label>
+                  <input class="gaq-upload__input sr-only" id="gaq-attachments" name="attachment-1" type="file" multiple aria-labelledby="gaq-attachments-label" aria-describedby="gaq-attachments-error">
+                  <ul class="gaq-upload__list" id="gaq-attachments-list" aria-live="polite"></ul>
+                  <p class="gaq-field__error" id="gaq-attachments-error"></p>
+                </div>
+              </fieldset>
+
+              <div class="gaq-submit">
+                <button type="submit" class="btn btn--red btn--shadow-red gaq-submit__btn">Submit</button>
+                <p class="gaq-submit__note">* Required fields</p>
+                <p class="gaq-submit__status" id="gaq-status" role="alert"></p>
+              </div>
+            </form>
+
+            <!-- Success state (shown by the page JS after a successful POST; copy not in Figma) -->
+            <div class="gaq-success" id="gaq-success" tabindex="-1" hidden>
+              <span class="gaq-success__icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M7 16.5l6 6L25 10" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <h2 class="gaq-success__title">Thank You!</h2>
+              <p class="gaq-success__text">Your quote request has been sent. A MitsuCap Financial Advisor will contact you shortly.</p>
+              <a href="/" class="btn btn--red btn--shadow-red">Back to Home</a>
+            </div>
+          </div>
+
+          <aside class="gaq-contact" aria-labelledby="gaq-contact-title" data-reveal-group>
+            <h2 class="gaq-contact__title" id="gaq-contact-title" data-reveal="chars">Contact Details</h2>
+            <ul class="gaq-contact__list" data-reveal="from-below" data-reveal-at="0.4" data-reveal-distance="30">
+              <li class="gaq-contact__item">
+                <span class="gaq-contact__icon"><img src="/assets/icons/get-a-quote/address.svg" alt="" width="24" height="24"></span>
+                <div class="gaq-contact__text">
+                  <p class="gaq-contact__label">Address</p>
+                  <address class="gaq-contact__value">MitsuCap Lease &amp; Finance, Inc.<br>PO Box 262368<br>Houston, TX 77207</address>
+                </div>
+              </li>
+              <li class="gaq-contact__item">
+                <span class="gaq-contact__icon"><img src="/assets/icons/get-a-quote/phone.svg" alt="" width="24" height="24"></span>
+                <div class="gaq-contact__text">
+                  <p class="gaq-contact__label">Phone</p>
+                  <a class="gaq-contact__value gaq-contact__link" href="tel:+12817517548">281 751 7548</a>
+                </div>
+              </li>
+              <li class="gaq-contact__item">
+                <span class="gaq-contact__icon"><img src="/assets/icons/get-a-quote/email.svg" alt="" width="24" height="24"></span>
+                <div class="gaq-contact__text">
+                  <p class="gaq-contact__label">Email</p>
+                  <a class="gaq-contact__value gaq-contact__link" href="mailto:info@mitsucap.com">info@mitsucap.com</a>
+                </div>
+              </li>
+              <li class="gaq-contact__item">
+                <span class="gaq-contact__icon"><img src="/assets/icons/get-a-quote/hours.svg" alt="" width="24" height="24"></span>
+                <div class="gaq-contact__text">
+                  <p class="gaq-contact__label">Hours</p>
+                  <p class="gaq-contact__value">Mon–Fri: 8:00 AM – 6:00 PM<br>Sat – Sun: Closed</p>
+                </div>
+              </li>
+            </ul>
+            <a href="/schedule-a-call/" class="btn btn--red btn--shadow-red gaq-contact__btn" data-reveal="from-below" data-reveal-at="0.6" data-reveal-distance="30">Schedule a Call</a>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+
+    <footer class="footer">
+      <div class="footer__grid grid-bg grid-bg--dark blink-grid" aria-hidden="true" data-cell="120" data-anchor="left" data-offset-x="0" data-offset-y="0" data-line="1">
+        <span style="left:480px;top:0"></span>
+        <span style="left:1560px;top:0"></span>
+        <span style="left:960px;top:120px"></span>
+        <span style="left:120px;top:360px"></span>
+        <span style="left:1800px;top:480px"></span>
+        <span style="left:600px;top:720px"></span>
+        <span style="left:1440px;top:720px"></span>
+      </div>
+
+      <div class="footer__inner">
+        <div class="footer__top">
+          <div class="footer__brand">
+            <img src="/assets/icons/logo-footer.svg" alt="MitsuCap" width="211.806" height="61">
+            <ul class="footer__contact">
+              <li class="footer__address">MitsuCap Lease &amp; Finance, Inc. PO Box 262368 Houston, TX 77207</li>
+              <li><a href="tel:2817517548">281 751 7548</a></li>
+              <li><a href="mailto:info@mitsucap.com">info@mitsucap.com</a></li>
+              <li><a href="/contact/">Map &amp; Directions</a></li>
+            </ul>
+          </div>
+
+          <div class="footer__right">
+            <p class="footer__about">We recognize the uniqueness of every equipment acquisition and take a consultative approach when helping you get the equipment you need by the time you need it.</p>
+            <div class="footer__cols">
+              <div class="footer__col">
+                <h2 class="footer__heading">Solutions</h2>
+                <ul class="footer__links">
+                  <li style="width:152px"><a href="/services/fmv-lease-operating-lease/">FMV Lease (Operating Lease)</a></li>
+                  <li><a href="/services/saleleaseback/">Sale/Leaseback</a></li>
+                  <li><a href="/services/put-lease/">PUT Lease</a></li>
+                  <li class="tall"><a href="/services/capital-lease/">Capital Lease</a></li>
+                  <li><a href="/services/tax-exempt-municipal-lease/">Tax-Exempt Municipal Lease</a></li>
+                  <li><a href="/services/trac-lease/">TRAC Lease</a></li>
+                  <li><a href="/services/vendor-programs/">Vendor Programs</a></li>
+                  <li><a href="/services/bank-credit-union/">Bank &amp; Credit Union Programs</a></li>
+                </ul>
+              </div>
+              <div class="footer__col">
+                <h2 class="footer__heading">Company</h2>
+                <ul class="footer__links footer__links--nowrap">
+                  <li><a href="/about-us/">About Us</a></li>
+                  <li><a href="/mitsucaps-philosophy/">MitsuCap’s Philosophy</a></li>
+                  <li><a href="/our-team/">Our Team</a></li>
+                  <li><a href="/industries-served/">Industries Served</a></li>
+                  <li class="tall"><a href="/benefits-of-leasing/">Benefits of Leasing</a></li>
+                  <li class="tall"><a href="/forms/">Forms</a></li>
+                  <li class="tall"><a href="/career/">Career</a></li>
+                  <li class="tall"><a href="/associations/">Associations</a></li>
+                </ul>
+              </div>
+              <div class="footer__col">
+                <h2 class="footer__heading">Follow</h2>
+                <ul class="footer__social">
+                  <li><a href="#"><img src="/assets/icons/x.svg" alt="" width="14" height="14"><span>X (Twitter)</span></a></li>
+                  <li><a href="#"><img src="/assets/icons/linkedin.svg" alt="" width="14" height="14" class="dim"><span>LinkedIn</span></a></li>
+                  <li class="short"><a href="#"><img src="/assets/icons/instagram.svg" alt="" width="14" height="14"><span>Instagram</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__rule"></div>
+
+        <div class="footer__bottom">
+          <p class="footer__copy">© MitsuCap Global Lease &amp; Finance Solutions  2026</p>
+          <p class="footer__credit">Made by Blinto LLC</p>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /.page -->
+
+  <script src="/assets/js/vendor/lenis.min.js"></script>
+  <script src="/assets/js/vendor/gsap.min.js"></script>
+  <script src="/assets/js/vendor/ScrollTrigger.min.js"></script>
+  <script src="/assets/js/vendor/SplitText.min.js"></script>
+  <script src="/script.js"></script>
+  <script src="/assets/js/pages/get-a-quote.js"></script>
+</body>
+</html>

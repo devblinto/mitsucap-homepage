@@ -1,0 +1,373 @@
+/* =========================================================
+   Sale/Leaseback — /services/saleleaseback/
+   Figma: desktop 2467:23 · tablet 2491:23 · mobile 2492:23
+   Page-only styles, all scoped under .page-saleleaseback.
+   Shared pieces (header, hero, presentation, testimonial, CTA,
+   footer, buttons, glass cards, program cards, explore link)
+   come from /styles.css and /assets/css/site.css.
+   ========================================================= */
+
+.page-saleleaseback .slb-pad-lg { padding-block: 120px; } /* sections with 120px top/bottom in Figma */
+
+/* Figma capitalises headings; the copy is typed in title case instead (text-transform would
+   capitalise every letter once the "chars" reveal splits them). */
+
+/* ---------- Put Your Equipment Equity To Work (Figma 2467:110) ---------- */
+.page-saleleaseback .slb-equity {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  max-width: 1380px;
+  margin: 0 auto;
+}
+.page-saleleaseback .slb-equity__head {
+  flex: 0 1 568px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.page-saleleaseback .slb-equity__head .section-title {
+  color: var(--charcoal-700);
+}
+.page-saleleaseback .slb-equity__intro {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.page-saleleaseback .slb-equity__cards {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  align-items: stretch;
+  gap: 32px;
+}
+.page-saleleaseback .slb-benefit {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.page-saleleaseback .slb-benefit__media {
+  position: relative;
+  height: 328px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.page-saleleaseback .slb-benefit__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.page-saleleaseback .slb-benefit__media::after { /* 10% black wash, as in Figma */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+.page-saleleaseback .slb-benefit__text {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.page-saleleaseback .slb-benefit__text strong {
+  font-weight: inherit;
+  color: var(--charcoal-700);
+}
+
+/* ---------- Capital That Can Work Harder (Figma 2467:134) ----------
+   Three stacked "paper" rows: translucent white texture + 10% noise,
+   a soft 80px shadow (it shows through the next row's translucent fill). */
+.page-saleleaseback .slb-harder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+.page-saleleaseback .slb-harder .section-title {
+  max-width: 852px;
+  color: var(--charcoal-700);
+  text-align: center;
+}
+.page-saleleaseback .slb-rows {
+  width: 100%;
+  max-width: 1050.5px;
+  display: flex;
+  flex-direction: column;
+}
+.page-saleleaseback .slb-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 60px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+  background: url("/assets/images/saleleaseback/row-1.webp") center / cover no-repeat;
+}
+.page-saleleaseback .slb-row::before { /* Figma noise layer at 10% */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/assets/images/stat-noise.webp") left top / 2048px 2048px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+.page-saleleaseback .slb-row > * { position: relative; }
+.page-saleleaseback .slb-row--2 {
+  border-color: transparent;
+  background-image: url("/assets/images/saleleaseback/row-2.webp");
+}
+.page-saleleaseback .slb-row--3 { background-image: url("/assets/images/saleleaseback/row-3.webp"); }
+.page-saleleaseback .slb-row__title {
+  flex-shrink: 0;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+  white-space: nowrap;
+}
+.page-saleleaseback .slb-row__text {
+  flex: 0 1 380px;
+  min-width: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+/* Middle row: text on the left, title on the right (title stays first in the DOM) */
+.page-saleleaseback .slb-row--flip .slb-row__title { order: 2; }
+
+/* ---------- Capital & Credit Flexibility (Figma 2477:265) ----------
+   Reuses the homepage glass card (rim, red hover); here the panel sits in the flow. */
+.page-saleleaseback .slb-flex .section-title {
+  max-width: 640px;
+  margin-bottom: 80px;
+  color: var(--white);
+}
+.page-saleleaseback .slb-flex__grid {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+}
+.page-saleleaseback .slb-flex-card {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
+  display: flex;
+  padding: 2px;
+  background: linear-gradient(158.83deg, #0c0c0d 5.3%, #636369 24.07%, #272729 38.38%, #636369 58.94%, #37373a 81.29%, #0c0c0d 94.71%);
+}
+.page-saleleaseback .slb-flex-card .glass-card__inner {
+  position: relative;
+  flex: 1 1 auto;
+  gap: 72px;
+  padding: 24px 24px 32px;
+  background: linear-gradient(158.94deg, #141519 25.86%, #222224 94.71%);
+}
+.page-saleleaseback .slb-flex-card__icon { width: 72px; height: 72px; }
+.page-saleleaseback .slb-flex-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.page-saleleaseback .slb-flex-card__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--white);
+}
+.page-saleleaseback .slb-flex-card__desc {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color var(--glass-time) var(--glass-ease);
+}
+.page-saleleaseback .slb-flex-card:hover .slb-flex-card__desc { color: rgba(255, 255, 255, 0.85); }
+
+/* ---------- Financing Designed Around Your Business (Figma 2467:213) ---------- */
+.page-saleleaseback .slb-split {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+.page-saleleaseback .slb-split__content {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+.page-saleleaseback .slb-split__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.page-saleleaseback .slb-split .section-title {
+  color: var(--charcoal-700);
+}
+.page-saleleaseback .slb-split__intro {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.page-saleleaseback .slb-split__media {
+  flex: 0 1 648px;
+  min-width: 0;
+  aspect-ratio: 648 / 560;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.page-saleleaseback .slb-split__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- Our Solutions (Figma 2536:29253) — homepage program cards in a 3-col grid ---------- */
+.page-saleleaseback .slb-solutions .section-title {
+  margin-bottom: 80px;
+  color: var(--charcoal-700);
+  text-align: center;
+}
+.page-saleleaseback .slb-solutions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+.page-saleleaseback .slb-solutions__grid .program-card { flex: none; }
+.page-saleleaseback .slb-solutions__grid .program-card:last-child:nth-child(3n + 1) { grid-column: 2; } /* lone last card sits in the middle */
+.page-saleleaseback .program-card__text {
+  font-weight: 500;
+  line-height: 1.4;
+}
+.page-saleleaseback .program-card__media { position: relative; }
+.page-saleleaseback .program-card__media::after { /* Figma's 10–20% black wash on the thumbnails */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--wash, 0.1));
+  pointer-events: none;
+}
+.page-saleleaseback .program-card__media--dim { --wash: 0.2; }
+
+/* =========================================================
+   TABLET (768–1199) — Figma 2491:23
+   ========================================================= */
+@media (max-width: 1199px) {
+  /* Hero: this page's tablet frame uses SemiBold 56/1.11, a 704×582 photo and 64px bottom space */
+  .page-saleleaseback .page-hero { padding-bottom: 64px; }
+  .page-saleleaseback .page-hero__title { font-weight: 600; line-height: 1.11; }
+  .page-saleleaseback .page-hero__media { aspect-ratio: 704 / 582; }
+
+  .page-saleleaseback .slb-pad-lg { padding-block: var(--section-pad); }
+
+  /* Equity: heading on top, two photos side by side */
+  .page-saleleaseback .slb-equity {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+  }
+  .page-saleleaseback .slb-equity__head { flex: none; }
+  .page-saleleaseback .slb-equity__intro { font-weight: 400; }
+  .page-saleleaseback .slb-equity__cards { flex: none; align-items: center; gap: 24px; }
+  .page-saleleaseback .slb-benefit__media { height: 338px; }
+  .page-saleleaseback .slb-benefit__text { max-width: 306px; font-size: 18px; }
+
+  /* Capital rows: full width, 220px title column */
+  .page-saleleaseback .slb-harder { gap: 48px; }
+  .page-saleleaseback .slb-rows { max-width: none; }
+  .page-saleleaseback .slb-row { gap: 0; padding: 32px 40px; } /* the 220px title column makes the space */
+  .page-saleleaseback .slb-row__title {
+    width: 220px;
+    font-size: 32px;
+    white-space: normal;
+  }
+  .page-saleleaseback .slb-row__text { flex: 1 1 0; }
+
+  /* Dark cards */
+  .page-saleleaseback .slb-flex .section-title { max-width: none; margin-bottom: 48px; }
+  .page-saleleaseback .slb-flex__grid { gap: 16px; }
+  .page-saleleaseback .slb-flex-card { min-height: 364px; }
+  .page-saleleaseback .slb-flex-card .glass-card__inner { gap: 40px; }
+  .page-saleleaseback .slb-flex-card__desc { font-weight: 400; }
+
+  /* Financing: text on top, photo below */
+  .page-saleleaseback .slb-split {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+  }
+  .page-saleleaseback .slb-split__content { flex: none; }
+  .page-saleleaseback .slb-split__intro { font-size: 18px; }
+  .page-saleleaseback .slb-split__media { flex: none; width: 100%; aspect-ratio: auto; height: 502px; }
+
+  /* Solutions: one horizontal card per row (program-card tablet layout from styles.css) */
+  .page-saleleaseback .slb-solutions .section-title { margin-bottom: 48px; }
+  .page-saleleaseback .slb-solutions__grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .page-saleleaseback .slb-solutions__grid .program-card:last-child:nth-child(3n + 1) { grid-column: auto; }
+  .page-saleleaseback .program-card__text { max-width: none; }
+}
+
+/* =========================================================
+   MOBILE (≤767) — Figma 2492:23
+   ========================================================= */
+@media (max-width: 767px) {
+  /* Hero: 358×297 photo, 48px bottom space (Figma 2492:104) */
+  .page-saleleaseback .page-hero { padding-bottom: 48px; }
+  .page-saleleaseback .page-hero__media { aspect-ratio: 358 / 297; }
+
+  .page-saleleaseback .section-title { line-height: 1.11; }
+
+  /* Equity: photos stack */
+  .page-saleleaseback .slb-equity { gap: 32px; }
+  .page-saleleaseback .slb-equity__intro { font-size: 16px; }
+  .page-saleleaseback .slb-equity__cards { flex-direction: column; gap: 32px; }
+  .page-saleleaseback .slb-benefit { flex: none; width: 100%; }
+  .page-saleleaseback .slb-benefit__media { height: 316px; }
+  .page-saleleaseback .slb-benefit__text { max-width: none; font-size: 16px; }
+
+  /* Capital rows: title over text */
+  .page-saleleaseback .slb-harder { gap: 32px; }
+  .page-saleleaseback .slb-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 24px;
+  }
+  .page-saleleaseback .slb-row__title { width: auto; font-size: 20px; }
+  .page-saleleaseback .slb-row__text { flex: none; font-size: 16px; }
+  .page-saleleaseback .slb-row--flip .slb-row__title { order: 0; }
+
+  /* Dark cards stack */
+  .page-saleleaseback .slb-flex .section-title { margin-bottom: 32px; }
+  .page-saleleaseback .slb-flex__grid { flex-direction: column; gap: 12px; }
+  .page-saleleaseback .slb-flex-card { flex: none; min-height: 0; }
+  .page-saleleaseback .slb-flex-card .glass-card__inner { gap: 24px; padding: 20px; }
+  .page-saleleaseback .slb-flex-card__icon { width: 48px; height: 48px; }
+  .page-saleleaseback .slb-flex-card__title { font-size: 24px; }
+  .page-saleleaseback .slb-flex-card__desc { font-size: 16px; }
+
+  /* Financing */
+  .page-saleleaseback .slb-split { gap: 32px; }
+  .page-saleleaseback .slb-split__intro { font-size: 16px; }
+  .page-saleleaseback .slb-split__media { height: 309px; }
+
+  /* Solutions: photo on top (program-card mobile layout from styles.css) */
+  .page-saleleaseback .slb-solutions .section-title { margin-bottom: 32px; }
+  .page-saleleaseback .slb-solutions__grid { gap: 16px; }
+  .page-saleleaseback .slb-solutions__grid .program-card { row-gap: 12px; }
+  .page-saleleaseback .slb-solutions__grid .program-card__title { font-size: 24px; }
+  .page-saleleaseback .slb-solutions__grid .program-card__media { height: 228px; margin-bottom: 8px; }
+  .page-saleleaseback .slb-solutions__grid .explore { margin-top: 16px; } /* 12px gap + 4px spacer + 12px gap in Figma */
+}
+
+/* Shared testimonial sits on white on this page (Figma 2467:229 · 2491:246 · 2492:246) */
+.page-saleleaseback .testimonial { background: var(--white); }

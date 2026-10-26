@@ -1,0 +1,218 @@
+/* =========================================================
+   ABOUT US (Figma: desktop 2607:23, tablet 2610:23, mobile 2610:616)
+   Page-only styles. Shared parts (header, inner hero, experience cards,
+   presentation, testimonial, CTA, footer) come from styles.css / site.css.
+   ========================================================= */
+
+/* ---------- 01 Hero: this page keeps the 555×460 photo ratio on tablet and
+   mobile too (Figma 704×582 / 358×296) ---------- */
+@media (max-width: 1199px) {
+  .about-hero .page-hero__media { aspect-ratio: 555 / 460; }
+}
+
+/* ---------- 02 What Makes Us Different ---------- */
+.diff {
+  display: flex;
+  align-items: flex-start;
+  gap: 80px;
+  padding: 100px 60px;
+  background: var(--white);
+}
+.diff__intro {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+.diff__title {
+  color: var(--charcoal-500);
+}
+.diff__photo {
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  border-radius: 16px;
+}
+.diff__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.diff__points {
+  flex: 1 1 0;
+  min-width: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.diff-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--warm-white-500);
+}
+.diff-point:first-child { padding-top: 0; }
+.diff-point:last-child { border-bottom: 0; }
+.diff-point__num {
+  flex: 0 0 56px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--red-500);
+}
+.diff-point__text {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.diff-point__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+}
+.diff-point__desc {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+
+/* ---------- 03 Our Approach (dark, 3 glass cards) ---------- */
+.approach {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 100px 60px;
+  background: var(--charcoal-900);
+}
+.approach__title {
+  max-width: 640px;
+  color: var(--white);
+}
+.approach__grid {
+  display: flex;
+  align-items: stretch;
+  gap: 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* Glass card from styles.css, but sized by its content: the panel sits in the
+   flow inside a 2px rim instead of being absolutely positioned. */
+.approach-card.glass-card {
+  flex: 1 1 0;
+  width: auto;
+  min-width: 0;
+  min-height: 571px;
+  padding: 2px;
+  background: linear-gradient(134.58deg, #0c0c0d 5.3%, #636369 24.07%, #272729 38.38%, #636369 58.94%, #37373a 81.29%, #0c0c0d 94.71%);
+}
+.approach-card .glass-card__inner {
+  position: relative;
+  height: 100%;
+  gap: 72px;
+  padding: 24px 24px 32px;
+  background: linear-gradient(134.51deg, #141519 25.86%, #222224 94.71%);
+}
+.approach-card__icon {
+  display: block;
+  width: 72px;
+  height: 72px;
+  color: var(--white);
+  transition: color var(--glass-time) var(--glass-ease);
+}
+.approach-card__icon svg { display: block; width: 100%; height: 100%; }
+.approach-card:hover .approach-card__icon { color: var(--red-500); }
+.approach-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.approach-card__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--white);
+}
+.approach-card__desc {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.6); /* 60% white, as in the design */
+  transition: color var(--glass-time) var(--glass-ease);
+}
+.approach-card:hover .approach-card__desc { color: rgba(255, 255, 255, 0.85); }
+
+/* ---------- Tablet ---------- */
+@media (max-width: 1199px) {
+  /* Heading, photo, points, then the button (Figma tablet order) */
+  .diff {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+    padding: 80px 32px;
+  }
+  .diff__intro { display: contents; }
+  .diff__title { order: 1; }
+  .diff__photo { order: 2; }
+  .diff__points { order: 3; flex: none; }
+  .diff__cta { order: 4; align-self: flex-start; }
+  .diff-point { padding: 28px 0; }
+  .diff-point:first-child { padding-top: 0; }
+  .diff-point__num { flex-basis: 48px; }
+  .diff-point__desc { font-weight: 400; }
+
+  .approach { gap: 48px; padding: 80px 32px; }
+  .approach__title { max-width: none; }
+  .approach__grid { flex-direction: column; gap: 16px; }
+  .approach-card.glass-card {
+    flex: none;
+    min-height: 0;
+    background: linear-gradient(160deg, #0c0c0d 5.3%, #636369 24.07%, #272729 38.38%, #636369 58.94%, #37373a 81.29%, #0c0c0d 94.71%);
+  }
+  .approach-card .glass-card__inner {
+    gap: 40px;
+    background: linear-gradient(160deg, #141519 25.86%, #222224 94.71%);
+  }
+  .approach-card__title { font-size: 24px; }
+  .approach-card__desc { font-weight: 400; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 767px) {
+  .diff { gap: 24px; padding: 56px 16px; }
+  .diff__title { line-height: 1.11; }
+  .diff__photo { height: 240px; }
+  .diff-point { gap: 16px; padding: 24px 0; }
+  .diff-point:first-child { padding-top: 0; }
+  .diff-point__num { flex-basis: 32px; font-size: 20px; }
+  .diff-point__text { gap: 8px; }
+  .diff-point__title { font-size: 20px; }
+  .diff-point__desc { font-size: 16px; }
+
+  .approach { gap: 32px; padding: 56px 16px; }
+  .approach__title { line-height: 1.11; }
+  .approach__grid { gap: 12px; }
+  .approach-card.glass-card {
+    background: linear-gradient(146deg, #0c0c0d 5.3%, #636369 24.07%, #272729 38.38%, #636369 58.94%, #37373a 81.29%, #0c0c0d 94.71%);
+  }
+  .approach-card .glass-card__inner {
+    gap: 24px;
+    padding: 20px;
+    background: linear-gradient(146deg, #141519 25.86%, #222224 94.71%);
+  }
+  .approach-card__icon { width: 48px; height: 48px; }
+  .approach-card__title { font-size: 20px; }
+  .approach-card__desc { font-size: 16px; }
+}
+
+/* Shared .page-hero__title uses text-transform: capitalize, which turns every
+   letter into a capital once SplitText wraps each character in its own element.
+   The copy is already in title case, so switch it off here. */
+.about-hero .page-hero__title { text-transform: none; }

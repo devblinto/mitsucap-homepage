@@ -1,0 +1,267 @@
+/* =========================================================
+   News — /news/ (+ /news/coming-soon/)
+   Figma: desktop 2649:444 · tablet 2652:567 · mobile 2652:1773
+          Coming Soon: desktop 2649:92 · tablet 2652:92 · mobile 2652:1298
+   Page-only styles, all scoped under .page-news.
+   Shared pieces (header, hero, coming-soon card, testimonial, CTA, footer,
+   buttons, section + section heading) come from /styles.css and /assets/css/site.css.
+   The "Latest News" heading uses data-reveal="chars", so it is typed in title case
+   (no text-transform). Filter + "Read" cursor behaviour: /assets/js/pages/news.js.
+   ========================================================= */
+
+/* ---------- "Latest News" header: title left, filter chips right (Figma 2649:912) ---------- */
+.page-news .news__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 40px;
+  margin-bottom: 48px;
+  color: var(--charcoal-500);
+}
+.page-news .news__title { min-width: 0; }
+
+.page-news .news-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.page-news .news-filter {
+  padding: 8px 18px;
+  border: 1px solid var(--charcoal-500);
+  border-radius: 100px;
+  background: transparent;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+  cursor: pointer;
+  transition: background-color .2s ease, border-color .2s ease, color .2s ease;
+}
+.page-news .news-filter:hover { background: var(--charcoal-50); }
+.page-news .news-filter[aria-pressed="true"] {
+  border-color: var(--charcoal-900);
+  background: var(--charcoal-900);
+  color: var(--white);
+}
+.page-news .news-filter:focus-visible {
+  outline: 2px solid var(--red-500);
+  outline-offset: 3px;
+}
+
+/* ---------- Article list (Figma 2649:923) ---------- */
+.page-news .news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.page-news .news-list__item[hidden] { display: none; }
+
+/* Whole card is one link. Hover (desktop): grey rounded background + "Read" cursor. */
+.page-news .news-card {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: 64px;
+  padding: 32px;
+  overflow: hidden;
+  border-radius: 32px;
+  color: var(--charcoal-500);
+  text-decoration: none;
+  transition: background-color .3s ease;
+}
+.page-news .news-card:hover,
+.page-news .news-card:focus-visible { background: var(--charcoal-50); }
+.page-news .news-card:focus-visible {
+  outline: 2px solid var(--red-500);
+  outline-offset: 3px;
+}
+
+.page-news .news-card__media {
+  flex: 0 0 288px;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 20px;
+}
+.page-news .news-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page-news .news-card__body {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  min-width: 0;
+}
+.page-news .news-card__top {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+.page-news .news-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Tags: dark type pill with icon + outlined topic pill */
+.page-news .news-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 16px;
+  border: 1px solid var(--charcoal-500);
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+  white-space: nowrap;
+}
+.page-news .news-tag--type {
+  padding: 8px 16px 8px 14px;
+  border: 0;
+  background: var(--charcoal-900);
+  color: var(--white);
+}
+.page-news .news-tag img { display: block; width: 18px; height: 18px; flex: none; }
+
+.page-news .news-card__title {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+}
+.page-news .news-card__meta {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+
+/* "Read" cursor (Figma 2649:957): 120px dark circle that follows the mouse.
+   Only active when news.js adds .has-read-cursor (fine pointer, no reduced motion).
+   news.js moves .news-card__cursor; the inner dot scales in/out. */
+.page-news .news-card__cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: none;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+.page-news .news-card__cursor-dot {
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--charcoal-900);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--white);
+  opacity: 0;
+  transform: scale(0.3);
+  transition: opacity .25s ease, transform .35s var(--ease-out, ease-out);
+}
+.page-news .has-read-cursor .news-card { cursor: none; }
+.page-news .has-read-cursor .news-card__cursor { display: block; }
+.page-news .has-read-cursor .news-card.is-cursor .news-card__cursor-dot {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ---------- Load More (Figma 2650:1665) ---------- */
+.page-news .news__more {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+.page-news .news__more-btn { border-color: var(--charcoal-900); }
+.page-news .news__more-btn[aria-disabled="true"] { cursor: default; }
+.page-news .news__more-btn[aria-disabled="true"]:hover { background: var(--charcoal-900); }
+
+/* =========================================================
+   TABLET (768–1199) — Figma 2652:567
+   ========================================================= */
+@media (max-width: 1199px) {
+  .page-news .news__head {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 32px;
+  }
+  .page-news .news-list { gap: 24px; }
+
+  .page-news .news-card {
+    gap: 32px;
+    padding: 16px;
+    border-radius: 24px;
+  }
+  .page-news .news-card__media {
+    flex-basis: 240px;
+    height: 260px;
+    border-radius: 16px;
+  }
+  .page-news .news-card__title { font-size: 32px; }
+
+  .page-news .news__more { margin-top: 32px; }
+}
+
+/* =========================================================
+   MOBILE (≤767) — Figma 2652:1773: photo on top, no card padding
+   ========================================================= */
+@media (max-width: 767px) {
+  .page-news .news__head {
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  .page-news .news__title { line-height: 1.11; }
+  .page-news .news-filter {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .page-news .news-list { gap: 18px; }
+
+  .page-news .news-card {
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 0 16px;
+    border-radius: 16px 16px 0 0;
+  }
+  .page-news .news-card:hover { background: none; }
+  .page-news .news-card__media {
+    flex: none;
+    width: 100%;
+    height: 220px;
+    border-radius: 16px;
+  }
+  .page-news .news-card__body { gap: 12px; }
+  .page-news .news-tag,
+  .page-news .news-card__meta {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .page-news .news-card__title { font-size: 20px; }
+  .page-news .has-read-cursor .news-card { cursor: pointer; }
+  .page-news .has-read-cursor .news-card__cursor { display: none; }
+
+  .page-news .news__more { margin-top: 24px; }
+  .page-news .news__more-btn { width: 100%; }
+}

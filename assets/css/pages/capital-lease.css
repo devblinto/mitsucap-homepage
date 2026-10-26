@@ -1,0 +1,170 @@
+/* =========================================================
+   Capital Lease — /services/capital-lease/
+   Figma: desktop 2496:308 · tablet 2518:23 · mobile 2518:518
+   Page-only styles, all scoped under .page-capital-lease.
+   Shared pieces (header, hero, presentation, testimonial, CTA,
+   footer, buttons, program cards, explore link) come from
+   /styles.css and /assets/css/site.css.
+   Headings are typed in title case (Figma capitalises them;
+   text-transform can't be used on data-reveal="chars" headings).
+   ========================================================= */
+
+.page-capital-lease .cl-pad-lg { padding-block: 120px; } /* sections with 120px top/bottom in Figma */
+
+/* ---------- Key Benefits of a Capital Lease (Figma 2496:420) ----------
+   Three stacked "paper" rows: white texture + 10% noise layer and a soft
+   80px shadow that shows through the next row. Middle row is mirrored. */
+.page-capital-lease .cl-benefits {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+.page-capital-lease .cl-benefits .section-title {
+  max-width: 852px;
+  color: var(--charcoal-700);
+  text-align: center;
+}
+.page-capital-lease .cl-rows {
+  width: 100%;
+  max-width: 1050.5px;
+  display: flex;
+  flex-direction: column;
+}
+.page-capital-lease .cl-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 60px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5), 0 30px 80px rgba(0, 0, 0, 0.12); /* inset = Figma's inside 1px stroke */
+  background: var(--white) url("/assets/images/capital-lease/row-1.webp") center / cover no-repeat;
+}
+.page-capital-lease .cl-row::before { /* Figma noise layer at 10% */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/assets/images/stat-noise.webp") left top / 2048px 2048px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+.page-capital-lease .cl-row > * { position: relative; }
+.page-capital-lease .cl-row--2 {
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12); /* no stroke on the middle row */
+  background-image: url("/assets/images/capital-lease/row-2.webp");
+}
+.page-capital-lease .cl-row--3 { background-image: url("/assets/images/capital-lease/row-3.webp"); }
+.page-capital-lease .cl-row__title {
+  flex: 0 1 357px; /* Figma text boxes: 357 / 354 / 444px — titles wrap onto two lines */
+  min-width: 0;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+}
+.page-capital-lease .cl-row--2 .cl-row__title { flex-basis: 354px; }
+.page-capital-lease .cl-row--3 .cl-row__title { flex-basis: 444px; }
+.page-capital-lease .cl-row__text {
+  flex: 0 1 380px;
+  min-width: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+/* Middle row: text on the left, title on the right (title stays first in the DOM) */
+.page-capital-lease .cl-row--flip .cl-row__title { order: 2; }
+
+/* ---------- Our Solutions (Figma 2536:29852) — homepage program cards, white on grey ---------- */
+.page-capital-lease .cl-solutions .section-title {
+  max-width: 665px;
+  margin: 0 auto 80px;
+  color: var(--charcoal-700);
+  text-align: center;
+}
+.page-capital-lease .cl-solutions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+.page-capital-lease .cl-solutions__grid .program-card { flex: none; background: var(--white); }
+.page-capital-lease .cl-solutions__grid .program-card:hover,
+.page-capital-lease .cl-solutions__grid .program-card:focus-visible { background: var(--charcoal-900); }
+.page-capital-lease .cl-solutions__grid .program-card:last-child:nth-child(3n + 1) { grid-column: 2; } /* lone last card sits in the middle */
+.page-capital-lease .cl-solutions__grid .program-card__text {
+  font-weight: 500;
+  line-height: 1.4;
+}
+.page-capital-lease .cl-solutions__grid .program-card__media { position: relative; }
+.page-capital-lease .cl-solutions__grid .program-card__media::after { /* Figma's 10–20% black wash on the thumbnails */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--wash, 0.1));
+  pointer-events: none;
+}
+.page-capital-lease .cl-solutions__grid .program-card__media--dim { --wash: 0.2; }
+.page-capital-lease .cl-solutions__grid .program-card__media--clear { --wash: 0; }
+
+/* =========================================================
+   TABLET (768–1199) — Figma 2518:23
+   ========================================================= */
+@media (max-width: 1199px) {
+  .page-capital-lease .cl-pad-lg { padding-block: var(--section-pad); }
+
+  /* Benefit rows: full width, 240px title column */
+  .page-capital-lease .cl-benefits { gap: 48px; }
+  .page-capital-lease .cl-benefits .section-title { max-width: none; }
+  .page-capital-lease .cl-rows { max-width: none; }
+  .page-capital-lease .cl-row {
+    justify-content: flex-start;
+    gap: 24px;
+    padding: 32px 40px;
+  }
+  .page-capital-lease .cl-row__title,
+  .page-capital-lease .cl-row--2 .cl-row__title,
+  .page-capital-lease .cl-row--3 .cl-row__title {
+    flex: 0 0 240px;
+    font-size: 32px;
+  }
+  .page-capital-lease .cl-row__text { flex: 1 1 0; font-weight: 400; }
+
+  /* Solutions: one horizontal card per row (program-card tablet layout from styles.css) */
+  .page-capital-lease .cl-solutions .section-title { max-width: none; margin-bottom: 48px; }
+  .page-capital-lease .cl-solutions__grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .page-capital-lease .cl-solutions__grid .program-card:last-child:nth-child(3n + 1) { grid-column: auto; }
+  .page-capital-lease .cl-solutions__grid .program-card__text { max-width: none; }
+}
+
+/* =========================================================
+   MOBILE (≤767) — Figma 2518:518
+   ========================================================= */
+@media (max-width: 767px) {
+  .page-capital-lease .section-title { line-height: 1.11; }
+
+  /* Benefit rows: title over text */
+  .page-capital-lease .cl-benefits { gap: 32px; }
+  .page-capital-lease .cl-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 24px;
+  }
+  .page-capital-lease .cl-row__title,
+  .page-capital-lease .cl-row--2 .cl-row__title,
+  .page-capital-lease .cl-row--3 .cl-row__title {
+    flex: none;
+    font-size: 20px;
+  }
+  .page-capital-lease .cl-row__text { flex: none; font-size: 16px; }
+  .page-capital-lease .cl-row--flip .cl-row__title { order: 0; }
+
+  /* Solutions: photo on top (program-card mobile layout from styles.css) */
+  .page-capital-lease .cl-solutions .section-title { margin-bottom: 32px; }
+  .page-capital-lease .cl-solutions__grid { gap: 16px; }
+  .page-capital-lease .cl-solutions__grid .program-card { row-gap: 12px; }
+  .page-capital-lease .cl-solutions__grid .program-card__title { font-size: 24px; }
+  .page-capital-lease .cl-solutions__grid .program-card__media { height: 228px; margin-bottom: 8px; }
+  .page-capital-lease .cl-solutions__grid .explore { margin-top: 16px; } /* 12px gap + 4px spacer + 12px gap in Figma */
+}

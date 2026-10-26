@@ -1,0 +1,79 @@
+/* =========================================================
+   Bank & Credit Union Programs – Coming Soon — /services/bank-credit-union/
+   Figma: desktop 2538:492 · tablet 2540:23 · mobile 2540:640
+   Page-only styles, all scoped under .page-bank-credit-union.
+   Shared pieces (header, hero, Coming Soon card, presentation, testimonial,
+   CTA, footer, buttons, program cards, explore link) come from
+   /styles.css and /assets/css/site.css.
+   Headings are typed in title case (no text-transform: the "chars" reveal
+   splits letters, so capitalize would uppercase every one of them).
+   ========================================================= */
+
+/* ---------- Our Solutions (Figma 2536:30557) — homepage program cards, white on grey ---------- */
+.page-bank-credit-union .bcu-solutions { padding-block: 120px; }
+.page-bank-credit-union .bcu-solutions .section-title {
+  max-width: 665px;
+  margin: 0 auto 80px;
+  color: var(--charcoal-700);
+  text-align: center;
+}
+.page-bank-credit-union .bcu-solutions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+.page-bank-credit-union .bcu-solutions__grid .program-card {
+  flex: none;
+  background: var(--white);
+}
+.page-bank-credit-union .bcu-solutions__grid .program-card:hover,
+.page-bank-credit-union .bcu-solutions__grid .program-card:focus-visible { background: var(--charcoal-900); }
+.page-bank-credit-union .bcu-solutions__grid .program-card:last-child:nth-child(3n + 1) { grid-column: 2; } /* lone last card sits in the middle */
+.page-bank-credit-union .bcu-solutions .program-card__text {
+  font-weight: 500;
+  line-height: 1.4;
+}
+.page-bank-credit-union .bcu-solutions .program-card__media { position: relative; }
+.page-bank-credit-union .bcu-solutions .program-card__media::after { /* Figma's 10–20% black wash on the thumbnails */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--wash, 0.1));
+  pointer-events: none;
+}
+.page-bank-credit-union .bcu-solutions .program-card__media--dim { --wash: 0.2; }
+.page-bank-credit-union .bcu-solutions .program-card__media--clear { --wash: 0; }
+
+/* =========================================================
+   TABLET (768–1199) — Figma 2540:23
+   ========================================================= */
+@media (max-width: 1199px) {
+  /* Coming Soon: this page's tablet frame has 40px below the card (solutions add 40px on top) */
+  .page-bank-credit-union .coming-soon-section { padding-bottom: 40px; }
+
+  /* Solutions: one horizontal card per row (program-card tablet layout from styles.css) */
+  .page-bank-credit-union .bcu-solutions { padding-block: 40px 80px; }
+  .page-bank-credit-union .bcu-solutions .section-title { max-width: none; margin-bottom: 48px; }
+  .page-bank-credit-union .bcu-solutions__grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .page-bank-credit-union .bcu-solutions__grid .program-card:last-child:nth-child(3n + 1) { grid-column: auto; }
+  .page-bank-credit-union .bcu-solutions .program-card__text { max-width: none; }
+}
+
+/* =========================================================
+   MOBILE (≤767) — Figma 2540:640
+   ========================================================= */
+@media (max-width: 767px) {
+  /* Coming Soon (Figma 2540:733): 32px below the card, "H2 Tight" title, 8px button wrap */
+  .page-bank-credit-union .coming-soon-section { padding-bottom: 32px; }
+  .page-bank-credit-union .coming-soon__title { line-height: 1.11; }
+  .page-bank-credit-union .coming-soon__actions { padding-top: 8px; }
+
+  /* Solutions: photo on top (program-card mobile layout from styles.css) */
+  .page-bank-credit-union .bcu-solutions { padding-block: 56px; }
+  .page-bank-credit-union .bcu-solutions .section-title { margin-bottom: 32px; }
+  .page-bank-credit-union .bcu-solutions__grid { gap: 16px; }
+  .page-bank-credit-union .bcu-solutions__grid .program-card { row-gap: 12px; }
+  .page-bank-credit-union .bcu-solutions__grid .program-card__title { font-size: 24px; }
+  .page-bank-credit-union .bcu-solutions__grid .program-card__media { height: 228px; margin-bottom: 8px; }
+  .page-bank-credit-union .bcu-solutions__grid .explore { margin-top: 16px; } /* 12px gap + 4px spacer + 12px gap in Figma */
+}

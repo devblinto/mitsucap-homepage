@@ -1,0 +1,80 @@
+/* =========================================================
+   Solutions overview page (/solutions/)
+   Figma: desktop 2374:30924, tablet 2382:23, mobile 2383:23
+   The solution cards reuse the homepage .program-card / .explore
+   component (styles.css); only the grid and the few size
+   differences live here.
+   ========================================================= */
+
+/* ---------- Solutions grid ---------- */
+.solutions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 80px;
+  padding: 120px var(--site-gutter);
+  background: var(--white);
+}
+.solutions__title {
+  width: 665px;
+  max-width: 100%;
+  color: var(--charcoal-700);
+  text-align: center;
+}
+.solutions__grid {
+  width: 100%;
+  max-width: 1320px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* last row (2 cards) sits in the middle */
+  gap: 32px;
+}
+.solutions__grid > .program-card {
+  flex: 0 0 calc((100% - 64px) / 3);
+}
+
+.solutions .program-card__text { font-weight: 500; line-height: 1.4; } /* Figma Body L: Gilroy Medium, 1.4 */
+
+/* Photo tint, as in Figma (10% or 20% black; Sale/Leaseback has none) */
+.solutions .program-card__media { position: relative; }
+.solutions .program-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: rgba(0, 0, 0, var(--tint, 0.1));
+  pointer-events: none;
+}
+.solutions .program-card__media--tint-20 { --tint: 0.2; }
+.solutions .program-card__media--tint-0 { --tint: 0; }
+
+/* =========================================================
+   TABLET (768–1199px, matches styles.css)
+   ========================================================= */
+@media (max-width: 1199px) {
+  /* This page's hero photo keeps the desktop proportions (Figma 704×583 / 358×297) */
+  .page-hero__media { aspect-ratio: 704 / 583; }
+
+  .solutions { gap: 48px; padding: 80px var(--site-gutter); }
+  .solutions__title { width: 475px; }
+  .solutions__grid { max-width: 704px; flex-direction: column; flex-wrap: nowrap; gap: 24px; }
+  .solutions__grid > .program-card { flex: none; width: 100%; }
+  .solutions .program-card__text { max-width: none; } /* Figma text column is 428px (homepage caps it at 385px) */
+}
+
+/* =========================================================
+   MOBILE (≤767px)
+   ========================================================= */
+@media (max-width: 767px) {
+  .page-hero__media { aspect-ratio: 358 / 297; }
+
+  .solutions { gap: 32px; padding: 56px var(--site-gutter); }
+  /* "Solutions for Every Need" is 357.8px wide at 32px; a few px of slack keeps the
+     Figma 2-line break once SplitText wraps each letter */
+  .solutions__title { width: calc(100% + 8px); max-width: none; margin-inline: -4px; }
+  .solutions__grid { gap: 16px; }
+  .solutions .program-card { row-gap: 20px; }
+  .solutions .program-card__title { font-size: 24px; }
+  .solutions .program-card__media { height: 228px; margin-bottom: 0; }
+  .solutions .program-card .explore { margin-top: 8px; }
+}

@@ -1,0 +1,26 @@
+<!-- ============ DOCUMENT START + <head> (shared) ============
+     Replace TITLE, DESCRIPTION and SLUG. Keep the CSS order:
+     1 /styles.css  →  2 /assets/css/site.css  →  3 /assets/css/pages/SLUG.css
+     The inline script must stay: it adds .js (used by the header) and .anim (hides
+     reveal targets until GSAP is ready; failsafe shows everything after 4s). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TITLE | MitsuCap</title>
+  <meta name="description" content="DESCRIPTION">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/pages/SLUG.css">
+  <script>
+    document.documentElement.classList.add("js");
+    // Hide reveal targets until GSAP has set their start states. Fallback: show everything after 4s.
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("anim");
+      setTimeout(function () { if (!window.__animReady) document.documentElement.classList.remove("anim"); }, 4000);
+    }
+  </script>
+</head>
+<body>
+  <div class="page">

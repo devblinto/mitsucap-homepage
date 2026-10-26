@@ -1,0 +1,225 @@
+/* =========================================================
+   Benefits of Leasing page — /benefits-of-leasing/
+   Figma: desktop 2577:23 · tablet 2580:23 · mobile 2580:759
+   Shared parts (header, hero, experience & help, presentation,
+   testimonial, CTA, footer) come from styles.css + site.css.
+   Everything here is scoped to .page-benefits-of-leasing and
+   uses the .bol- prefix.
+   Reused components: .section / .section-head (site.css),
+   .glass-card + .card-icon (styles.css, homepage Core Values hover).
+   ========================================================= */
+
+/* =========================================================
+   02 WHY LEASE YOUR EQUIPMENT? (Figma 2577:135)
+   Three translucent white rows with a soft shadow; on desktop the
+   title and text swap sides on the middle row.
+   ========================================================= */
+.page-benefits-of-leasing .bol-why {
+  padding-block: 120px;
+}
+.page-benefits-of-leasing .bol-why__head {
+  margin-bottom: 64px;
+}
+.page-benefits-of-leasing .bol-why__title {
+  max-width: 852px;
+  color: var(--charcoal-700);
+}
+.page-benefits-of-leasing .bol-why__list {
+  display: flex;
+  flex-direction: column;
+  max-width: 1050.5px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+.page-benefits-of-leasing .bol-why__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 60px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  /* Figma: white fill fading 50% → 0% across the row (+ a 10% white noise layer,
+     invisible on the white section) */
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+}
+.page-benefits-of-leasing .bol-why__item--reverse {
+  flex-direction: row-reverse;
+  border-color: rgba(255, 255, 255, 0);
+  background: linear-gradient(270deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0));
+}
+.page-benefits-of-leasing .bol-why__name {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+}
+.page-benefits-of-leasing .bol-why__text {
+  flex: 0 0 380px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+
+/* =========================================================
+   03 FLEXIBLE OPTIONS AT LEASE END (Figma 2577:152)
+   Dark section, split heading (site.css), three glass cards.
+   ========================================================= */
+.page-benefits-of-leasing .bol-options__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* The homepage glass card has a fixed width and an absolutely placed panel;
+   here the panel sits in the flow inside the 2px rim. */
+.page-benefits-of-leasing .bol-option.glass-card {
+  display: flex;
+  width: auto;
+  min-height: 280px;
+  padding: 2px;
+  background: linear-gradient(153.25deg, #0c0c0d 5.3%, #636369 24.07%, #272729 38.38%, #636369 58.94%, #37373a 81.29%, #0c0c0d 94.71%);
+}
+.page-benefits-of-leasing .bol-option .glass-card__inner {
+  position: relative;
+  flex: 1 1 auto;
+  gap: 72px;
+  padding: 24px 24px 32px;
+  background: linear-gradient(153.36deg, #141519 25.86%, #222224 94.71%);
+}
+.page-benefits-of-leasing .bol-option__icon {
+  width: 72px;
+  height: 72px;
+}
+.page-benefits-of-leasing .bol-option__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--white);
+}
+
+/* =========================================================
+   04 A SMART STRATEGIC FINANCIAL SOLUTION (Figma 2577:177)
+   Photo left, text right (desktop); text then photo (tablet/mobile).
+   ========================================================= */
+.page-benefits-of-leasing .bol-smart {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+.page-benefits-of-leasing .bol-smart__media {
+  position: relative;
+  flex: 0 1 648px;
+  min-width: 0;
+  aspect-ratio: 648 / 560;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.page-benefits-of-leasing .bol-smart__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.page-benefits-of-leasing .bol-smart__content {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.page-benefits-of-leasing .bol-smart__title {
+  color: var(--charcoal-700);
+}
+.page-benefits-of-leasing .bol-smart__text {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+
+/* =========================================================
+   TABLET (768–1199px) — Figma 2580:23
+   ========================================================= */
+@media (max-width: 1199px) {
+  /* Why lease: stacked rows, title above text */
+  .page-benefits-of-leasing .bol-why { padding-block: var(--section-pad); }
+  .page-benefits-of-leasing .bol-why__head { margin-bottom: 48px; }
+  .page-benefits-of-leasing .bol-why__list { max-width: none; }
+  .page-benefits-of-leasing .bol-why__item,
+  .page-benefits-of-leasing .bol-why__item--reverse {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 32px 40px;
+  }
+  .page-benefits-of-leasing .bol-why__name { font-size: 32px; }
+  .page-benefits-of-leasing .bol-why__text { flex: none; }
+
+  /* Lease-end options: still three columns, 16px apart */
+  .page-benefits-of-leasing .bol-options__grid { gap: 16px; }
+  .page-benefits-of-leasing .bol-option.glass-card {
+    min-height: 259px;
+    background: linear-gradient(138.93deg, #0c0c0d 5.3%, #636369 24.07%, #272729 38.38%, #636369 58.94%, #37373a 81.29%, #0c0c0d 94.71%);
+  }
+  .page-benefits-of-leasing .bol-option .glass-card__inner {
+    gap: 40px;
+    background: linear-gradient(138.86deg, #141519 25.86%, #222224 94.71%);
+  }
+  .page-benefits-of-leasing .bol-option__title { font-size: 24px; }
+
+  /* Smart solution: text first, photo below */
+  .page-benefits-of-leasing .bol-smart {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+  }
+  .page-benefits-of-leasing .bol-smart__media {
+    order: 2;
+    flex: none;
+    width: 100%;
+    aspect-ratio: 704 / 502;
+  }
+  .page-benefits-of-leasing .bol-smart__content { flex: none; }
+  .page-benefits-of-leasing .bol-smart__text { font-size: 18px; }
+}
+
+/* =========================================================
+   MOBILE (≤767px) — Figma 2580:759
+   ========================================================= */
+@media (max-width: 767px) {
+  /* Mobile/Heading/H2 Tight: 32 / 1.11 */
+  .page-benefits-of-leasing .bol-why__title,
+  .page-benefits-of-leasing .bol-options__title,
+  .page-benefits-of-leasing .bol-smart__title { line-height: 1.11; }
+
+  .page-benefits-of-leasing .bol-why__head { margin-bottom: 32px; }
+  .page-benefits-of-leasing .bol-why__item,
+  .page-benefits-of-leasing .bol-why__item--reverse { padding: 24px; }
+  .page-benefits-of-leasing .bol-why__name { font-size: 20px; }
+  .page-benefits-of-leasing .bol-why__text { font-size: 16px; }
+
+  /* Lease-end options: 16px title → intro (Figma), cards stacked */
+  .page-benefits-of-leasing .bol-options .section-head { gap: 16px; }
+  .page-benefits-of-leasing .bol-options__grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .page-benefits-of-leasing .bol-option.glass-card {
+    min-height: 0;
+    background: linear-gradient(163.58deg, #0c0c0d 5.3%, #636369 24.07%, #272729 38.38%, #636369 58.94%, #37373a 81.29%, #0c0c0d 94.71%);
+  }
+  .page-benefits-of-leasing .bol-option .glass-card__inner {
+    gap: 24px;
+    padding: 20px;
+    background: linear-gradient(163.85deg, #141519 25.86%, #222224 94.71%);
+  }
+  .page-benefits-of-leasing .bol-option__icon { width: 48px; height: 48px; }
+  .page-benefits-of-leasing .bol-option__title { font-size: 20px; }
+
+  .page-benefits-of-leasing .bol-smart { gap: 32px; }
+  .page-benefits-of-leasing .bol-smart__media { aspect-ratio: 358 / 309; }
+  .page-benefits-of-leasing .bol-smart__text { font-size: 16px; }
+}

@@ -1,0 +1,277 @@
+/* =========================================================
+   PUT Lease — /services/put-lease/
+   Figma: desktop 2507:85 · tablet 2509:23 · mobile 2510:23
+   Page-only styles, all scoped under .page-put-lease.
+   Shared pieces (header, hero, presentation, testimonial, CTA,
+   footer, buttons, program cards, explore link, eyebrow)
+   come from /styles.css and /assets/css/site.css.
+   ========================================================= */
+
+.page-put-lease .put-pad-lg { padding-block: 120px; } /* sections with 120px top/bottom in Figma */
+
+/* Figma capitalises headings; the copy is typed in title case instead (text-transform would
+   capitalise every letter once the "chars" reveal splits them). */
+
+/* ---------- Purchase Upon Termination (PUT) Lease (Figma 2507:194) ----------
+   Three stacked "paper" rows: translucent white texture + 10% noise,
+   a soft 80px shadow (it shows through the next row's translucent fill). */
+.page-put-lease .put-example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+.page-put-lease .put-example__head {
+  max-width: 852px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: center;
+}
+.page-put-lease .put-example .section-title { color: var(--charcoal-700); }
+.page-put-lease .put-example__intro {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.page-put-lease .put-rows {
+  width: 100%;
+  max-width: 1050.5px;
+  display: flex;
+  flex-direction: column;
+}
+.page-put-lease .put-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 40px 60px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.12);
+  background: url("/assets/images/put-lease/row-1.webp") center / cover no-repeat;
+}
+.page-put-lease .put-row::before { /* Figma noise layer at 10% */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/assets/images/stat-noise.webp") left top / 2048px 2048px;
+  opacity: 0.1;
+  pointer-events: none;
+}
+.page-put-lease .put-row > * { position: relative; }
+.page-put-lease .put-row--2 {
+  border-color: transparent;
+  background-image: url("/assets/images/put-lease/row-2.webp");
+}
+.page-put-lease .put-row--3 { background-image: url("/assets/images/put-lease/row-3.webp"); }
+.page-put-lease .put-row__value {
+  flex-shrink: 0;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+  white-space: nowrap;
+}
+.page-put-lease .put-row__note {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1; /* keeps the 40px line box at 48px, as in Figma */
+}
+.page-put-lease .put-row__text {
+  flex: 0 1 380px;
+  min-width: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.page-put-lease .put-row__small {
+  font-size: 16px;
+  font-weight: 400;
+}
+/* Middle row: label on the left, value on the right (value stays first in the DOM) */
+.page-put-lease .put-row--flip .put-row__value { order: 2; }
+
+/* ---------- Lower Payments, Reduced End-of-Lease Risk (Figma 2507:212) ---------- */
+.page-put-lease .put-split {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+.page-put-lease .put-split__content {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+}
+.page-put-lease .put-split__text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.page-put-lease .put-split .section-title {
+  margin-right: -24px; /* may use part of the 60px gap, so a 15px scrollbar keeps Figma's line breaks */
+  color: var(--charcoal-700);
+}
+.page-put-lease .put-split__intro {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.page-put-lease .put-split__media {
+  position: relative;
+  flex: 0 1 648px;
+  min-width: 0;
+  aspect-ratio: 648 / 560;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.page-put-lease .put-split__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.page-put-lease .put-split__media::after { /* 10% black wash, as in Figma */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* ---------- Our Solutions (Figma 2536:29973) — homepage program cards in a 3-col grid ---------- */
+.page-put-lease .put-solutions .section-title {
+  margin-bottom: 80px;
+  color: var(--charcoal-700);
+  text-align: center;
+}
+.page-put-lease .put-solutions__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
+}
+.page-put-lease .put-solutions__grid .program-card { flex: none; }
+.page-put-lease .put-solutions__grid .program-card:last-child:nth-child(3n + 1) { grid-column: 2; } /* lone last card sits in the middle */
+.page-put-lease .program-card__text {
+  font-weight: 500;
+  line-height: 1.4;
+}
+.page-put-lease .program-card__media { position: relative; }
+.page-put-lease .program-card__media::after { /* Figma's 10–20% black wash on the thumbnails */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, var(--wash, 0.1));
+  pointer-events: none;
+}
+.page-put-lease .program-card__media--dim { --wash: 0.2; }
+.page-put-lease .program-card__media--clear { --wash: 0; }
+
+/* ---------- Company Presentation (Figma 2507:220) ----------
+   This page's design: grey section, white 1284px card, red eyebrow above the title. */
+.page-put-lease .presentation { background: var(--warm-white-200); }
+.page-put-lease .presentation__card {
+  max-width: 1284px;
+  margin-inline: auto;
+  background: var(--white);
+}
+.page-put-lease .presentation__body {
+  gap: 24px;
+  margin-right: -16px; /* the 40px title needs ~550px for Figma's two lines; borrow some card padding */
+}
+.page-put-lease .presentation__body .btn { margin-top: 8px; } /* Figma "Button wrap" 8px top padding */
+
+/* Shared testimonial sits on white on this page (Figma 2507:229 · 2509:161 · 2510:161) */
+.page-put-lease .testimonial { background: var(--white); }
+
+/* =========================================================
+   TABLET (768–1199) — Figma 2509:23
+   ========================================================= */
+@media (max-width: 1199px) {
+  .page-put-lease .put-pad-lg { padding-block: var(--section-pad); }
+
+  /* PUT example rows: full width, value then text */
+  .page-put-lease .put-example { gap: 48px; }
+  .page-put-lease .put-example__head { max-width: none; }
+  .page-put-lease .put-example__intro { font-weight: 400; }
+  .page-put-lease .put-rows { max-width: none; }
+  .page-put-lease .put-row {
+    justify-content: flex-start;
+    gap: 32px;
+    padding: 32px 40px;
+  }
+  .page-put-lease .put-row--flip { justify-content: space-between; }
+  .page-put-lease .put-row__text { flex: 1 1 0; font-weight: 400; }
+  .page-put-lease .put-row--3 .put-row__text { font-weight: 500; }
+  .page-put-lease .put-row--3 .put-row__small { font-weight: 400; }
+
+  /* Lower payments: text on top, photo below */
+  .page-put-lease .put-split {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 40px;
+  }
+  .page-put-lease .put-split__content { flex: none; }
+  .page-put-lease .put-split .section-title { margin-right: 0; }
+  .page-put-lease .put-split__intro { font-size: 18px; }
+  .page-put-lease .put-split__media { flex: none; width: 100%; aspect-ratio: auto; height: 502px; }
+
+  /* Solutions: one horizontal card per row (program-card tablet layout from styles.css) */
+  .page-put-lease .put-solutions .section-title { margin-bottom: 48px; }
+  .page-put-lease .put-solutions__grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+  .page-put-lease .put-solutions__grid .program-card:last-child:nth-child(3n + 1) { grid-column: auto; }
+  .page-put-lease .program-card__text { max-width: none; }
+
+  /* Presentation (Figma 2509:149): white section, grey card, stacked and centred */
+  .page-put-lease .presentation { background: var(--white); }
+  .page-put-lease .presentation__card { max-width: none; background: var(--warm-white-200); }
+  .page-put-lease .presentation__media img { object-position: 50% 25%; } /* Figma crop keeps the cover's logo in view */
+  .page-put-lease .presentation__body { margin-right: 0; }
+  .page-put-lease .presentation__body .btn { margin-top: 0; }
+}
+
+/* =========================================================
+   MOBILE (≤767) — Figma 2510:23
+   ========================================================= */
+@media (max-width: 767px) {
+  .page-put-lease .section-title { line-height: 1.11; }
+
+  /* PUT example rows: value over text */
+  .page-put-lease .put-example { gap: 32px; }
+  .page-put-lease .put-example__intro { font-size: 16px; }
+  .page-put-lease .put-row,
+  .page-put-lease .put-row--flip {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 24px;
+  }
+  .page-put-lease .put-row--flip .put-row__value { order: 0; }
+  .page-put-lease .put-row__value { font-size: 30px; }
+  .page-put-lease .put-row__note { font-size: 12px; }
+  .page-put-lease .put-row__text { flex: none; font-size: 16px; }
+  .page-put-lease .put-row__small { font-size: 14px; }
+
+  /* Lower payments */
+  .page-put-lease .put-split { gap: 32px; }
+  .page-put-lease .put-split__intro { font-size: 16px; }
+  .page-put-lease .put-split__media { height: 309px; }
+
+  /* Solutions: photo on top (program-card mobile layout from styles.css) */
+  .page-put-lease .put-solutions .section-title { margin-bottom: 32px; }
+  .page-put-lease .put-solutions__grid { gap: 16px; }
+  .page-put-lease .put-solutions__grid .program-card { row-gap: 12px; }
+  .page-put-lease .put-solutions__grid .program-card__title { font-size: 24px; }
+  .page-put-lease .put-solutions__grid .program-card__media { height: 228px; margin-bottom: 8px; }
+  .page-put-lease .put-solutions__grid .explore { margin-top: 16px; } /* 12px gap + 4px spacer + 12px gap in Figma */
+
+  /* Presentation (Figma 2510:149): 56px section, 20px card padding, 318×253 mockup, 20px title */
+  .page-put-lease .presentation { padding: 56px var(--site-gutter); }
+  .page-put-lease .presentation__card { gap: 24px; padding: 20px; }
+  .page-put-lease .presentation__media { aspect-ratio: 318 / 253; border-radius: 6.631px; }
+  .page-put-lease .presentation__title { font-size: 20px; }
+}

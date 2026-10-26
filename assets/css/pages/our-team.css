@@ -1,0 +1,211 @@
+/* =========================================================
+   Our Team page (/our-team/)
+   Figma: Final Design › "Our Team - Template" (2636:23),
+   tablet 2641:23, mobile 2641:694.
+   Only the sections unique to this page live here; the hero,
+   header, shared cards, presentation, testimonial, CTA and
+   footer come from /assets/css/site.css.
+   ========================================================= */
+
+/* ---------- 01 Hero (shared .page-hero, scoped tweaks) ---------- */
+/* Figma title is charcoal-500 (#30313C) on this page */
+.ot-hero .page-hero__title { color: var(--charcoal-500); }
+/* Figma photo overlay: 10% black */
+.ot-hero .page-hero__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
+
+/* ---------- 02 Our Value Added Service Is Our Expertise! ---------- */
+.ot-expertise {
+  background: var(--white);
+  padding: var(--section-pad) var(--site-gutter);
+}
+.ot-expertise__title {
+  max-width: 844px;
+  margin: 0 auto 56px;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--charcoal-500);
+}
+.ot-expertise__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.ot-expertise__card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-height: 457px;
+  padding: 32px;
+  border-radius: 16px;
+  background: var(--warm-white-200);
+}
+.ot-expertise__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: var(--white);
+  flex-shrink: 0;
+}
+.ot-expertise__icon img { width: 28px; height: 28px; }
+.ot-expertise__text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.ot-expertise__name {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+}
+.ot-expertise__desc {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+
+/* ---------- 03 Our Team (dark) ---------- */
+.ot-team {
+  background: var(--charcoal-900);
+  padding: var(--section-pad) var(--site-gutter);
+  color: var(--white);
+}
+.ot-team__header {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 80px;
+  align-items: start;
+  margin-bottom: 52px;
+}
+.ot-team__title {
+  font-size: 56px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--white);
+}
+.ot-team__intro {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.7);
+}
+.ot-team__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+.ot-member {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0;
+}
+.ot-member__photo {
+  width: 100%;
+  height: 320px;
+  border-radius: 16px;
+  object-fit: cover;
+  background: var(--charcoal-700);
+}
+.ot-member__info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.ot-member__name {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--white);
+}
+.ot-member__role {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ---------- Tablet (768–1199) ---------- */
+@media (max-width: 1199px) {
+  .ot-hero .page-hero__media { aspect-ratio: 704 / 582; }
+
+  .ot-expertise__title {
+    max-width: none;
+    margin-bottom: 40px;
+    font-size: 40px;
+    font-weight: 600;
+  }
+  .ot-expertise__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .ot-expertise__card {
+    gap: 20px;
+    min-height: 0;
+    padding: 24px;
+  }
+  .ot-expertise__desc { font-weight: 400; }
+
+  .ot-team__header {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+  .ot-team__title { font-size: 40px; }
+  .ot-team__intro { font-size: 18px; }
+  .ot-team__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .ot-member__photo { height: 360px; }
+}
+
+/* ---------- Mobile (≤767) ---------- */
+@media (max-width: 767px) {
+  .ot-hero .page-hero__media { aspect-ratio: 358 / 296; }
+
+  .ot-expertise__title {
+    margin-bottom: 32px;
+    font-size: 32px;
+  }
+  .ot-expertise__grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .ot-expertise__card {
+    gap: 16px;
+    padding: 20px;
+  }
+  .ot-expertise__name { font-size: 20px; }
+  .ot-expertise__desc { font-size: 16px; }
+
+  .ot-team__header {
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+  .ot-team__title {
+    font-size: 32px;
+    line-height: 1.11;
+  }
+  .ot-team__intro { font-size: 16px; }
+  .ot-team__grid { gap: 12px; }
+  .ot-member { gap: 12px; }
+  .ot-member__photo { height: 200px; }
+  .ot-member__name { font-size: 20px; }
+  .ot-member__role {
+    font-size: 14px;
+    font-weight: 500;
+  }
+}

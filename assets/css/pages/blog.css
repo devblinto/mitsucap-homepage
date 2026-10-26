@@ -1,0 +1,224 @@
+/* =========================================================
+   Blog — /blog/ (+ /blog/coming-soon/)
+   Figma: desktop 2654:444 · tablet 2655:567 · mobile 2655:1849
+          Coming Soon: desktop 2654:92 · tablet 2655:92 · mobile 2655:1374
+   Page-only styles, all scoped under .page-blog.
+   Shared pieces (header, hero, coming-soon card, testimonial, CTA, footer,
+   buttons, "Explore" link, section + section title) come from /styles.css and
+   /assets/css/site.css. Headings are typed in the case Figma shows
+   (no text-transform on data-reveal="chars" headings).
+   ========================================================= */
+
+/* ---------- "Latest Articles" header + filter chips (Figma 2654:883) ---------- */
+.page-blog .blog-latest__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.page-blog .blog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.page-blog .blog-filter {
+  padding: 8px 18px;                       /* + 1px border → 40px tall, as Figma */
+  border: 1px solid var(--charcoal-500);
+  border-radius: 100px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.page-blog .blog-filter:hover { background: var(--warm-white-200); }
+.page-blog .blog-filter[aria-pressed="true"] {
+  border-color: var(--charcoal-900);
+  background: var(--charcoal-900);
+  color: var(--white);
+}
+.page-blog .blog-filter:focus-visible {
+  outline: 2px solid var(--red-500);
+  outline-offset: 3px;
+}
+
+/* ---------- Article cards (Figma 2654:894): grey panel, text left, photo right ---------- */
+.page-blog .blog-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+.page-blog .blog-card[hidden] { display: none; }
+.page-blog .blog-card__inner {
+  display: flex;
+  height: 100%;
+  min-height: 400px;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--warm-white-200);
+}
+.page-blog .blog-card__body {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  min-width: 0;
+  padding: 32px;
+}
+.page-blog .blog-card__top {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.page-blog .blog-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.page-blog .blog-tag {
+  padding: 4px 14px;                       /* + 1px border → 32px tall, as Figma */
+  border: 1px solid var(--charcoal-500);
+  border-radius: 100px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+  white-space: nowrap;
+}
+.page-blog .blog-tag--dark {
+  padding: 4px 13px;                       /* Figma 5/14, no stroke */
+  border-color: var(--charcoal-900);
+  background: var(--charcoal-900);
+  color: var(--white);
+}
+.page-blog .blog-card__title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-500);
+}
+.page-blog .blog-card__excerpt {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.page-blog .blog-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.page-blog .blog-card__meta li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.page-blog .blog-card__meta img { flex: none; }
+
+/* "Read Article →": shared Explore link, aligned to the text edge, longer underline (Figma 96px) */
+.page-blog .blog-card__link {
+  align-self: flex-start;
+  height: 34px;                            /* Figma CTA frame 34px */
+  padding-left: 0;
+}
+.page-blog .blog-card__link::after { left: 0; width: 96px; }
+/* hovering anywhere on the card plays the link animation (as on the homepage program cards) */
+.page-blog .blog-card__inner:hover .explore__arrow:first-child { transform: translateX(0); }
+.page-blog .blog-card__inner:hover .explore__arrow:last-child { transform: translateX(30px); }
+.page-blog .blog-card__inner:hover .blog-card__link::after { animation: explore-line .8s cubic-bezier(0.65, 0, 0.35, 1); }
+
+.page-blog .blog-card__media {
+  position: relative;
+  flex: 0 0 43.21%;                         /* Figma 280 of 648 */
+  overflow: hidden;
+}
+.page-blog .blog-card__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .6s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+.page-blog .blog-card__inner:hover .blog-card__media img { transform: scale(1.04); }
+
+.page-blog .blog-empty {
+  padding: 32px;
+  border-radius: 24px;
+  background: var(--warm-white-200);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+  text-align: center;
+}
+
+/* ---------- "Load More Articles" (Figma 2654:1084) ---------- */
+.page-blog .blog-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+/* =========================================================
+   TABLET (768–1199): header stacks, one card per row (photo right)
+   ========================================================= */
+@media (max-width: 1199px) {
+  .page-blog .blog-latest__head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .page-blog .blog-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+  .page-blog .blog-card__inner { min-height: 320px; }
+  .page-blog .blog-card__body { gap: 20px; padding: 28px; }
+  .page-blog .blog-card__media { flex-basis: 36.93%; }      /* Figma 260 of 704 */
+  .page-blog .blog-card__excerpt { font-weight: 400; }
+  .page-blog .blog-more { margin-top: 32px; }
+}
+
+/* =========================================================
+   MOBILE (≤767): photo on top, full-width button
+   ========================================================= */
+@media (max-width: 767px) {
+  .page-blog .blog-latest__head { gap: 16px; margin-bottom: 24px; }
+  .page-blog .blog-filter { font-size: 14px; font-weight: 500; }
+  .page-blog .blog-card__inner {
+    flex-direction: column;
+    min-height: 0;
+  }
+  .page-blog .blog-card__media {
+    order: -1;
+    flex: 0 0 200px;
+  }
+  .page-blog .blog-card__body { padding: 20px; }
+  .page-blog .blog-tag { font-size: 14px; font-weight: 500; }
+  .page-blog .blog-card__title { font-size: 20px; }
+  .page-blog .blog-card__excerpt { font-size: 16px; }
+  .page-blog .blog-card__meta { font-size: 14px; font-weight: 500; }
+  .page-blog .blog-card__link::after { width: 86px; }
+  .page-blog .blog-empty { padding: 20px; font-size: 16px; }
+  .page-blog .blog-more { margin-top: 24px; }
+  .page-blog .blog-more__btn { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-blog .blog-card__inner:hover .blog-card__media img { transform: none; }
+  .page-blog .blog-card__inner:hover .blog-card__link::after { animation: none; }
+}
