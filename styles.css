@@ -52,10 +52,10 @@
   --shadow-red: 0 6px 12px rgba(255, 138, 141, 0.2);
   --shadow-dark: 0 6px 12px rgba(61, 60, 60, 0.15);
 
-  /* Page content is at most 1200px wide and centred; the side margin never drops below 111px.
+  /* Page content is at most 1218px wide and centred; the side margin never drops below 111px.
      Section backgrounds and the sliders (logo marquee, Core Values track) still run full width.
      --scrollbar is set by script.js so the centring ignores the scrollbar. */
-  --content-max: 1200px;
+  --content-max: 1218px;
   --gutter: max(111px, (100vw - var(--scrollbar, 0px) - var(--content-max)) / 2);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }

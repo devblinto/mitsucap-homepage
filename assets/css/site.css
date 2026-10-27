@@ -17,7 +17,7 @@
   --charcoal-300: #74757c;
   --charcoal-100: #bfbfc3;
 
-  /* Page side margin on desktop: the homepage --gutter (min 111px, content max 1200px) */
+  /* Page side margin on desktop: the homepage --gutter (min 111px, content max 1218px) */
   --site-gutter: var(--gutter);
   --section-pad: 100px;          /* vertical section padding */
   --radius-card: 16px;

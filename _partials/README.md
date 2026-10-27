@@ -97,7 +97,7 @@ That is the only allowed edit to the header markup.
 From `styles.css`: `--red-200 #F7979A`, `--red-500 #ED1C24`, `--red-600`, `--primary-black #111`,
 `--charcoal-900 #141519`, `--charcoal-700 #22232B`, `--charcoal-500 #30313C`, `--charcoal-400 #595A63`,
 `--charcoal-50`, `--silver #D1D3D4`, `--warm-white-200 #F4F4F4` (= Figma "Bg"), `--warm-white-500 #E6E6E6`,
-`--white`, `--shadow-red`, `--shadow-dark`, `--ease-out`, `--gutter` (desktop: min 111px, grows to keep content max `--content-max` 1200px centred; 32/16px).
+`--white`, `--shadow-red`, `--shadow-dark`, `--ease-out`, `--gutter` (desktop: min 111px, grows to keep content max `--content-max` 1218px centred; 32/16px).
 From `site.css`: `--red-50`, `--red-100`, `--charcoal-800 #1A1B21`, `--charcoal-300 #74757C`,
 `--charcoal-100 #BFBFC3`, **`--site-gutter` (= `--gutter` on desktop / 32 / 16px — use this for inner-page side margins)**,
 `--section-pad` (100 / 80 / 56px), `--radius-card` 16px, `--shadow-panel`, `--shadow-card`.
@@ -212,5 +212,5 @@ Drop any page-level workarounds for these — they are fixed in `assets/css/site
 11. **WebP converter**: use `_partials/tools/webp-server.js` (preview_start name "webp", port 5180) — see section 6.
     It has no dependencies (the browser encodes WebP). Do not rely on `sharp` in a scratchpad.
 12. **Content width**: desktop side margin is `--gutter` = max(111px, centring value), so every section's content is
-    at most 1200px wide and centred while backgrounds stay full width. Sliders (homepage logo marquee, Core Values
+    at most 1218px wide and centred while backgrounds stay full width. Sliders (homepage logo marquee, Core Values
     track) still bleed to the screen edge. `script.js` sets `--scrollbar` so the centring ignores the scrollbar.
