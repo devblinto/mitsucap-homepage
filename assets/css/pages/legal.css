@@ -1,0 +1,190 @@
+/* =========================================================
+   LEGAL PAGES — shared layout for /terms-of-use/, /privacy-policy/, /declaration/
+   (Figma "Terms of Use / Privacy Policy / Declarations – Template", Tablet, Mobile)
+   Load after site.css and before the page's own CSS. Behaviour: /assets/js/pages/legal.js.
+
+   Markup contract
+   <section class="legal">
+     <aside class="legal__aside">
+       <nav class="legal-toc" aria-label="On this page">
+         <button class="legal-toc__toggle" type="button" aria-expanded="false" aria-controls="legal-toc-list">
+           On This Page <svg class="legal-toc__chevron">…</svg></button>
+         <ol class="legal-toc__list" id="legal-toc-list">
+           <li><a class="legal-toc__link" href="#SECTION-ID">Label</a></li> …
+         </ol>
+       </nav>
+       <div class="legal-card">…contact / related pages…</div>   (tablet + mobile: moves below the content)
+     </aside>
+     <div class="legal__content">…page sections…</div>
+   </section>
+
+   Optional mobile accordion (Terms, Privacy):
+   <div class="legal-accordion">
+     <div class="legal-accordion__controls"><span>11 Sections</span>
+       <button class="legal-accordion__all" type="button">Expand All</button></div>
+     <section class="legal-item" id="SECTION-ID">
+       <h2 class="legal-item__title"><button class="legal-item__header" type="button" aria-expanded="true">
+         <span class="legal-item__num">01</span><span class="legal-item__label">Title</span>
+         <svg class="legal-item__chevron">…</svg></button></h2>
+       <div class="legal-item__body">…</div>
+     </section> …
+   </div>
+   Desktop/tablet show every section open (headers are plain headings); below 768px the
+   items collapse and the first one starts open.
+   ========================================================= */
+
+.legal {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+  padding: var(--section-pad) var(--site-gutter);
+  background: var(--white);
+}
+.legal__aside {
+  position: sticky;
+  top: 32px;
+  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.legal__content {
+  flex: 0 1 860px;
+  min-width: 0;
+}
+[id] { scroll-margin-top: 32px; }
+
+/* ---------- "On This Page" card ---------- */
+.legal-toc {
+  padding: 24px;
+  border-radius: 16px;
+  background: var(--warm-white-200);
+}
+.legal-toc__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 0 12px;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-700);
+  text-align: left;
+  cursor: default;
+}
+.legal-toc__chevron { display: none; width: 22px; height: 22px; color: var(--charcoal-500); transition: transform .3s var(--ease-out); }
+.legal-toc__list { display: flex; flex-direction: column; gap: 4px; }
+.legal-toc__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+  transition: color .2s ease;
+}
+.legal-toc__link::before { /* indicator bar */
+  content: "";
+  flex-shrink: 0;
+  align-self: stretch;
+  width: 3px;
+  min-height: 22px;
+  border-radius: 2px;
+  background: var(--warm-white-500);
+  transition: background-color .2s ease;
+}
+.legal-toc__link:hover { color: var(--charcoal-700); }
+.legal-toc__link.is-active { color: var(--charcoal-700); }
+.legal-toc__link.is-active::before { background: var(--red-500); }
+
+/* ---------- Side card (contact / related pages) ---------- */
+.legal-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--warm-white-500);
+  border-radius: 16px;
+  background: var(--white);
+}
+
+/* ---------- Accordion (mobile only; open everywhere else) ---------- */
+.legal-accordion__controls { display: none; }
+.legal-item__title { margin: 0; font: inherit; }
+.legal-item__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+.legal-item__header:disabled { cursor: default; opacity: 1; }
+.legal-item__label { flex: 1 1 auto; min-width: 0; }
+.legal-item__chevron { display: none; flex-shrink: 0; width: 20px; height: 20px; color: var(--charcoal-500); transition: transform .3s var(--ease-out), color .2s ease; }
+
+/* ---------- Tablet: one column — contents card on top, side card after the content ---------- */
+@media (max-width: 1199px) {
+  .legal { flex-direction: column; align-items: stretch; gap: 40px; }
+  .legal__aside { display: contents; }
+  .legal-toc { order: -1; }
+  .legal__content { flex: none; order: 0; }
+  .legal-card { order: 1; }
+  .legal-toc__list { display: block; columns: 2; column-gap: 24px; }
+  .legal-toc__list li { break-inside: avoid; }
+}
+
+/* ---------- Mobile: collapsible contents bar + accordion sections ---------- */
+@media (max-width: 767px) {
+  .legal { gap: 32px; }
+  .legal-toc { padding: 16px 20px; border-radius: 12px; }
+  .legal-toc__toggle { padding: 0; font-size: 16px; cursor: pointer; }
+  .legal-toc__chevron { display: block; }
+  .legal-toc__list { columns: 1; margin-top: 12px; }
+  .js .legal-toc:not(.is-open) .legal-toc__list { display: none; }
+  .legal-toc.is-open .legal-toc__chevron { transform: rotate(180deg); }
+  .legal-card { padding: 20px; border-radius: 12px; }
+
+  .legal-accordion__controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 8px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: var(--charcoal-400);
+  }
+  .legal-accordion__all {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--red-500);
+    cursor: pointer;
+  }
+  .legal-item { border-bottom: 1px solid var(--warm-white-500); }
+  .legal-item__header { padding: 20px 0; cursor: pointer; }
+  .legal-item__label { font-size: 20px; font-weight: 600; line-height: 1.2; color: var(--charcoal-700); transition: color .2s ease; }
+  .legal-item__chevron { display: block; }
+  .legal-item.is-open .legal-item__label { color: var(--red-500); }
+  .legal-item.is-open .legal-item__chevron { transform: rotate(180deg); color: var(--red-500); }
+  .legal-item__body { padding-bottom: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .legal-toc__chevron, .legal-item__chevron { transition: none; }
+}

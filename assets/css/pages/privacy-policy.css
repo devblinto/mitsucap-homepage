@@ -1,0 +1,242 @@
+/* =========================================================
+   PRIVACY POLICY (Figma "Privacy Policy - Template" 2703:26369, Tablet 2706:27846, Mobile 2706:28479)
+   Shared layout, contents card and mobile accordion: /assets/css/pages/legal.css + /assets/js/pages/legal.js.
+   This file: hero type + meta line, number tiles, body text and red dot lists,
+   "Your Consent" callout, dark "Questions?" card, Related Legal Pages card.
+   ========================================================= */
+
+/* ---------- Hero: text only, H1 64 Bold, subtitle 20 Medium #30313C, "Last updated" meta ---------- */
+.page-privacy .privacy-hero .page-hero__text { gap: 20px; }
+.page-privacy .privacy-hero .page-hero__title { font-size: 64px; font-weight: 700; line-height: 1.2; }
+.page-privacy .privacy-hero .page-hero__intro { max-width: 820px; color: var(--charcoal-500); }
+.privacy-hero__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 4px; /* 20 + 4 = Figma 24px title block → meta */
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.privacy-hero__meta svg { flex-shrink: 0; width: 16px; height: 16px; }
+
+/* ---------- Contents card: no browser list numbers (labels carry their own "1." …) ---------- */
+.page-privacy .legal-toc__list { margin: 0; padding: 0; list-style: none; }
+
+/* ---------- Content column: 48px rhythm ---------- */
+.privacy__content,
+.page-privacy .legal-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+.privacy__intro {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+}
+.privacy__intro a { color: var(--red-500); }
+.privacy__intro a:hover { text-decoration: underline; }
+.privacy__divider {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  border: 0;
+  background: var(--warm-white-500);
+}
+.privacy__copy {
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+
+/* ---------- Section headings: red number tile + H4 32 SemiBold ---------- */
+.page-privacy .legal-item { display: flex; flex-direction: column; gap: 20px; }
+.page-privacy .legal-item__header,
+.privacy-box__head {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.page-privacy .legal-item__num,
+.privacy-box__num {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--red-50);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--red-500);
+}
+.page-privacy .legal-item__label,
+.privacy-box__head > span:last-child {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 1px 0 -1px; /* first line centred on the 40px tile, height unchanged */
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-700);
+}
+
+/* ---------- Body text + red dot lists ---------- */
+.page-privacy .legal-item__body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.page-privacy .legal-item__body p,
+.privacy-box p {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+}
+.privacy__list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.privacy__list li {
+  position: relative;
+  padding-left: 22px; /* 8px bullet + 14px gap */
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+}
+.privacy__list li::before {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: calc(0.7em - 3px); /* centred on the first line */
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red-500);
+}
+
+/* ---------- Sections 8 + 9: callout boxes (always visible) ---------- */
+.privacy-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 40px;
+  border-radius: 16px;
+}
+.privacy-box__head { width: 100%; margin: 0; }
+.privacy-box .privacy-box__num { background: var(--white); }
+.privacy-box--consent { background: var(--warm-white-200); }
+.privacy-box--dark {
+  /* same palette as the site's dark cards (.help-card--dark), angle/stops from this Figma frame */
+  background: linear-gradient(168.23deg, #141519 32.76%, #222224 81.93%);
+}
+.privacy-box--dark .privacy-box__head > span:last-child,
+.privacy-box--dark p { color: var(--white); }
+.privacy-box--dark p a { color: var(--red-500); }
+.privacy-box--dark p a:hover { text-decoration: underline; }
+.privacy-box__btn { gap: 10px; }
+.privacy-box__btn svg { flex-shrink: 0; width: 20px; height: 20px; }
+
+/* ---------- Related Legal Pages card ---------- */
+.page-privacy .privacy-related { gap: 4px; }
+.privacy-related__title {
+  padding-bottom: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-700);
+}
+.privacy-related__list { display: flex; flex-direction: column; gap: 4px; }
+.privacy-related__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+  transition: color .2s ease;
+}
+.privacy-related__link svg { flex-shrink: 0; width: 20px; height: 20px; color: var(--red-500); transition: transform .2s var(--ease-out); }
+.privacy-related__link:hover { color: var(--red-500); }
+.privacy-related__link:hover svg { transform: translateX(3px); }
+
+/* =========================================================
+   TABLET (Figma 768)
+   ========================================================= */
+@media (max-width: 1199px) {
+  .page-privacy .privacy-hero .page-hero__text { gap: 16px; }
+  .page-privacy .privacy-hero .page-hero__title { font-size: 40px; font-weight: 600; line-height: 1.2; }
+
+  .privacy__content,
+  .page-privacy .legal-accordion { gap: 40px; }
+  .privacy__intro { font-size: 18px; }
+
+  .page-privacy .legal-item { gap: 16px; }
+  .page-privacy .legal-item__num,
+  .privacy-box__num { width: 36px; height: 36px; }
+  .page-privacy .legal-item__label,
+  .privacy-box__head > span:last-child { margin: 3.6px 0 -3.6px; font-size: 24px; }
+
+  .page-privacy .legal-item__body { gap: 16px; }
+  .page-privacy .legal-item__body p,
+  .privacy-box p,
+  .privacy__list li { font-weight: 400; }
+
+  .privacy-box { gap: 16px; padding: 32px; }
+  .privacy-box--dark { background: linear-gradient(165.89deg, #141519 32.76%, #222224 81.93%); }
+}
+
+/* =========================================================
+   MOBILE (Figma 390) — sections 1–7 become the accordion (legal.js)
+   ========================================================= */
+@media (max-width: 767px) {
+  .page-privacy .privacy-hero .page-hero__text { gap: 12px; }
+  .page-privacy .privacy-hero .page-hero__title { font-size: 32px; }
+  .privacy-hero__meta { font-size: 14px; font-weight: 500; }
+
+  .privacy__content { gap: 32px; }
+  .page-privacy .legal-accordion { gap: 0; }
+  .page-privacy .legal-accordion__controls { margin-bottom: 24px; } /* + 8px padding = 32px */
+  .privacy__intro { font-size: 16px; }
+  .privacy__copy { font-size: 14px; }
+
+  .page-privacy .legal-item { gap: 0; }
+  .page-privacy .legal-item:last-child { border-bottom: 0; }
+  .page-privacy .legal-item__header,
+  .privacy-box__head { gap: 12px; }
+  .page-privacy .legal-item__num,
+  .privacy-box__num { width: 32px; height: 32px; font-size: 16px; }
+  .page-privacy .legal-item__label,
+  .privacy-box__head > span:last-child { margin: 4px 0 -4px; font-size: 20px; }
+  /* chevron centred on the first title line; long titles may run up to it (Figma: 294px title width) */
+  .page-privacy .legal-item__chevron { margin: 6px 0 0 -12px; }
+  /* closed body (hidden="until-found" keeps its box): drop the bottom padding */
+  .page-privacy .legal-item__body[hidden] { padding-bottom: 0; }
+
+  .page-privacy .legal-item__body { gap: 12px; }
+  .page-privacy .legal-item__body p,
+  .privacy-box p,
+  .privacy__list li { font-size: 16px; }
+  .privacy__list li { padding-left: 20px; } /* 8px bullet + 12px gap */
+
+  .privacy-box { gap: 12px; padding: 20px; border-radius: 12px; }
+  .privacy-box--dark { background: linear-gradient(156.25deg, #141519 32.76%, #222224 81.93%); }
+  .privacy-box__btn { margin-top: 0; }
+
+  .privacy-related__title { font-size: 16px; }
+  .privacy-related__link { font-size: 14px; font-weight: 500; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .privacy-related__link svg { transition: none; }
+}
