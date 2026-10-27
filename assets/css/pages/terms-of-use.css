@@ -27,7 +27,6 @@
 }
 
 /* ---------- Contents list: styles.css only resets <ul>, so clear the <ol> defaults ---------- */
-.page-terms .legal-toc__list { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- Contact card (in the aside) ---------- */
 .terms-contact__title {
@@ -119,7 +118,6 @@
   .terms-meta { gap: 6px 10px; margin-top: 4px; font-size: 14px; font-weight: 500; } /* 12 + 4 = Figma 16px */
   .terms-meta li { gap: 10px; }
 
-  .page-terms .legal-accordion__controls { padding-bottom: 16px; }
   .page-terms .legal-item:not(:last-of-type) { margin-bottom: 0; padding-bottom: 0; }
   .page-terms .legal-item:last-of-type { border-bottom: 0; }
   .page-terms .legal-item__title { font-size: 20px; }
@@ -143,7 +141,6 @@
 
   .page-terms .legal-item__body { gap: 12px; padding-top: 0; font-size: 16px; }
   /* hidden="until-found" keeps the box (content-visibility), so drop its 20px padding when closed */
-  .page-terms .legal-item__body[hidden] { padding-bottom: 0; }
   .page-terms .legal-item__body .terms-lead { font-size: 16px; }
 
   .terms-questions {

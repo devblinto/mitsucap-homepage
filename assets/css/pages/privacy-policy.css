@@ -21,7 +21,6 @@
 .privacy-hero__meta svg { flex-shrink: 0; width: 16px; height: 16px; }
 
 /* ---------- Contents card: no browser list numbers (labels carry their own "1." …) ---------- */
-.page-privacy .legal-toc__list { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- Content column: 48px rhythm ---------- */
 .privacy__content,
@@ -206,12 +205,11 @@
 
   .privacy__content { gap: 32px; }
   .page-privacy .legal-accordion { gap: 0; }
-  .page-privacy .legal-accordion__controls { margin-bottom: 24px; } /* + 8px padding = 32px */
+  .page-privacy .legal-accordion__controls { margin-bottom: 16px; } /* + 16px padding (legal.css) = 32px */
   .privacy__intro { font-size: 16px; }
   .privacy__copy { font-size: 14px; }
 
   .page-privacy .legal-item { gap: 0; }
-  .page-privacy .legal-item:last-child { border-bottom: 0; }
   .page-privacy .legal-item__header,
   .privacy-box__head { gap: 12px; }
   .page-privacy .legal-item__num,
@@ -221,7 +219,6 @@
   /* chevron centred on the first title line; long titles may run up to it (Figma: 294px title width) */
   .page-privacy .legal-item__chevron { margin: 6px 0 0 -12px; }
   /* closed body (hidden="until-found" keeps its box): drop the bottom padding */
-  .page-privacy .legal-item__body[hidden] { padding-bottom: 0; }
 
   .page-privacy .legal-item__body { gap: 12px; }
   .page-privacy .legal-item__body p,

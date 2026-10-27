@@ -26,7 +26,6 @@
 .decl-meta__value a:hover { color: var(--red-500); }
 
 /* Contents list is an <ol>: styles.css only resets <ul> (browser 40px indent + numbers) */
-.page-declaration .legal-toc__list { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- Cards ---------- */
 .decl__cards { display: flex; flex-direction: column; gap: 32px; }
