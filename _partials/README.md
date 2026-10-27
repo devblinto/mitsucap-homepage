@@ -227,3 +227,8 @@ Drop any page-level workarounds for these — they are fixed in `assets/css/site
     markers; the current page's link gets `aria-current`). `--check` lists pages that are out of date.
     Layout follows the Figma Footer component: desktop brand (400) + four equal columns (Solutions, Company,
     Legal, Follow); tablet stacked with four columns; mobile two columns per row and a stacked bottom bar.
+16. **404 page** (`/404.html`, repo root): Netlify serves it for any missing URL, so every href/src on it must be
+    root-absolute. `build-partials.js` stamps the footer into it like the other pages.
+17. **Unlinked pages** (kept off the menu/footer on purpose until there is real content): `/blog/`, `/news/`,
+    `/brochures/` and the article template `/blog/5-signs-its-time-to-lease-instead-of-buy/` (reusable for News
+    articles — see the comment at the top of its `<main>`). The menu links to the Coming Soon versions.
