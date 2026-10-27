@@ -20,6 +20,7 @@
 .page-blog .blog-filters {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;                 /* Figma: active chip (38px) top-aligned with the 40px outlined ones */
   gap: 8px;
 }
 .page-blog .blog-filter {
@@ -38,6 +39,7 @@
 }
 .page-blog .blog-filter:hover { background: var(--warm-white-200); }
 .page-blog .blog-filter[aria-pressed="true"] {
+  padding: 7px 17px;                       /* Figma active chip: 8/18 with no stroke → 38px tall */
   border-color: var(--charcoal-900);
   background: var(--charcoal-900);
   color: var(--white);
@@ -198,6 +200,7 @@
    ========================================================= */
 @media (max-width: 767px) {
   .page-blog .blog-latest__head { gap: 16px; margin-bottom: 24px; }
+  .page-blog .blog-latest .section-title { line-height: 1.11; }   /* Figma Mobile/Heading/H2 Tight */
   .page-blog .blog-filter { font-size: 14px; font-weight: 500; }
   .page-blog .blog-card__inner {
     flex-direction: column;

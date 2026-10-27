@@ -21,7 +21,10 @@
 /* Split card: text panel left, photo right */
 .page-brochures .brochure-card {
   display: grid;
-  grid-template-columns: minmax(0, 344fr) minmax(0, 300fr);   /* Figma 344 + 300 = 644 */
+  /* Figma card = 344 text + 300 photo (644 wide in a 1320 frame). With the site's
+     1218px content the card is ~593px, so the photo gives up the width: the text
+     column keeps Figma's 344px at 1440 and wraps exactly like the design. */
+  grid-template-columns: minmax(0, 344fr) minmax(0, 241fr);
   min-height: 341px;
   overflow: hidden;
   border-radius: 24px;
@@ -195,6 +198,13 @@
   .page-brochures .brochure-dl { font-size: 16px; }
   .page-brochures .brochure-dl__label { padding-top: 2.5px; }
   .page-brochures .brochure-dl__label::after { top: 24.25px; }
+}
+
+/* Figma 2603:2766: the mobile title is one line (368px, no-wrap) and runs ~10px into
+   the right gutter at 390. Keep it on one line where it fits the screen; narrower
+   phones wrap normally instead of scrolling sideways. */
+@media (min-width: 390px) and (max-width: 767px) {
+  .page-brochures .brochures__head .section-title { white-space: nowrap; }
 }
 
 @media (prefers-reduced-motion: reduce) {

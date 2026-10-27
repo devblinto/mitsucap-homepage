@@ -1,0 +1,237 @@
+/* =========================================================
+   404 — Page Not Found (Figma "404 Page": desktop 2740:30682 · tablet 2742:30910 · mobile 2742:31450)
+   Served by Netlify for any missing URL: every url() here is root-absolute.
+   ========================================================= */
+
+/* ---------- 01 Hero: header + 404 message over the CTA background ----------
+   Same look as the CTA band: #F4F4F4 (.page-top) + soft red corner at 75% (values from styles.css
+   .cta::before) + 120px grid with blinking squares (.grid-bg--cta + script.js), then the page glow. */
+.nf-top .page-top__bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 140% at 100% 100%, rgba(252, 167, 175, 0.8) 0%, rgba(252, 167, 175, 0.42) 32%, rgba(252, 167, 175, 0.14) 62%, rgba(252, 167, 175, 0) 85%),
+    linear-gradient(to right, rgba(252, 167, 175, 0) 50%, rgba(252, 167, 175, 0.1) 70%, rgba(252, 167, 175, 0.32) 87%, rgba(252, 167, 175, 0.5) 100%),
+    #f6f6f6;
+  opacity: 0.75;
+}
+.nf-top__grid {
+  inset: 0;
+  background-position: 0 -8px; /* Figma: first row line at y = 112px */
+}
+.nf-top__grid > span {
+  position: absolute;
+  width: 119px;
+  height: 119px;
+  background: var(--blink-color);
+}
+
+.nf-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding: 110px var(--site-gutter) 160px;  /* Figma: 70 gap + 40 top · 80 + 80 bottom */
+  text-align: center;
+}
+.nf-hero__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+.nf-hero__code {
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--red-500);
+}
+.nf-hero__title {
+  font-size: 72px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--charcoal-700);
+}
+.nf-hero__intro {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.nf-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* ---------- 02 Popular Pages ---------- */
+.nf-pages__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 48px;
+  text-align: center;
+}
+.nf-pages__title {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-700);
+}
+.nf-pages__intro {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.nf-pages__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.nf-pages__grid > li { display: flex; }
+
+/* Card — modelled on the mega menu link (.mega__link / .mega__tile):
+   default white card + grey tile; hover / focus = grey card, white tile, red icon, arrow and title */
+.nf-card {
+  --icon: none;
+  flex: 1;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  grid-template-areas:
+    "tile . arrow"
+    "text text text";
+  align-items: start;
+  align-content: start; /* cards are stretched to the row height: keep the extra space at the bottom */
+  row-gap: 24px;
+  padding: 32px;
+  border: 1px solid var(--warm-white-500);
+  border-radius: var(--radius-card);
+  background: var(--white);
+  color: var(--charcoal-500);
+  transition: background-color .2s ease;
+}
+.nf-card__tile {
+  grid-area: tile;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--warm-white-500);
+  border-radius: 12px;
+  background: var(--warm-white-200);
+  transition: background-color .2s ease;
+}
+/* Icons are the Figma SVGs used as masks, so they take the card colour (charcoal → red on hover) */
+.nf-card__icon,
+.nf-card__arrow {
+  display: block;
+  background-color: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+          mask: var(--icon) center / contain no-repeat;
+  transition: background-color .2s ease;
+}
+.nf-card__icon { width: 24px; height: 24px; }
+.nf-card__arrow {
+  grid-area: arrow;
+  width: 24px;
+  height: 24px;
+  color: var(--charcoal-400);
+  -webkit-mask-image: url("/assets/icons/404/arrow-up-right.svg");
+          mask-image: url("/assets/icons/404/arrow-up-right.svg");
+}
+.nf-card__text {
+  grid-area: text;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.nf-card__title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-700);
+  transition: color .2s ease;
+}
+.nf-card__desc {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+
+.nf-card--home       { --icon: url("/assets/icons/404/home.svg"); }
+.nf-card--solutions  { --icon: url("/assets/icons/404/solutions.svg"); }
+.nf-card--industries { --icon: url("/assets/icons/404/industries-served.svg"); }
+.nf-card--about      { --icon: url("/assets/icons/404/about-us.svg"); }
+.nf-card--benefits   { --icon: url("/assets/icons/404/benefits-of-leasing.svg"); }
+.nf-card--quote      { --icon: url("/assets/icons/404/get-a-quote.svg"); }
+
+/* Hover / keyboard focus (Figma "Card – Hover – Solutions") */
+.nf-card:hover,
+.nf-card:focus-visible { background: var(--warm-white-200); }
+.nf-card:hover .nf-card__tile,
+.nf-card:focus-visible .nf-card__tile { background: var(--white); }
+.nf-card:hover,
+.nf-card:focus-visible,
+.nf-card:hover .nf-card__arrow,
+.nf-card:focus-visible .nf-card__arrow,
+.nf-card:hover .nf-card__title,
+.nf-card:focus-visible .nf-card__title { color: var(--red-500); }
+
+/* =========================================================
+   TABLET (Figma 2742:30910)
+   ========================================================= */
+@media (max-width: 1199px) {
+  .nf-hero { padding: 120px var(--site-gutter) 152px; }  /* Figma: 48 gap + 72 top · 88 + 64 bottom */
+  .nf-hero__code { font-size: 56px; font-weight: 500; }
+  .nf-hero__title { font-size: 56px; font-weight: 600; line-height: 1.11; }
+  .nf-hero__intro { font-size: 18px; }
+
+  .nf-pages__head { gap: 12px; margin-bottom: 40px; }
+  .nf-pages__title { font-size: 32px; }
+
+  .nf-pages__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .nf-card { row-gap: 20px; padding: 28px; }
+  .nf-card__tile { width: 52px; height: 52px; }
+  .nf-card__arrow { width: 22px; height: 22px; }
+}
+
+/* =========================================================
+   MOBILE (Figma 2742:31450): compact rows — tile · text · arrow
+   ========================================================= */
+@media (max-width: 767px) {
+  .nf-hero { gap: 24px; padding: 72px var(--site-gutter) 96px; }  /* Figma: 32 gap + 40 top · 48 + 48 bottom */
+  .nf-hero__text { gap: 12px; }
+  .nf-hero__code { font-size: 32px; font-weight: 600; }
+  .nf-hero__title { font-size: 40px; }
+  .nf-hero__intro { font-size: 16px; }
+  .nf-hero__actions { flex-direction: column; gap: 12px; width: 100%; }
+  .nf-hero__actions .btn { width: 100%; }
+
+  .nf-pages__head { margin-bottom: 32px; }
+  .nf-pages__title { font-size: 24px; }
+  .nf-pages__intro { font-size: 16px; font-weight: 400; }
+
+  .nf-pages__grid { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .nf-card {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: "tile text arrow";
+    align-items: center;
+    align-content: center;
+    column-gap: 14px;
+    padding: 16px;
+    border-radius: 12px;
+  }
+  .nf-card__tile { width: 48px; height: 48px; border-radius: 10px; }
+  .nf-card__icon { width: 22px; height: 22px; }
+  .nf-card__arrow { width: 20px; height: 20px; }
+  .nf-card__text { gap: 4px; }
+  .nf-card__title { font-size: 20px; }
+  .nf-card__desc { font-size: 14px; font-weight: 500; }
+}

@@ -28,6 +28,8 @@ const pages = [];
     else if (e.name === "index.html") pages.push(p);
   }
 })(ROOT);
+// Netlify serves /404.html for any missing URL
+if (fs.existsSync(path.join(ROOT, "404.html"))) pages.push(path.join(ROOT, "404.html"));
 
 const source = {};
 for (const name of PARTIALS) {
@@ -37,6 +39,7 @@ for (const name of PARTIALS) {
 
 const indent = (text, pad) => text.split("\n").map((l) => (l ? pad + l : l)).join("\n");
 const urlOf = (file) => {
+  if (path.basename(file) !== "index.html") return "/" + path.relative(ROOT, file).split(path.sep).join("/");
   const rel = path.relative(ROOT, path.dirname(file)).split(path.sep).join("/");
   return rel ? `/${rel}/` : "/";
 };
