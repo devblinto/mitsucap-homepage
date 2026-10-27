@@ -54,6 +54,15 @@
   const root = document.documentElement;
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  // Scrollbar width for the CSS --gutter, so the 1200px content column is truly centred
+  const setScrollbar = () => {
+    if (root.classList.contains("lenis-stopped")) return; // scroll lock hides the scrollbar
+    const w = `${Math.max(0, window.innerWidth - root.clientWidth)}px`;
+    if (root.style.getPropertyValue("--scrollbar") !== w) root.style.setProperty("--scrollbar", w);
+  };
+  setScrollbar();
+  window.addEventListener("resize", setScrollbar);
+
   // Smooth scrolling (Lenis)
   let lenis = null;
   if (!reduceMotion && window.Lenis) {
