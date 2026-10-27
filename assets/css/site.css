@@ -205,6 +205,24 @@ a.explore:focus-visible::after { animation: explore-line .8s cubic-bezier(0.65, 
   gap: 30px;
 }
 .site-nav__item { position: relative; }
+/* Top item: either one button (label + chevron), or a label link to the landing page
+   (About Us, Solutions, Industries) followed by a chevron-only button */
+.site-nav__head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--primary-black);
+  transition: color .2s ease;
+}
+.site-nav__link,
+.site-nav__trigger {
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: inherit;
+  white-space: nowrap;
+}
 .site-nav__trigger {
   display: flex;
   align-items: center;
@@ -213,20 +231,13 @@ a.explore:focus-visible::after { animation: explore-line .8s cubic-bezier(0.65, 
   border: 0;
   background: none;
   cursor: pointer;
-  font-family: inherit;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.4;
-  color: var(--primary-black);
-  white-space: nowrap;
-  transition: color .2s ease;
 }
 .site-nav__chevron { flex-shrink: 0; width: 20px; height: 20px; transition: transform .3s var(--ease-out); }
 .site-nav__chevron--mobile { display: none; }
-.site-nav__trigger:hover,
-.site-nav__item.is-open > .site-nav__trigger,
-.site-nav__item.is-current > .site-nav__trigger { color: var(--red-500); }
-.site-nav__item.is-open > .site-nav__trigger .site-nav__chevron { transform: rotate(180deg); }
+.site-nav__head:hover,
+.site-nav__item.is-open > .site-nav__head,
+.site-nav__item.is-current > .site-nav__head { color: var(--red-500); }
+.site-nav__item.is-open > .site-nav__head .site-nav__chevron { transform: rotate(180deg); }
 
 /* Dropdown. The 28px top padding is an invisible hover bridge between the
    nav item and the panel (Figma: panel sits 28px below the nav text). */
@@ -379,18 +390,21 @@ html:not(.js) .site-nav__item:focus-within > .mega {
   .site-nav__list { flex-direction: column; align-items: stretch; gap: 0; }
   .site-nav__item { border-bottom: 1px solid var(--warm-white-500); }
   .site-nav__item.is-open { padding-bottom: 16px; }
+  .site-nav__head { gap: 0; color: var(--charcoal-500); }
+  .site-nav__link,
   .site-nav__trigger {
-    width: 100%;
+    flex: 1 1 auto;
     justify-content: space-between;
     padding: 18px 0;
     font-size: 24px;
     font-weight: 600;
     line-height: 1.2;
-    color: var(--charcoal-500);
   }
-  .site-nav__trigger:hover { color: var(--charcoal-500); }
-  .site-nav__item.is-current > .site-nav__trigger { color: var(--charcoal-500); }
-  .site-nav__item.is-open > .site-nav__trigger { color: var(--red-500); }
+  /* Chevron-only button: a 44px-wide tap area at the row end, the label link takes the rest */
+  .site-nav__trigger--icon { flex: 0 0 auto; justify-content: flex-end; width: 44px; margin-left: auto; }
+  .site-nav__head:hover,
+  .site-nav__item.is-current > .site-nav__head { color: var(--charcoal-500); }
+  .site-nav__item.is-open > .site-nav__head { color: var(--red-500); }
   .site-nav__chevron--desktop { display: none; }
   .site-nav__chevron--mobile { display: block; width: 22px; height: 22px; }
 
@@ -446,6 +460,7 @@ html:not(.js) .site-nav__item:focus-within > .mega {
   .site-header__toggle { width: 24px; height: 24px; gap: 4.286px; }
   .site-header__toggle span { width: 20.571px; height: 1.714px; }
 
+  .site-nav__link,
   .site-nav__trigger { font-size: 20px; }
   .mega__cols { grid-template-columns: minmax(0, 1fr); }
   .mega__tile { width: 36px; height: 36px; }

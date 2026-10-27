@@ -65,7 +65,7 @@ plus the inline `<script>` from `head.html` (adds `.js` and `.anim` to `<html>`)
 | File | Component | Main classes / modifiers |
 |---|---|---|
 | `head.html` | doc start + head | replace TITLE, DESCRIPTION, SLUG |
-| `header.html` | header + mega menu (desktop dropdowns, tablet/mobile full-screen accordion) | `.site-header`, `.site-nav`, `.site-nav__item` (+`.is-current`), `.site-nav__trigger`, `.mega`, `.mega__panel(--multi)`, `.mega__group(--2col/--3col)`, `.mega__heading`, `.mega__col`, `.mega__link` (+`aria-current="page"`), `.mega__tile`, `.mega__icon` |
+| `header.html` | header + mega menu (desktop dropdowns, tablet/mobile full-screen accordion) | `.site-header`, `.site-nav`, `.site-nav__item` (+`.is-current`), `.site-nav__head`, `.site-nav__link`, `.site-nav__trigger(--icon)`, `.mega`, `.mega__panel(--multi)`, `.mega__group(--2col/--3col)`, `.mega__heading`, `.mega__col`, `.mega__link` (+`aria-current="page"`), `.mega__tile`, `.mega__icon` |
 | `hero.html` | `.page-top` glow wrapper + inner hero | `.page-top`, `.page-top__bg`, `.page-glow`, `.page-hero` (+`--text-only`, `--title-500`, `--tint-10/15/20`), `__text`, `__title`, `__intro`, `__actions`, `__media` |
 | `experience-help.html` | dark + white card pair | `.help-cards` (+`--padded`), `.help-card` (+`--dark`), `__icon`, `__body`, `__title`, `__text` |
 | `presentation.html` | Company Presentation | `.presentation` (+`--grey`), `__card`, `__media`, `__body`, `__title` |
@@ -77,7 +77,8 @@ plus the inline `<script>` from `head.html` (adds `.js` and `.anim` to `<html>`)
 | `elements.html` | buttons, Explore link, pills, eyebrow, section + section heading | see below |
 
 **Mark the current page in the header**: on that page only, add `aria-current="page"` to the
-matching `.mega__link` and `is-current` to its parent `.site-nav__item` (red top item on desktop).
+matching `.mega__link` (on About Us, Solutions and Industries Served: the top `.site-nav__link`) and
+`is-current` to its parent `.site-nav__item` (red top item on desktop).
 That is the only allowed edit to the header markup.
 
 **Small elements** (`elements.html`):
@@ -214,3 +215,7 @@ Drop any page-level workarounds for these — they are fixed in `assets/css/site
 12. **Content width**: desktop side margin is `--gutter` = max(111px, centring value), so every section's content is
     at most 1218px wide and centred while backgrounds stay full width. Sliders (homepage logo marquee, Core Values
     track) still bleed to the screen edge. `script.js` sets `--scrollbar` so the centring ignores the scrollbar.
+13. **Mega menu v2** (Figma 2647:23 update): About Us, Solutions and Industries are links to their landing pages
+    (`.site-nav__link`) with a chevron-only `.site-nav__trigger--icon` that opens the dropdown (desktop: hover still
+    opens it; tablet/mobile: the label navigates, the chevron expands). Single-group panels have no heading; only
+    Resources / Information keep their grey headers. The About Us panel no longer lists About Us itself.

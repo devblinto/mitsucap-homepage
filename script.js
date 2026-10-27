@@ -218,7 +218,8 @@
         if (item.classList.contains("is-open") && !hoverOpened) closeSection(item);
         else openSection(item);
       });
-      trigger.addEventListener("keydown", (e) => {
+      // ArrowDown on the top item (or its landing-page link) opens the dropdown and focuses its first link
+      item.querySelector(".site-nav__head").addEventListener("keydown", (e) => {
         if (e.key === "ArrowDown" && desktop.matches) {
           e.preventDefault();
           openSection(item);
