@@ -219,3 +219,7 @@ Drop any page-level workarounds for these — they are fixed in `assets/css/site
     (`.site-nav__link`) with a chevron-only `.site-nav__trigger--icon` that opens the dropdown (desktop: hover still
     opens it; tablet/mobile: the label navigates, the chevron expands). Single-group panels have no heading; only
     Resources / Information keep their grey headers. The About Us and Contact Us panels no longer list themselves.
+14. **Coming Soon pages are the live ones**: the mega menu's Blog / News / Brochures links and every
+    "View Presentation" button point to `/blog/coming-soon/`, `/news/coming-soon/` and `/brochures/coming-soon/`.
+    The full `/blog/`, `/news/` and `/brochures/` pages (dummy content) stay in the repo, unlinked, until there is
+    real content; then switch the links back.
