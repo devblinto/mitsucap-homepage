@@ -32,7 +32,7 @@ _partials/head.html            <!DOCTYPE> … <head> … <body><div class="page"
     _partials/testimonial.html       (optional)
     _partials/cta.html               (almost every page)
   </main>
-_partials/footer.html
+<!-- @include footer --><!-- /@include footer -->   (filled from _partials/footer.html by the build script)
 _partials/scripts.html         scripts + </div></body></html>
 ```
 
@@ -72,7 +72,7 @@ plus the inline `<script>` from `head.html` (adds `.js` and `.anim` to `<html>`)
 | `testimonial.html` | quote card | `.testimonial` (+`--white`), `__card`, `__quote`, `__mark`, `__text`, `__author`, `__avatar`, `__name`, `__role` |
 | `cta.html` | CTA band | homepage `.cta` + `.cta--inner` |
 | `coming-soon.html` | Coming Soon card | `.coming-soon-section`, `.coming-soon`, `__head`, `__icon`, `__text`, `__title`, `__intro`, `__actions`; `.eyebrow` |
-| `footer.html` | footer (same as homepage) | `.footer …` (styles.css) |
+| `footer.html` | footer component (Figma "Footer" 2695:1042, Desktop/Tablet/Mobile) — **do not paste**: add the empty `@include footer` markers and run `node _partials/tools/build-partials.js` | `.footer …` (styles.css) |
 | `scripts.html` | scripts + doc end | — |
 | `elements.html` | buttons, Explore link, pills, eyebrow, section + section heading | see below |
 
@@ -223,3 +223,8 @@ Drop any page-level workarounds for these — they are fixed in `assets/css/site
     "View Presentation" button point to `/blog/coming-soon/`, `/news/coming-soon/` and `/brochures/coming-soon/`.
     The full `/blog/`, `/news/` and `/brochures/` pages (dummy content) stay in the repo, unlinked, until there is
     real content; then switch the links back.
+15. **Footer is a single shared component**: edit only `_partials/footer.html`, then run
+    `node _partials/tools/build-partials.js` to stamp it into every page (between the `@include footer`
+    markers; the current page's link gets `aria-current`). `--check` lists pages that are out of date.
+    Layout follows the Figma Footer component: desktop brand (400) + four equal columns (Solutions, Company,
+    Legal, Follow); tablet stacked with four columns; mobile two columns per row and a stacked bottom bar.
