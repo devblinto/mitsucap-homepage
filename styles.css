@@ -163,7 +163,7 @@ button { font: inherit; color: inherit; }
   background: var(--warm-white-200);
 }
 
-/* ---------- Grid backgrounds (hero, footer) ----------
+/* ---------- Grid backgrounds (hero, CTA, footer) ----------
    Lines are drawn with gradients. script.js adds the blinking squares
    (modelled on concourse.ai). The <span>s are the squares shaded in the
    design; they start lit and then join the blinking. */
@@ -1074,12 +1074,31 @@ button { font: inherit; color: inherit; }
   padding: 80px 194px;
   background: var(--warm-white-200);
 }
-.cta::before { /* grid + soft red corner, from the design (75% opacity) */
+.cta::before { /* soft red corner from the design (75% opacity); the grid is .cta__grid */
   content: "";
   position: absolute;
   inset: 0;
-  background: url("assets/images/cta-bg.webp") center / cover no-repeat;
+  background:
+    radial-gradient(120% 140% at 100% 100%, rgba(252, 167, 175, 0.8) 0%, rgba(252, 167, 175, 0.42) 32%, rgba(252, 167, 175, 0.14) 62%, rgba(252, 167, 175, 0) 85%),
+    linear-gradient(to right, rgba(252, 167, 175, 0) 50%, rgba(252, 167, 175, 0.1) 70%, rgba(252, 167, 175, 0.32) 87%, rgba(252, 167, 175, 0.5) 100%),
+    #f6f6f6;
   opacity: 0.75;
+}
+/* 120px grid with blinking squares, same behaviour as the footer (script.js startBlinkGrid) */
+.cta__grid { inset: 0; }
+.grid-bg--cta {
+  --blink-color: rgba(48, 49, 60, 0.07);
+  background-image:
+    linear-gradient(to right, transparent 119px, rgba(0, 0, 0, 0.05) 119px),
+    linear-gradient(to bottom, transparent 119px, rgba(0, 0, 0, 0.05) 119px);
+  background-size: 120px 120px;
+  background-position: 0 -32px;
+}
+.cta__grid > span {
+  position: absolute;
+  width: 119px;
+  height: 119px;
+  background: var(--blink-color);
 }
 .cta__content {
   position: relative;

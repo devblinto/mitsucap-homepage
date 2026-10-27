@@ -45,7 +45,7 @@
    riact.ai "Accelerate value generation": red rim flips in, red tint,
    red icon, and the description brightens.
 
-   Grid backgrounds (.blink-grid on hero and footer) blink like
+   Grid backgrounds (.blink-grid on hero, CTA and footer) blink like
    concourse.ai: every 0.24–0.62s, 1–2 random squares light up, stay lit
    1.4–2.8s, and fade over 1.8s (CSS transition on .blink-cell).
    ========================================================= */
