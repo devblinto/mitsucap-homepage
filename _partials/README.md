@@ -185,7 +185,6 @@ Don't put `data-reveal` on elements that you also animate with CSS transforms (G
   `construction-rental-houses`, `oil-gas-chemical`, `specialty-vehicles-equipment`, `medical`,
   `marine`, `computer-electronics`, `vendor-private-label`, `bank-credit-union`
   (the Industries Served page should give its sections these `id`s).
-- `/career/` is linked but has no page yet.
 
 ## 8. Changelog (shared foundation)
 

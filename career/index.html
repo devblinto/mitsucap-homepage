@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Career | MitsuCap</title>
-  <meta name="description" content="Careers at MitsuCap are coming soon. Join a team of industry-specific equipment leasing and finance experts.">
+  <meta name="description" content="Build your career with an industry leader in equipment leasing and finance. See open positions at MitsuCap and send your resume and cover letter to info@MitsuCap.com.">
   <link rel="stylesheet" href="/styles.css">
   <link rel="stylesheet" href="/assets/css/site.css">
+  <link rel="stylesheet" href="/assets/css/pages/career.css">
   <script>
     document.documentElement.classList.add("js");
     // Hide reveal targets until GSAP has set their start states. Fallback: show everything after 4s.
@@ -16,8 +17,8 @@
     }
   </script>
 </head>
-<body>
-  <div class="page page-career">
+<body class="page-career">
+  <div class="page">
 
     <div class="page-top">
       <div class="page-top__bg" aria-hidden="true">
@@ -163,38 +164,158 @@
         </div>
       </header>
 
-      <section class="page-hero page-hero--tint-10" data-reveal-group="load">
+      <!-- ============ 01 HERO (Figma "Hero Content" 2714:28914 · tablet 2721:29146 · mobile 2722:29495) ============ -->
+      <section class="page-hero career-hero" data-reveal-group="load">
         <div class="page-hero__text">
-          <h1 class="page-hero__title" data-reveal="chars">Career</h1>
-          <p class="page-hero__intro" data-reveal="from-below" data-reveal-at="0.5" data-reveal-distance="30">Interested in joining MitsuCap’s team of industry-specific experts? We’ll share open positions here soon.</p>
-          <div class="page-hero__actions" data-reveal="from-below" data-reveal-at="0.7" data-reveal-distance="40">
-            <a href="/contact/" class="btn btn--red btn--shadow-red">Contact Us</a>
+          <h1 class="page-hero__title" data-reveal="chars">Careers</h1>
+          <p class="page-hero__intro" data-reveal="from-below" data-reveal-at="0.5" data-reveal-distance="30">Build your career with an industry leader in equipment leasing and finance.</p>
+          <div class="page-hero__actions career-hero__actions" data-reveal="from-below" data-reveal-at="0.7" data-reveal-distance="40">
+            <a href="#open-positions" class="btn btn--red btn--shadow-red">View Open Positions</a>
+            <a href="mailto:info@mitsucap.com" class="btn btn--dark btn--semibold">Send Your Resume</a>
           </div>
         </div>
         <div class="page-hero__media" data-reveal="from-right" data-reveal-at="0.4" data-reveal-distance="40">
-          <img src="/assets/images/our-team/hero.webp" alt="MitsuCap field team reviewing equipment on site" width="1200" height="1200" decoding="async" fetchpriority="high">
+          <img src="/assets/images/career/hero.webp" alt="Laptop and notebook on an office desk by a window overlooking an equipment yard with trucks and loaders at sunset" width="1600" height="900" decoding="async" fetchpriority="high">
         </div>
       </section>
     </div>
 
     <main id="main">
-      <section class="coming-soon-section">
-        <div class="coming-soon" data-reveal-group>
-          <div class="coming-soon__head" data-reveal="from-below" data-reveal-at="0.2" data-reveal-distance="30">
-            <span class="coming-soon__icon"><img src="/assets/icons/hourglass.svg" alt="" width="48" height="48"></span>
-            <p class="eyebrow">Career</p>
+      <!-- ============ 02 CAREERS INTRO + HOW TO APPLY (Figma 2714:28927 · tablet 2721:29159 · mobile 2722:29508) ============ -->
+      <section class="career-intro" aria-labelledby="careers-title">
+        <div class="career-intro__text" data-reveal-group>
+          <h2 class="section-title career-intro__title" id="careers-title" data-reveal="chars">Careers At MitsuCap</h2>
+          <p class="career-intro__body" data-reveal="from-below" data-reveal-at="0.5" data-reveal-distance="30">MitsuCap is always looking for talented individuals who can provide value to our clients and who wants to work for an industry leader in equipment leasing and finance. If you feel you can fill this role and want to demonstrate your passion for the industry you are encouraged to send a resume and cover letter to <a href="mailto:info@mitsucap.com">info@MitsuCap.com</a></p>
+        </div>
+
+        <div class="apply-card" data-reveal-group data-reveal="from-below" data-reveal-at="0.2" data-reveal-distance="40">
+          <picture class="apply-card__icon">
+            <source media="(max-width: 767px)" srcset="/assets/icons/career/mail-40.svg">
+            <source media="(max-width: 1199px)" srcset="/assets/icons/career/mail-48.svg">
+            <img src="/assets/icons/career/mail-56.svg" alt="" width="56" height="56">
+          </picture>
+          <h3 class="apply-card__title">How to Apply</h3>
+          <ul class="apply-card__steps">
+            <li class="apply-card__step">
+              <picture class="apply-card__step-icon">
+                <source media="(max-width: 767px)" srcset="/assets/icons/career/document-red-20.svg">
+                <source media="(max-width: 1199px)" srcset="/assets/icons/career/document-red.svg">
+                <img src="/assets/icons/career/document-white.svg" alt="" width="24" height="24">
+              </picture>
+              <span>Resume and cover letter</span>
+            </li>
+            <li class="apply-card__step">
+              <picture class="apply-card__step-icon">
+                <source media="(max-width: 767px)" srcset="/assets/icons/career/mail-red-20.svg">
+                <source media="(max-width: 1199px)" srcset="/assets/icons/career/mail-red.svg">
+                <img src="/assets/icons/career/mail-white.svg" alt="" width="24" height="24">
+              </picture>
+              <a href="mailto:info@mitsucap.com">info@MitsuCap.com</a>
+            </li>
+          </ul>
+          <a href="mailto:info@mitsucap.com" class="btn btn--red btn--shadow-red apply-card__btn">Send Your Resume</a>
+        </div>
+      </section>
+
+      <!-- ============ 03 OPEN POSITIONS (Figma 2715:28827 · tablet 2721:29186 · mobile 2722:29535) ============
+           A real table on desktop; tablet = two-line rows, mobile = stacked cards (career.css).
+           Explicit ARIA roles keep the table semantics when the rows are re-laid out with CSS. -->
+      <section class="career-jobs" id="open-positions" aria-labelledby="positions-title">
+        <div class="career-jobs__head" data-reveal-group>
+          <h2 class="section-title career-jobs__title" id="positions-title" data-reveal="chars">Open Positions</h2>
+        </div>
+
+        <div class="career-jobs__wrap" data-reveal-group>
+          <table class="jobs" role="table" aria-labelledby="positions-title" data-reveal="from-below" data-reveal-at="0.1" data-reveal-distance="40">
+            <thead class="jobs__head" role="rowgroup">
+              <tr role="row">
+                <th scope="col" role="columnheader" class="jobs__cell--title">Job Posting Title</th>
+                <th scope="col" role="columnheader" class="jobs__cell--location">Location</th>
+                <th scope="col" role="columnheader" class="jobs__cell--dept">Department</th>
+                <th scope="col" role="columnheader" class="jobs__cell--date">Date</th>
+                <th scope="col" role="columnheader" class="jobs__cell--action"><span class="sr-only">Apply</span></th>
+              </tr>
+            </thead>
+            <tbody class="jobs__body" role="rowgroup">
+              <tr class="jobs__row" role="row">
+                <th scope="row" role="rowheader" class="jobs__cell--title"><span class="jobs__name">Lease Originator</span></th>
+                <td role="cell" class="jobs__cell--location">
+                  <span class="jobs__meta">
+                    <picture class="jobs__icon">
+                      <source media="(max-width: 767px)" srcset="/assets/icons/career/location-18.svg">
+                      <img src="/assets/icons/career/location.svg" alt="" width="20" height="20">
+                    </picture>
+                    US
+                  </span>
+                </td>
+                <td role="cell" class="jobs__cell--dept"><span class="jobs__chip">Sales</span></td>
+                <td role="cell" class="jobs__cell--date">
+                  <span class="jobs__meta">
+                    <picture class="jobs__icon">
+                      <source media="(max-width: 767px)" srcset="/assets/icons/career/calendar-18.svg">
+                      <img src="/assets/icons/career/calendar.svg" alt="" width="20" height="20">
+                    </picture>
+                    <time datetime="2017-10-02">October 2, 2017</time>
+                  </span>
+                </td>
+                <td role="cell" class="jobs__cell--action">
+                  <a class="jobs__link" href="mailto:info@mitsucap.com?subject=Application%3A%20Lease%20Originator" aria-label="Apply for Lease Originator by email">
+                    <picture class="jobs__arrow">
+                      <source media="(max-width: 767px)" srcset="/assets/icons/career/arrow-18.svg">
+                      <img src="/assets/icons/career/arrow.svg" alt="" width="20" height="20">
+                    </picture>
+                  </a>
+                </td>
+              </tr>
+              <tr class="jobs__row" role="row">
+                <th scope="row" role="rowheader" class="jobs__cell--title"><span class="jobs__name">Credit Analyst</span></th>
+                <td role="cell" class="jobs__cell--location">
+                  <span class="jobs__meta">
+                    <picture class="jobs__icon">
+                      <source media="(max-width: 767px)" srcset="/assets/icons/career/location-18.svg">
+                      <img src="/assets/icons/career/location.svg" alt="" width="20" height="20">
+                    </picture>
+                    Houston, TX
+                  </span>
+                </td>
+                <td role="cell" class="jobs__cell--dept"><span class="jobs__chip">Operations</span></td>
+                <td role="cell" class="jobs__cell--date">
+                  <span class="jobs__meta">
+                    <picture class="jobs__icon">
+                      <source media="(max-width: 767px)" srcset="/assets/icons/career/calendar-18.svg">
+                      <img src="/assets/icons/career/calendar.svg" alt="" width="20" height="20">
+                    </picture>
+                    <time datetime="2017-10-02">October 2, 2017</time>
+                  </span>
+                </td>
+                <td role="cell" class="jobs__cell--action">
+                  <a class="jobs__link" href="mailto:info@mitsucap.com?subject=Application%3A%20Credit%20Analyst" aria-label="Apply for Credit Analyst by email">
+                    <picture class="jobs__arrow">
+                      <source media="(max-width: 767px)" srcset="/assets/icons/career/arrow-18.svg">
+                      <img src="/assets/icons/career/arrow.svg" alt="" width="20" height="20">
+                    </picture>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ============ 04 COMPANY PRESENTATION (Figma "Resource Card" 2717:30055): white section, grey card ============ -->
+      <section class="presentation">
+        <div class="presentation__card" data-reveal-group>
+          <div class="presentation__media" data-reveal="from-left" data-reveal-at="0.2" data-reveal-distance="40">
+            <img src="/assets/images/shared/presentation.webp" alt="MitsuCap company presentation cover" width="1180" height="916" decoding="async" loading="lazy">
           </div>
-          <div class="coming-soon__text">
-            <h2 class="coming-soon__title" data-reveal="chars" data-reveal-at="0.35">Coming Soon!</h2>
-            <p class="coming-soon__intro" data-reveal="from-below" data-reveal-at="0.55" data-reveal-distance="30">We’re preparing our careers page. In the meantime, contact us to learn more about working with MitsuCap.</p>
-          </div>
-          <div class="btn-row coming-soon__actions" data-reveal="from-below" data-reveal-at="0.7" data-reveal-distance="30">
-            <a href="/contact/" class="btn btn--red btn--shadow-red">Contact Us</a>
-            <a href="/" class="btn btn--outline">Back to Home</a>
+          <div class="presentation__body">
+            <h2 class="presentation__title" data-reveal="chars" data-reveal-at="0.3">We Finance The Equipment That Makes Your Business Run</h2>
+            <a href="/brochures/coming-soon/" class="btn btn--dark btn--semibold" data-reveal="from-below" data-reveal-at="0.6" data-reveal-distance="30">View Presentation</a>
           </div>
         </div>
       </section>
 
+      <!-- ============ 05 TESTIMONIAL (Figma 2715:28908): grey section ============ -->
       <section class="testimonial">
         <figure class="testimonial__card" data-reveal-group>
           <blockquote class="testimonial__quote">

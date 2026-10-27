@@ -1,0 +1,301 @@
+/* =========================================================
+   CAREER (/career/) — Figma "Career - Template" 2714:28828,
+   Tablet 2721:29056, Mobile 2722:29405.
+   Only styles unique to this page; the hero, presentation, testimonial,
+   CTA, header and footer come from site.css / styles.css.
+   ========================================================= */
+
+/* ---------- 01 Hero: two buttons (16px apart; stacked full width on mobile) ---------- */
+.page-career .career-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* ---------- 02 Careers intro + How to Apply card (2714:28927) ---------- */
+.page-career .career-intro {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  padding: var(--section-pad) var(--site-gutter);
+  background: var(--white);
+}
+.page-career .career-intro__text {
+  flex: 1 1 50%; /* two equal columns (Figma 620 + 620); a 0 basis would let the card padding skew the split */
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.page-career .career-intro__title { color: var(--charcoal-700); }
+.page-career .career-intro__body {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+}
+.page-career .career-intro__body a { color: var(--red-500); }
+.page-career .career-intro__body a:hover { text-decoration: underline; }
+
+.page-career .apply-card {
+  flex: 1 1 50%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 32px;
+  padding: 48px;
+  border-radius: 16px;
+  background: linear-gradient(150.58deg, #141519 25.86%, #222224 94.71%);
+  color: var(--white);
+}
+.page-career .apply-card__icon,
+.page-career .apply-card__icon img { display: block; width: 56px; height: 56px; }
+.page-career .apply-card__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+.page-career .apply-card__steps {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.page-career .apply-card__step {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  border-top: 1px solid var(--charcoal-700);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.page-career .apply-card__step-icon,
+.page-career .apply-card__step-icon img { display: block; flex-shrink: 0; width: 24px; height: 24px; }
+.page-career .apply-card__step a { color: inherit; transition: color .2s ease; }
+.page-career .apply-card__step a:hover { color: var(--red-200); }
+
+/* ---------- 03 Open Positions (2715:28827) ---------- */
+.page-career .career-jobs {
+  padding: var(--section-pad) var(--site-gutter);
+  background: var(--warm-white-200);
+}
+.page-career .career-jobs__head { margin-bottom: 48px; }
+.page-career .career-jobs__title { color: var(--charcoal-700); }
+
+/* Desktop: a real table. Columns: title (fluid) · location 240 · department 240 ·
+   date 220 · action 48, 24px apart, 40px side padding (widths below include the gaps). */
+.page-career .jobs {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--warm-white-500);
+  border-radius: 16px;
+  background: var(--white);
+  text-align: left;
+}
+.page-career .jobs th,
+.page-career .jobs td {
+  box-sizing: border-box;
+  padding: 0 0 0 24px;
+  vertical-align: middle;
+  text-align: left;
+}
+.page-career .jobs__cell--title { padding-left: 40px !important; }
+.page-career .jobs__cell--location,
+.page-career .jobs__cell--dept { width: 264px; }
+.page-career .jobs__cell--date { width: 244px; }
+.page-career .jobs__cell--action { width: 112px; padding-right: 40px !important; }
+
+.page-career .jobs__head th {
+  height: 140px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.page-career .jobs__body th,
+.page-career .jobs__body td {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  border-top: 1px solid var(--warm-white-500);
+}
+
+.page-career .jobs__row { position: relative; }
+.page-career .jobs__name {
+  display: block;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-700);
+}
+.page-career .jobs__meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+  white-space: nowrap;
+}
+.page-career .jobs__icon,
+.page-career .jobs__icon img { display: block; flex-shrink: 0; width: 20px; height: 20px; }
+.page-career .jobs__chip {
+  display: inline-flex;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: var(--red-50);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--red-500);
+  white-space: nowrap;
+}
+
+/* Arrow button; its ::after stretches over the whole row so the row is clickable */
+.page-career .jobs__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--warm-white-500);
+  border-radius: 50%;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+.page-career .jobs__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+.page-career .jobs__link:focus-visible { outline: 2px solid var(--red-500); outline-offset: 2px; }
+.page-career .jobs__row:hover .jobs__link,
+.page-career .jobs__link:focus-visible { border-color: var(--red-50); background: var(--red-50); }
+.page-career .jobs__arrow,
+.page-career .jobs__arrow img { display: block; width: 20px; height: 20px; }
+
+/* =========================================================
+   TABLET (768–1199px) — Figma 2721:29056
+   ========================================================= */
+@media (max-width: 1199px) {
+  .page-career .career-intro { flex-direction: column; align-items: stretch; gap: 48px; }
+  .page-career .career-intro__text { flex: none; gap: 24px; }
+  .page-career .career-intro__body { font-size: 18px; font-weight: 400; }
+
+  .page-career .apply-card {
+    flex: none;
+    gap: 28px;
+    padding: 40px;
+    background: linear-gradient(156.25deg, #141519 25.86%, #222224 94.71%);
+  }
+  .page-career .apply-card__icon,
+  .page-career .apply-card__icon img { width: 48px; height: 48px; }
+  .page-career .apply-card__title { font-size: 24px; }
+  .page-career .apply-card__step { padding: 16px 0; font-weight: 400; }
+
+  .page-career .career-jobs__head { margin-bottom: 40px; }
+
+  /* Two-line rows: title above (location · department · date), arrow on the right.
+     The column header row stays in the accessibility tree, visually hidden. */
+  .page-career .jobs,
+  .page-career .jobs__body { display: block; }
+  .page-career .jobs__head {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  .page-career .jobs__row {
+    display: grid;
+    grid-template-columns: max-content max-content minmax(0, 1fr) 44px;
+    grid-template-areas:
+      "title title title action"
+      "loc   dept  date  action";
+    align-items: center;
+    gap: 12px 24px;
+    padding: 28px 32px;
+  }
+  .page-career .jobs__row + .jobs__row { border-top: 1px solid var(--warm-white-500); }
+  .page-career .jobs__body th,
+  .page-career .jobs__body td {
+    display: block;
+    width: auto;
+    padding: 0 !important;
+    border: 0;
+  }
+  .page-career .jobs__body .jobs__cell--title { grid-area: title; }
+  .page-career .jobs__body .jobs__cell--location { grid-area: loc; }
+  .page-career .jobs__body .jobs__cell--dept { grid-area: dept; }
+  .page-career .jobs__body .jobs__cell--date { grid-area: date; }
+  .page-career .jobs__body .jobs__cell--action { grid-area: action; }
+  .page-career .jobs__meta { font-weight: 400; }
+  .page-career .jobs__meta, .page-career .jobs__chip { vertical-align: middle; }
+  .page-career .jobs__link { width: 44px; height: 44px; }
+}
+
+/* =========================================================
+   MOBILE (≤767px) — Figma 2722:29405
+   ========================================================= */
+@media (max-width: 767px) {
+  .page-career .career-hero__actions { flex-direction: column; align-items: stretch; align-self: stretch; gap: 12px; }
+  .page-career .career-hero__actions .btn { width: 100%; }
+
+  .page-career .career-intro { gap: 32px; }
+  .page-career .career-intro__text { gap: 16px; }
+  .page-career .career-intro__title,
+  .page-career .career-jobs__title { line-height: 1.11; }
+  .page-career .career-intro__body { font-size: 16px; }
+
+  .page-career .apply-card {
+    align-items: stretch;
+    gap: 24px;
+    padding: 24px;
+    border-radius: 12px;
+    background: linear-gradient(144.97deg, #141519 25.86%, #222224 94.71%);
+  }
+  .page-career .apply-card__icon,
+  .page-career .apply-card__icon img { width: 40px; height: 40px; }
+  .page-career .apply-card__title { font-size: 20px; }
+  .page-career .apply-card__step { gap: 12px; padding: 14px 0; font-size: 16px; }
+  .page-career .apply-card__step-icon,
+  .page-career .apply-card__step-icon img { width: 20px; height: 20px; }
+  .page-career .apply-card__btn { display: flex; width: 100%; }
+
+  .page-career .career-jobs__head { margin-bottom: 24px; }
+
+  /* Stacked job cards, 16px apart */
+  .page-career .jobs { border: 0; border-radius: 0; background: none; }
+  .page-career .jobs__body { display: flex; flex-direction: column; gap: 16px; }
+  .page-career .jobs__row {
+    grid-template-columns: minmax(0, 1fr) 40px;
+    grid-template-areas:
+      "title action"
+      "loc   loc"
+      "dept  dept"
+      "date  date";
+    gap: 10px 12px;
+    padding: 20px;
+    border: 1px solid var(--warm-white-500);
+    border-radius: 12px;
+    background: var(--white);
+  }
+  .page-career .jobs__row + .jobs__row { border-top: 1px solid var(--warm-white-500); }
+  .page-career .jobs__body .jobs__cell--location { margin-top: 6px; } /* 10 + 6 = Figma 16px top row → meta */
+  .page-career .jobs__body .jobs__cell--dept { justify-self: start; }
+  .page-career .jobs__name { font-size: 20px; }
+  .page-career .jobs__meta { font-size: 16px; }
+  .page-career .jobs__icon,
+  .page-career .jobs__icon img { width: 18px; height: 18px; }
+  .page-career .jobs__chip { display: flex; padding: 4px 12px; font-size: 14px; font-weight: 500; }
+  .page-career .jobs__link { width: 40px; height: 40px; }
+  .page-career .jobs__arrow,
+  .page-career .jobs__arrow img { width: 18px; height: 18px; }
+}
