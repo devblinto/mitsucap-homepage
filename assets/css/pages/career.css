@@ -111,7 +111,7 @@
 .page-career .jobs__cell--action { width: 112px; padding-right: 40px !important; }
 
 .page-career .jobs__head th {
-  height: 140px;
+  height: auto; /* 62px row (20 + 22 + 20) */
   padding-top: 20px;
   padding-bottom: 20px;
   font-size: 16px;

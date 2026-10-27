@@ -1,0 +1,365 @@
+/* =========================================================
+   JOB DETAIL PAGES (/career/<job-slug>/) — Figma "Career – Job Detail Page":
+   Desktop 2724:29755, Tablet 2732:29983, Mobile 2733:30332.
+   Shared by every job page (template: /career/lease-originator/).
+   Load after career.css; the body carries both classes: "page-career page-job".
+   From career.css: .jobs table/rows/cards, .jobs__chip, .career-jobs section.
+   From site.css / styles.css: .page-hero, .btn, .explore, presentation, testimonial, CTA.
+   ========================================================= */
+
+/* ---------- 01 Hero: text only — title · meta row · two buttons, 32px apart ---------- */
+.page-job .job-hero__text { max-width: none; gap: 32px; }
+@media (min-width: 1200px) {
+  .page-job .job-hero__title { font-size: 64px; } /* Desktop H1 64 Bold (tablet/mobile sizes come from site.css) */
+}
+.page-job .job-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.page-job .job-hero__meta > li { display: flex; }
+.page-job .job-hero__chip { background: var(--white); } /* white chip on the desktop hero; red-50 on tablet/mobile */
+.page-job .job-hero__meta-item {
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+  white-space: nowrap;
+}
+.page-job .job-hero__meta-item img { display: block; flex-shrink: 0; width: 20px; height: 20px; }
+.page-job .job-hero__actions { display: flex; flex-wrap: wrap; gap: 16px; }
+
+/* ---------- Text link with arrow: shared .explore link (Blog "Read Article") ----------
+   Underline sits under the label only, so it follows the label width; .job-link--back puts a
+   left arrow before the text (and slides it to the left on hover). */
+.page-job .job-link {
+  align-items: flex-start;
+  gap: 10px;
+  height: auto;
+  padding: 0 0 10px;
+  line-height: 1.2;
+}
+.page-job .job-link::after { content: none; }
+.page-job .job-link__label { position: relative; }
+.page-job .job-link__label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 6px;
+  top: calc(100% + 4px);
+  height: 2px;
+  background: var(--charcoal-500);
+}
+.page-job a.job-link:hover .job-link__label::after,
+.page-job a.job-link:focus-visible .job-link__label::after { animation: explore-line .8s cubic-bezier(0.65, 0, 0.35, 1); }
+.page-job .job-link .explore__icon { flex-shrink: 0; margin-bottom: -2px; } /* 24px arrow overhangs the 22px label (Figma link frame 32px) */
+.page-job .job-link .explore__arrow img { display: block; width: 24px; height: 24px; }
+.page-job .job-link--back .explore__arrow:first-child { transform: translateX(30px); }
+.page-job a.job-link--back:hover .explore__arrow:first-child,
+.page-job a.job-link--back:focus-visible .explore__arrow:first-child { transform: translateX(0); }
+.page-job a.job-link--back:hover .explore__arrow:last-child,
+.page-job a.job-link--back:focus-visible .explore__arrow:last-child { transform: translateX(-30px); }
+
+/* ---------- 02 Job body: content column + sticky sidebar ---------- */
+.page-job .job-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  align-items: start;
+  column-gap: clamp(60px, 8.33vw, 120px);
+  padding: var(--section-pad) var(--site-gutter);
+  background: var(--white);
+}
+.page-job .job-body__main {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+.page-job .job-body__divider {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  border: 0;
+  background: var(--warm-white-500);
+}
+.page-job .job-body__aside {
+  position: sticky;
+  top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Responsibilities / Skills: title · intro · red-dot list */
+.page-job .job-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.page-job .job-section__title {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-700);
+}
+.page-job .job-section__intro {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-400);
+}
+.page-job .job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.page-job .job-list li {
+  display: flex;
+  gap: 14px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+}
+.page-job .job-list li::before {
+  content: "";
+  flex: 0 0 8px;
+  height: 8px;
+  margin-top: 9px;
+  border-radius: 50%;
+  background: var(--red-500);
+}
+
+/* Apply for This Position (grey block) */
+.page-job .job-apply {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 32px 40px;
+  border-radius: var(--radius-card);
+  background: var(--warm-white-200);
+}
+.page-job .job-apply__text {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+.page-job .job-apply__title,
+.page-job .job-overview__title,
+.page-job .job-help__title {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--charcoal-700);
+}
+.page-job .job-apply__email {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--charcoal-500);
+  transition: color .2s ease;
+}
+.page-job .job-apply__email:hover { color: var(--red-500); }
+.page-job .job-apply__email img { display: block; flex-shrink: 0; width: 20px; height: 20px; }
+.page-job .job-apply__btn { flex-shrink: 0; }
+
+/* Job Overview card */
+.page-job .job-overview {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  border-radius: var(--radius-card);
+  background: var(--warm-white-200);
+}
+.page-job .job-overview__list { margin: 0; padding: 0; list-style: none; }
+.page-job .job-overview__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+}
+.page-job .job-overview__item + .job-overview__item { border-top: 1px solid var(--warm-white-500); }
+.page-job .job-overview__icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--white);
+}
+.page-job .job-overview__icon img { display: block; width: 20px; height: 20px; }
+.page-job .job-overview__text {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.4;
+}
+.page-job .job-overview__label { font-size: 16px; font-weight: 400; color: var(--charcoal-400); }
+.page-job .job-overview__value { font-size: 18px; font-weight: 500; color: var(--charcoal-700); }
+.page-job .job-overview__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.page-job .job-overview__apply { display: flex; width: 100%; }
+
+/* "How can we help you?" dark card */
+.page-job .job-help {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+  padding: 32px;
+  border-radius: var(--radius-card);
+  background: linear-gradient(143.49deg, #141519 25.86%, #222224 94.71%);
+  color: var(--white);
+}
+.page-job .job-help__icon,
+.page-job .job-help__icon img { display: block; width: 44px; height: 44px; }
+.page-job .job-help__text { display: flex; flex-direction: column; gap: 12px; }
+.page-job .job-help__title { color: var(--white); }
+.page-job .job-help__body { font-size: 18px; font-weight: 500; line-height: 1.4; }
+
+/* ---------- 03 Other Open Positions: title + "View All Positions" link, then the .jobs table ---------- */
+.page-job .job-others {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "head more"
+    "wrap wrap";
+  align-items: end;
+  gap: 48px 24px;
+}
+.page-job .job-others__head { grid-area: head; margin-bottom: 0; }
+.page-job .job-others__more { grid-area: more; display: flex; }
+.page-job .job-others__wrap { grid-area: wrap; min-width: 0; }
+
+/* =========================================================
+   TABLET (768–1199px) — Figma 2732:29983
+   One column: Job Overview card first, "How can we help you?" last, 40px apart.
+   ========================================================= */
+@media (max-width: 1199px) {
+  .page-job .job-hero__meta { gap: 10px 24px; }
+  .page-job .job-hero__chip { background: var(--red-50); }
+  .page-job .job-hero__meta-item { font-weight: 400; }
+
+  .page-job .job-link { font-weight: 500; color: var(--charcoal-700); }
+
+  .page-job .job-body { display: flex; flex-direction: column; align-items: stretch; gap: 40px; }
+  .page-job .job-body__aside { display: contents; }
+  .page-job .job-overview { order: -1; }
+  .page-job .job-help { order: 1; }
+
+  .page-job .job-section__intro,
+  .page-job .job-list li,
+  .page-job .job-apply__email,
+  .page-job .job-overview__value,
+  .page-job .job-help__body { font-weight: 400; }
+
+  .page-job .job-apply { padding: 32px; }
+
+  /* Overview: three details side by side, Apply + Back link on one row */
+  .page-job .job-overview__list { display: flex; gap: 16px; }
+  .page-job .job-overview__item { flex: 1 1 0; min-width: 0; gap: 12px; padding: 0; }
+  .page-job .job-overview__item + .job-overview__item { border-top: 0; }
+  .page-job .job-overview__actions { flex-direction: row; align-items: center; }
+  .page-job .job-overview__apply { display: inline-flex; width: auto; }
+
+  .page-job .job-help { gap: 28px; padding: 40px; background: linear-gradient(161.98deg, #141519 25.86%, #222224 94.71%); }
+  .page-job .job-help__icon,
+  .page-job .job-help__icon img { width: 48px; height: 48px; }
+
+  .page-job .job-others { align-items: center; row-gap: 40px; }
+}
+
+/* =========================================================
+   MOBILE (≤767px) — Figma 2733:30332
+   ========================================================= */
+@media (max-width: 767px) {
+  .page-job .job-hero__text { gap: 24px; }
+  .page-job .job-hero__meta { gap: 10px 16px; }
+  .page-job .job-hero__chip { padding: 6px 14px; }
+  .page-job .job-hero__meta-item { font-size: 16px; }
+  .page-job .job-hero__actions { flex-direction: column; align-items: stretch; align-self: stretch; gap: 12px; }
+  .page-job .job-hero__actions .btn { width: 100%; }
+
+  .page-job .job-link { font-size: 16px; line-height: 1.2; }
+  .page-job .job-link .explore__icon { margin: -1px 0 -4px; } /* Figma: arrow 1px above the 19px label */
+
+  .page-job .job-body { gap: 32px; }
+  .page-job .job-body__main { gap: 32px; }
+
+  .page-job .job-section { gap: 16px; }
+  .page-job .job-section__title { font-size: 24px; }
+  .page-job .job-section__intro,
+  .page-job .job-list li { font-size: 16px; }
+  .page-job .job-list { gap: 12px; }
+  .page-job .job-list li { gap: 12px; }
+  .page-job .job-list li::before { margin-top: 7px; }
+
+  .page-job .job-apply {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+    padding: 24px 20px;
+    border-radius: 12px;
+  }
+  .page-job .job-apply__title,
+  .page-job .job-overview__title,
+  .page-job .job-help__title { font-size: 20px; }
+  .page-job .job-apply__email { font-size: 16px; }
+  .page-job .job-apply__btn { width: 100%; }
+
+  /* Overview: stacked details again, Apply full width, Back link centred */
+  .page-job .job-overview { gap: 16px; padding: 20px; border-radius: 12px; }
+  .page-job .job-overview__list { flex-direction: column; gap: 0; }
+  .page-job .job-overview__item { flex: none; gap: 14px; padding: 14px 0; }
+  .page-job .job-overview__item + .job-overview__item { border-top: 1px solid var(--warm-white-500); }
+  .page-job .job-overview__icon { width: 40px; height: 40px; }
+  .page-job .job-overview__label { font-size: 14px; font-weight: 500; }
+  .page-job .job-overview__value { font-size: 16px; }
+  .page-job .job-overview__actions { flex-direction: column; align-items: center; gap: 16px; }
+  .page-job .job-overview__apply { display: flex; width: 100%; }
+
+  .page-job .job-help { gap: 24px; padding: 24px; border-radius: 12px; background: linear-gradient(151.03deg, #141519 25.86%, #222224 94.71%); }
+  .page-job .job-help__icon,
+  .page-job .job-help__icon img { width: 40px; height: 40px; }
+  .page-job .job-help__body { font-size: 16px; }
+  .page-job .job-help__btn { width: 100%; }
+
+  /* Link moves under the job cards */
+  .page-job .job-others {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "head"
+      "wrap"
+      "more";
+    gap: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-job a.job-link:hover .job-link__label::after,
+  .page-job a.job-link:focus-visible .job-link__label::after { animation: none; }
+}
