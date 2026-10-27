@@ -922,28 +922,6 @@ button { font: inherit; color: inherit; }
   transition: opacity .8s ease, transform 1.4s var(--ease-out);
 }
 .industries__img.is-active { z-index: 1; opacity: 1; transform: scale(1); } /* incoming photo fades in on top */
-/* Cut-corner squares, as on concourse.ai: a 32px square in the section colour
-   notches the corner, with two frosted squares beside and below it */
-.industries__notch {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 2;
-  width: 64px;
-  height: 64px;
-  pointer-events: none;
-}
-.industries__notch span {
-  position: absolute;
-  width: 32px;
-  height: 32px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-.industries__notch span:nth-child(1) { top: 0; right: 0; background: var(--warm-white-200); backdrop-filter: none; -webkit-backdrop-filter: none; }
-.industries__notch span:nth-child(2) { top: 0; right: 32px; }
-.industries__notch span:nth-child(3) { top: 32px; right: 0; }
 .industries__side {
   flex: 1 1 0; /* fills the width next to the image */
   min-width: 0;
