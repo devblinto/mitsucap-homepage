@@ -604,6 +604,9 @@ html:not(.js) .site-nav__item:focus-within > .mega {
   background: linear-gradient(156.49deg, #141519 25.86%, #222224 94.71%);
   box-shadow: none;
 }
+/* White section with a grey light card (About Us, Figma 2607:195) */
+.help-cards--white { background: var(--white); }
+.help-cards--white .help-card:not(.help-card--dark) { background: var(--warm-white-200); }
 .help-card__icon { display: block; width: 72px; height: 72px; }
 .help-card__body {
   display: flex;
