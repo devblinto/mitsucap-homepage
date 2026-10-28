@@ -176,7 +176,8 @@ Don't put `data-reveal` on elements that you also animate with CSS transforms (G
 
 - Desktop (≥1200px): hovering a top item (or click / Enter / Space) opens its dropdown;
   ↓ opens and focuses the first link; Esc closes and returns focus; click outside or Tab away
-  closes. Panels wider than the room on the right are shifted back inside the page margins.
+  closes. Each panel opens centred under its nav item; if that would cross the page margin (narrow desktops)
+  it is nudged back inside (`placePanel` in script.js sets `--mega-shift`).
 - Tablet/mobile: ☰ opens the full-screen menu (`.site-nav.is-open`, `role="dialog"`), locks page
   scroll (`html.menu-open`, Lenis stopped), traps focus, Esc / ✕ / any link closes it. Top items
   are accordion sections (one open at a time, red when open).

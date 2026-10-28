@@ -239,19 +239,19 @@ a.explore:focus-visible::after { animation: explore-line .8s cubic-bezier(0.65, 
 .site-nav__item.is-current > .site-nav__head { color: var(--red-500); }
 .site-nav__item.is-open > .site-nav__head .site-nav__chevron { transform: rotate(180deg); }
 
-/* Dropdown. The 28px top padding is an invisible hover bridge between the
-   nav item and the panel (Figma: panel sits 28px below the nav text). */
+/* Dropdown, centred under its nav item. The 28px top padding is an invisible hover
+   bridge between the nav item and the panel (Figma: panel sits 28px below the nav text). */
 .mega {
-  --mega-shift: 0px; /* script.js shifts wide panels back inside the page margins */
+  --mega-shift: 0px; /* script.js nudges a panel back inside the page margins if centring overflows */
   position: absolute;
   top: 100%;
-  left: -22px;
+  left: 50%;
   z-index: 10;
   padding-top: 28px;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transform: translate3d(var(--mega-shift), 8px, 0);
+  transform: translate3d(calc(-50% + var(--mega-shift)), 8px, 0);
   transition: opacity .2s ease, transform .35s var(--ease-out), visibility 0s linear .35s;
 }
 .site-nav__item.is-open > .mega,
@@ -260,7 +260,7 @@ html:not(.js) .site-nav__item:focus-within > .mega {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translate3d(var(--mega-shift), 0, 0);
+  transform: translate3d(calc(-50% + var(--mega-shift)), 0, 0);
   transition-delay: 0s;
 }
 .mega__panel {

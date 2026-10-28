@@ -161,7 +161,7 @@
   // Desktop (≥1200px): hovering a top item opens its dropdown (short close delay so the
   //   pointer can travel to the panel); clicking/Enter/Space toggles it; ↓ opens it and
   //   focuses the first link; Esc closes and returns focus; clicking outside or tabbing
-  //   away closes it. Wide panels are shifted back inside the page margins.
+  //   away closes it. Panels are centred under their item, nudged inside the page margins if needed.
   // Tablet & mobile: ☰ opens .site-nav as a full-screen dialog (scroll locked, Lenis
   //   paused, focus kept inside, Esc / close button / any link closes it). Top items
   //   become accordion sections; one is open at a time.
@@ -181,16 +181,17 @@
     const triggerOf = (item) => item.querySelector(".site-nav__trigger");
     const megaOf = (item) => item.querySelector(".mega");
 
-    // Keep a wide dropdown inside the page margins (desktop only)
+    // Dropdowns are centred under their item (CSS); if that overflows the page
+    // margins, nudge the panel back inside them (desktop only)
     function placePanel(item) {
       const mega = megaOf(item);
       mega.style.setProperty("--mega-shift", "0px");
       if (!desktop.matches) return;
       const gutter = parseFloat(getComputedStyle(header).paddingRight) || 0;
-      const itemLeft = item.getBoundingClientRect().left;
-      const left = itemLeft + mega.offsetLeft;
-      const maxLeft = document.documentElement.clientWidth - gutter - mega.offsetWidth;
-      const shift = Math.min(0, maxLeft - left);
+      const left = item.getBoundingClientRect().left + mega.offsetLeft - mega.offsetWidth / 2;
+      const right = left + mega.offsetWidth;
+      const maxRight = document.documentElement.clientWidth - gutter;
+      const shift = left < gutter ? gutter - left : right > maxRight ? maxRight - right : 0;
       mega.style.setProperty("--mega-shift", `${Math.round(shift)}px`);
     }
 
