@@ -290,6 +290,12 @@ html:not(.js) .site-nav__item:focus-within > .mega {
   line-height: 1.4;
   color: var(--charcoal-400);
 }
+/* Single-group panels: the heading links to the section's landing page */
+.mega__heading--link { transition: color .2s ease; }
+.mega__heading--link:hover,
+.mega__heading--link:focus-visible,
+.mega__heading--link[aria-current="page"] { color: var(--red-500); }
+.site-header .mega__heading--link:focus-visible { outline-offset: -2px; }
 .mega__cols { display: flex; gap: 8px; }
 .mega__col {
   flex: 1 1 0;

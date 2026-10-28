@@ -235,3 +235,5 @@ Drop any page-level workarounds for these — they are fixed in `assets/css/site
 18. **Mega menu headings** (Figma "Mega Menu – Desktop" 2754:32296, Tablet 2648:423, Mobile 2648:92): every panel group
     has a grey `.mega__heading` bar again (About Us, Solutions, Industries, Resources + Information, Contact Us).
     Desktop 18px, 10/14 padding; tablet 16px and mobile 14px, 8/12 padding, at the top of the open accordion section.
+    The About Us, Solutions, Industries and Contact Us headings are links (`.mega__heading--link`) to /about-us/,
+    /solutions/, /industries-served/ and /contact/ (red on hover / current page). Resources and Information stay plain.
