@@ -216,8 +216,8 @@ Drop any page-level workarounds for these — they are fixed in `assets/css/site
     track) still bleed to the screen edge. `script.js` sets `--scrollbar` so the centring ignores the scrollbar.
 13. **Mega menu v2** (Figma 2647:23 update): About Us, Solutions, Industries and Contact Us are links to their landing pages
     (`.site-nav__link`) with a chevron-only `.site-nav__trigger--icon` that opens the dropdown (desktop: hover still
-    opens it; tablet/mobile: the label navigates, the chevron expands). Single-group panels have no heading; only
-    Resources / Information keep their grey headers. The About Us and Contact Us panels no longer list themselves.
+    opens it; tablet/mobile: the label navigates, the chevron expands). The About Us and Contact Us panels no
+    longer list themselves. (Panel headings: see 18.)
 14. **Coming Soon pages are the live ones**: the mega menu's Blog / News / Brochures links and every
     "View Presentation" button point to `/blog/coming-soon/`, `/news/coming-soon/` and `/brochures/coming-soon/`.
     The full `/blog/`, `/news/` and `/brochures/` pages (dummy content) stay in the repo, unlinked, until there is
@@ -232,3 +232,6 @@ Drop any page-level workarounds for these — they are fixed in `assets/css/site
 17. **Unlinked pages** (kept off the menu/footer on purpose until there is real content): `/blog/`, `/news/`,
     `/brochures/` and the article template `/blog/5-signs-its-time-to-lease-instead-of-buy/` (reusable for News
     articles — see the comment at the top of its `<main>`). The menu links to the Coming Soon versions.
+18. **Mega menu headings** (Figma "Mega Menu – Desktop" 2754:32296, Tablet 2648:423, Mobile 2648:92): every panel group
+    has a grey `.mega__heading` bar again (About Us, Solutions, Industries, Resources + Information, Contact Us).
+    Desktop 18px, 10/14 padding; tablet 16px and mobile 14px, 8/12 padding, at the top of the open accordion section.

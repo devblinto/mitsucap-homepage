@@ -434,12 +434,9 @@ html:not(.js) .site-nav__item:focus-within > .mega {
   .mega__group,
   .mega__group--2col,
   .mega__group--3col { width: auto; gap: 8px; }
-  .mega__heading { display: none; }
-  /* Resources has two groups: their grey headers show in the accordion too */
-  .mega__panel--multi .mega__heading {
-    display: block;
+  .mega__heading {
     padding: 8px 12px;
-    font-size: 14px;
+    font-size: 16px;
   }
   .mega__cols {
     display: grid;
@@ -462,6 +459,7 @@ html:not(.js) .site-nav__item:focus-within > .mega {
 
   .site-nav__link,
   .site-nav__trigger { font-size: 20px; }
+  .mega__heading { font-size: 14px; }
   .mega__cols { grid-template-columns: minmax(0, 1fr); }
   .mega__tile { width: 36px; height: 36px; }
   .mega__icon { width: 18px; height: 18px; }
